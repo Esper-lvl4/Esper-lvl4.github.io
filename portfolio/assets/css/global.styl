@@ -1,0 +1,585 @@
+html, body
+	height: 100%
+body
+	fonts(16px, 20px, 400)
+	font-family: 'Circe', sans-serif
+	*
+		box-sizing: border-box
+.global-wrap
+	min-height: 100%
+	background: url('./../img/left-back.jpg') 0% 0%\/390px 574px repeat-y, url('./../img/right-back.jpg') 100% 0%\/390px 574px repeat-y
+.site-size
+	width: 1140px
+	margin: 0 auto
+.main-wrap > .site-size
+	background: $white
+.page-wrap
+	padding: 10px 0 0
+.page-block
+	padding-top: 30px
+	padding-bottom: 30px
+
+.page-title
+	margin-top: 0
+	margin-bottom: 0
+	fonts(38px, 56px)
+	color: $dark
+.page-subtitle
+	fonts(28px, 41px)
+	color: $d-gray
+.block-title
+	fonts(24px, 35px)
+	color: $d-gray
+.block-subtitle
+	fonts(20px, 29px)
+	color: $d-gray
+.article-title
+	fonts(18px, 27px)
+	color: $d-gray
+.footer-title
+	fonts(18px, 27px, 600)
+	color: $d-gray
+.banner-text
+	fonts(18px, 27px, 300)
+	color: $d-gray
+.site-text
+	fonts(16px, 24px)
+	color: $gray
+
+.image-wrapper
+	flex(row, nowrap, center, center)
+	img
+		max-width: 100%
+		height: auto
+
+.more-link
+	position: relative
+	display: inline-block
+	padding: 7px 43px 7px 0
+	border: none
+	outline: none
+	background: transparent
+	box-shadow: none
+	color: $purple
+	fonts(20px, 20px)
+	text-decoration: none
+	&::after
+		content: ''
+		position: absolute
+		top: 54%
+		right: 0
+		transform: translateY(-50%)
+		display: block
+		width: 15px
+		height: 11px
+		background: url('./../img/black-arrow.svg') 50% 50%/100% no-repeat
+	&:hover
+		&::before
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			display: block
+			width: calc(100% - 43px)
+			height: 1px
+			background-color: $purple
+
+.more-button
+	display: inline-block
+	width: 51px
+	height: 51px
+	border-radius: 50%
+	border: none
+	outline: none
+	box-shadow: 2px 4px 10px rgba(193, 160, 205, 0.5)
+	background-image: url('./../img/arrow-right-hover.svg');
+	background: url('./../img/arrow-right.svg') 50% 50%/10px 7px no-repeat $pink
+	fonts(20px, 29px)
+	&:hover
+		background-color: $purple
+		background-image: url('./../img/arrow-right-hover.svg');
+		box-shadow: 4px 4px 20px rgba(82, 39, 98, 0.5)
+		cursor: pointer
+
+.back-link
+	position: relative
+	display: inline-block
+	padding: 7px 0 7px 33px
+	border: none
+	outline: none
+	background: transparent
+	box-shadow: none
+	color: $black
+	fonts(20px, 20px)
+	text-decoration: none
+	&::after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0
+		transform: translateY(-50%) rotate(180deg)
+		display: block
+		width: 15px
+		height: 11px
+		background: url('./../img/black-arrow.svg') 50% 50%/100% no-repeat
+	&:hover
+		color: $purple
+		&::before
+			content: ''
+			position: absolute
+			bottom: 0
+			right: 0
+			display: block
+			width: calc(100% - 35px)
+			height: 1px
+			background-color: $purple
+
+.svg-button
+	border: none
+	outline: none
+	background: transparent
+	box-shadow: none
+	text-decoration: none
+	path
+		transition: fill 0.3s ease
+	&:hover
+		cursor: pointer
+		path
+			fill: $black
+
+.site-input
+	padding: 5px 10px
+	border: 1px solid $l-gray
+	border-top: none
+	border-left: none
+	border-right: none
+	border-radius: 0
+	outline: none
+	fonts(14px, 14px)
+	&:hover, &:focus
+		border-bottom-color: $d-gray
+	&:focus
+		color: $purple
+	&.search
+		padding: 5px 30px 5px 10px
+		background: url('./../img/loupe.svg') 100% 50%/21px 20px no-repeat
+	&.js-invalid-input
+		border-bottom-color: $red
+
+.site-textarea
+	min-height: 120px
+	padding: 9px 11px
+	border: 1px solid $l-gray
+	border-radius: 18px
+	outline: none
+	box-shadow: none
+	background: $white
+	resize: none
+
+.site-button
+	display: inline-block
+	padding: 10px 44px
+	border: none
+	outline: none
+	border-radius: 24px
+	background-color: #2d2d2d
+	color: $white
+	fonts(20px, 29px)
+	text-decoration: none
+	transition: all 0.3s ease
+	&:hover
+		background-color: $black
+		cursor: pointer
+	&.reverse
+		padding: 9px 43px
+		border: 1px solid $black
+		background-color: transparent
+		color: $black
+		&:hover
+			background-color: $black
+			color: $white
+
+.big-button
+	padding: 0
+	border: none
+	outline: none
+	box-shadow: none
+	background: none
+	cursor: pointer
+	.big-button-bg
+		transition: all 0.3s ease
+	&:hover
+		.big-button-bg
+			fill: #522762
+
+.yellow-button
+	display: inline-block
+	padding: 9px 30px
+	border: 1px solid #ffd12e
+	border-radius: 20px
+	background: transparent
+	color: #ffd12e
+	font-weight: 600
+	cursor: pointer
+
+.site-checkbox
+	display: none
+	&:checked + label
+		color: $purple
+		&::after
+			opacity: 1
+.site-checkbox-label
+	position: relative
+	display: inline-block
+	padding: 7px 10px 7px 26px
+	color: $l-gray
+	fonts(14px, 21px)
+	cursor: pointer
+	&::before
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0
+		z-index: 1
+		transform: translateY(-50%)
+		display: block
+		width: 15px
+		height: 15px
+		border: 1px solid $purple
+		border-radius: 2px
+	&::after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0
+		z-index: 2
+		transform: translateY(-50%)
+		display: block
+		width: 15px
+		height: 15px
+		border-radius: 2px
+		background: url('./../img/checkbox-checked.svg') 50% 50%/ 8px 6px no-repeat
+		opacity: 0
+	&:hover::after
+		opacity: 0.3
+
+.breadcrumbs-block
+	padding-top: 35px
+
+.breadcrumbs
+	flex(row, wrap)
+	a
+		position: relative
+		display: inline-block
+		padding-right: 22px
+		fonts(14px, 19px)
+		color: $l-gray
+		text-decoration: none
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			right: 7px
+			transform: translateY(-50%)
+			width: 10px
+			height: 7px
+			background: url('./../img/arrow-right.svg') 50% 50%/10px 7px no-repeat
+		span
+			color: $l-gray
+		&:hover span
+			text-decoration: underline
+	span
+		fonts(14px, 19px)
+		color: $dark
+
+.page-wrap
+	.page-title
+		margin: 0 0 25px
+
+.site-list
+	list-style: none
+	margin: 7px 0
+	padding-left: 0
+	&.horizontal
+		flex(row, wrap, flex-start, center)
+		li
+			margin-right: 60px
+			fonts(18px, 27px)
+		a
+			color: $l-gray
+			text-decoration: none
+			&:hover
+				color: $black
+				text-decoration: underline
+	li:not(.block-title), .site-list-item
+		padding-left: 13px
+		margin-top: 10px
+		&::before
+			content: ''
+			display: inline-block
+			width: 4px
+			height: 4px
+			margin: 5px 9px 4px 0
+			border-radius: 50%
+			background: #c1a0cd
+	& > a
+		display: block
+		color: $gray
+		fonts(18px, 27px, 400)
+		text-decoration: none
+		&:hover
+			color: $black
+			text-decoration: underline
+	.block-title
+		padding-bottom: 10px
+		color: $black
+		&::before
+			display: none
+
+.bottom-navigation
+	flex(row, wrap, center, center)
+	padding: 20px 0
+	margin-bottom: 52px
+	.site-button
+		margin-right: 30px
+
+// Range classes
+
+.noUi-range-handle
+	position: absolute
+	left: 15px
+	top: -8px
+	width: 15px
+	height: 15px
+	border-radius: 50%
+	outline: none
+	cursor: pointer
+	background-color: $white
+	box-shadow: 2px 2px 7px rgba(82, 39, 98, 0.7)
+.noUi-range-target
+	position: relative
+	width: 100%
+	height: 1px
+	margin: 40px 0 30px
+	background-color: $purple
+.range-min-output, .range-max-output
+	position: absolute
+	top: -30px
+	width: 30px
+	margin-left: -10px
+	color: $black
+	fonts(12px, 18px, 300)
+.range-max-output
+	margin-left: -20px
+
+.swiper-slide
+	img
+		max-width: 100%
+		max-height: 100%
+		width: auto
+		height: auto
+		object-fit: cover
+
+.popup-wrap
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 10
+	flex(row, nowrap, center, center)
+	width: 100%
+	height: 100%
+	background: rgba(0, 0, 0, 0.5)
+	&.js-none
+		display: none
+.popup-body
+	position: relative
+	max-width: 90%
+	padding: 50px
+	border-radius: 29px
+	background: $white
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15)
+	line-height: 23px
+	text-align: center
+	.site-button
+		fonts(14px, 21px)
+		&:nth-of-type(n+3)
+			margin-left: 30px
+.popup-close
+	position: absolute
+	top: 15px
+	right: 24px
+	z-index: 2
+	padding-right: 11px
+	border: none
+	outline: none
+	background: none
+	box-shadow: none
+	fonts(11px, 16px)
+	text-align: right
+	cursor: pointer
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 50%
+		right: 0
+		z-index: 1
+		display: block
+		width: 7px
+		height: 1px
+		background: $dark
+	&::before
+		transform: translateY(-50%) rotate(-45deg)
+	&::after
+		transform: translateY(-50%) rotate(45deg)
+.popup-cross
+	position: relative
+	display: inline-block
+	padding: 0
+	margin: 0
+	width: 60px
+	height: 60px
+	border: none
+	outline: none
+	box-shadow: none
+	background: none
+	cursor: pointer
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%) rotate(45deg)
+		display: block
+		width: 23px
+		height: 2px
+		background: #ffffff
+	&::after
+		transform: translate(-50%, -50%) rotate(-45deg)
+.popup-form
+	flex(column, nowrap, flex-start, stretch)
+	width: 400px
+	max-width: 90%
+	.site-input
+		margin-bottom: 30px
+	.site-button
+		margin-top: 30px
+		fonts(20px, 29px)
+.popup-title
+	display: inline-block
+	margin-bottom: 40px
+
+.site-selector
+	position: relative
+	display: inline-block
+	padding: 0 30px 0 7px
+	fonts(12px, 15px)
+	color: #8F9396
+	cursor: pointer
+	& > button
+		padding: 0
+		border: none
+		background: none
+		outline: none
+		box-shadow: none
+		fonts(14px, 16px)
+		cursor: pointer
+		&:hover
+			color: $green
+	&::after
+		content: ''
+		position: absolute
+		right: 10px
+		top: 50%
+		z-index: 2
+		display: block
+		width: 6px
+		height: 3px
+		background: url(./../img/filter-arrow.svg) 50% 50%/6px 3px no-repeat;
+	select
+		display: none
+	&.active .site-select-list
+		transform: scale(1);
+
+.site-select-list
+	position: absolute
+	top: 100%
+	left: 0
+	z-index: 6
+	transform: scale(0)
+	flex(column, nowrap)
+	min-width: 100%
+	padding: 12px 0
+	border: none
+	border-radius: 2px
+	background-color: $white
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1)
+	color: $white
+	transition: all 0.3s ease
+	& > *
+		display: block
+		width: 100%
+		padding: 4px 16px
+		fonts(12px, 15px)
+		color: $dark
+		text-align: left
+		text-decoration: underline
+		&:hover
+			cursor: pointer
+			text-decoration: none
+
+.simplebar-track .simplebar-scrollbar
+	z-index: 2
+	&.simplebar-visible
+		&::before
+			opacity: 1
+	&::before
+		left: 50%
+		transform: translateX(-50%)
+		width: 4px
+		background-color: #c1a0cd
+.simplebar-track.simplebar-vertical
+	&::after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		z-index: 0
+		transform: translate(-50%, -50%)
+		display: block
+		width: 2px
+		height: 95%
+		background-color: #dadada
+
+.js-none
+	display: none!important
+
+.js-hide
+	visibility: hidden
+	cursor: normal
+
+@media (max-width: 1180px)
+	.site-size
+		width: 100%
+		padding-left: 20px
+		padding-right: 20px
+	.global-wrap
+		min-height: 100%
+		background: none
+
+@media (max-width: 768px)
+	.page-title
+		fonts(30px, 35px)
+		text-align: center
+
+@media (max-width: 640px)
+	.site-list.horizontal
+		flex-flow: column nowrap
+		align-items: center
+		li
+			margin-right: 0
+
+@media (max-width: 500px)
+	.bottom-navigation
+		flex-flow: column nowrap
+		.site-button
+			margin: 0 0 15px

@@ -1,0 +1,27 @@
+/* Variables */
+$black = #000000
+$white = #ffffff
+$l-gray = #ababab
+$gray = #727272
+$d-gray = #494949
+$purple = #522762
+$pink = #c1a0cd
+$dark = #131313
+
+$violet = #7d79e4
+$d-violet = #3b36bd
+$yellow = #e9c888
+$red = #ff0000
+
+/* Mixins */
+
+flex($dir = row, $wrap = wrap, $justify = flex-start, $align = flex-start)
+	display: flex
+	flex-flow: $dir $wrap
+	justify-content: $justify
+	align-items: $align
+
+fonts($size = 14px, $height = 19px, $weight = 400)
+	font-size: $size
+	line-height: $height
+	font-weight: $weight

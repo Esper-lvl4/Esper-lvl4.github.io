@@ -1,0 +1,436 @@
+.header-top-wrap
+	height: 72px
+	padding: 10px 0
+	background-color: $black
+	color: $white
+
+.header-top
+	flex(row, wrap, space-between, center)
+.callback-wrap
+	display: none
+
+.logo
+	width: 256px
+	height: 55px
+
+.header-experience
+	width: 167px
+	fonts(12px, 13px)
+.phones-wrap
+	flex-grow: 2
+	flex(row, wrap, space-between)
+	max-width: 478px
+	.popup-cross
+		position: absolute
+		top: 15px
+		right: 15px
+		display: none
+	.phones-title
+		display: none
+		fonts(24px, 35px)
+.header-phone-wrap
+	span
+		fonts(14px, 21px)
+.header-phone
+	color: $white
+	fonts(16px, 24px)
+	text-decoration: none
+	&:hover
+		text-decoration: underline
+
+.cart-icon
+	position: relative
+	display: inline-block
+	width: 21px
+	height: 28px
+	&.active::after
+		content: ''
+		position: absolute
+		top: 0
+		right: -9px
+		z-index: 1
+		display: block
+		width: 15px
+		height: 15px
+		border-radius: 50%
+		background: #ffd12e
+	path
+		transition: all 0.3s ease
+	&:hover
+		path
+			fill: #ffd12e
+
+.header-bottom
+	position: relative
+	z-index: 4
+	flex(row, nowrap, space-between, center)
+	background: $white
+.header-menu
+	flex(row, wrap, flex-start, center)
+	background: $white
+	a
+		position: relative
+		display: inline-block
+		padding: 20px 5px
+		margin-right: 12px
+		color: $gray
+		text-decoration: none
+		&:hover
+			color: $purple
+			&::after
+				content: ''
+				position: absolute
+				left: 0
+				bottom: 15px
+				z-index: 1
+				display: block
+				width: 100%
+				height: 2px
+				background-color: $purple
+
+.header-search
+	.search
+		width: 202px
+
+.menu-burger
+	display: none
+	padding: 21px 20px 20px
+	border: none
+	outline: none
+	background: transparent
+	box-shadow: none
+	cursor: pointer
+	line
+		transition: all 0.3s ease
+	&:hover
+		line
+			stroke: $white
+
+.header-popup-menu
+	position: absolute
+	top: 100%
+	left: 0
+	z-index: 4
+	display: none
+	grid-template: auto \/ repeat(auto-fit, 180px)
+	grid-gap: 20px
+	justify-content: space-between
+	width: 100%
+	padding: 34px
+	background: $black
+	color: $white
+	&.active
+		display: grid
+	.menu-pimp
+		position: absolute
+		top: -26px
+		left: 20px
+		z-index: 4
+		display: block
+		width: 87px
+		height: 51px
+		background: url('./../img/pimp.svg') 50% 50%/100% no-repeat
+	.menu-column
+		grid-row: 1 \/ -1
+		flex(column, nowrap)
+		margin-top: 27px
+		.menu-item:nth-of-type(n+2)
+			margin-top: 10px
+	.wierd-column
+		margin-top: 30px
+	.double-column
+		grid-column: span 2
+		.menu-column
+			display: block
+			column-count: 2
+			column-width: 180px
+			column-gap: 20px
+	a
+		display: inline-block
+		width: 100%
+		padding: 3px 5px
+		color: $white
+		fonts(14px, 21px)
+		&:hover
+			color: $white
+			text-decoration: underline
+			&::after
+				display: none
+		&.underlined-links
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+		&.yellow-links
+			color: #ffd12e
+	.menu-item-list
+		.menu-item
+			&:first-of-type
+				margin-top: 55px
+			&:nth-of-type(n+2)
+				margin-top: 10px
+
+.popup-menu-head
+	position: relative
+	padding-bottom: 6px
+	&::after
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 5px
+		z-index: 1
+		display: block
+		width: 44px
+		height: 1px
+		background: $white
+	span
+		display: inline-block
+		padding-left: 5px
+		fonts(18px, 17px, 600)
+
+.header-popup-button, .header-popup-back
+	display: none
+
+.header-popup-button
+	position: absolute
+	top: 50%
+	right: 0
+	z-index: 3
+	transform: translateY(-50%)
+	width: 15px
+	height: 15px
+	border: none
+	outline: none
+	border-radius: 50%
+	box-shadow: none
+	background: url('./../img/filter-arrow.svg') 50% 50%/6px 3px no-repeat $white
+
+
+
+// Mobile Menu styles.
+
+.black-popup-wrap
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 10
+	flex(column, nowrap, center, center)
+	width: 100%
+	height: 100%
+	margin: 0
+	padding: 85px 15px 15px
+	background: #000000
+	&.hide-scroll .link-list
+		overflow: hidden
+	.menu-wrapper
+		flex(column, nowrap, flex-start, stretch)
+		width: 100%
+		max-height: 100%
+		overflow: hidden
+		.scrollable-list
+			flex-grow: 2
+			height: 50%
+			margin-top: 26px
+		.simplebar-content
+			flex(row, nowrap, center)
+		.link-list
+			flex(column, nowrap, flex-start, flex-start)
+			// padding-bottom: 60px
+	.menu-top
+		position: absolute
+		top: 0
+		left: 0
+		flex(row, nowrap, space-between, center)
+		width: 100%
+		padding: 15px
+		form
+			width: 100%
+			margin: 0 34px
+	.back-to-parent
+		flex(row, nowrap, center, center)
+		width: 60px
+		height: 60px
+		padding: 0
+		border: none
+		outline: none
+		background: none
+		box-shadow: none
+		cursor: pointer
+	.menu-search
+		display: block
+		width: 100%
+		padding: 0 7px 1px
+		border: none
+		border-bottom: 1px solid #ababab
+		background: none
+		color: #ffffff
+		fonts(14px, 21px, 300)
+	.current-place
+		color: #ffffff
+		fonts(24px, 35px, 600)
+		text-align: center
+	a
+		padding: 10px 0
+		color: #ffffff
+		fonts(14px, 21px, 300)
+		&:hover::after
+			bottom: 7px
+			background-color: #ffffff
+	.menu-item
+		padding: 13px
+		a
+			text-decoration: none
+			&.yellow-links
+				color: #ffd12e
+				font-weight: 400
+				text-decoration: underline
+			&.underlined-links
+				text-decoration: underline
+		&.has-sub
+			position: relative
+			padding-right: 50px
+			a
+				fonts(18px, 27px, 600)
+	.popup-menu-head
+		&::after
+			display: none
+	.unique-link
+		position: relative
+		padding-right: 30px
+		text-decoration: none
+		&::after
+			content: ''
+			position: absolute
+			top: 53%
+			right: 0
+			z-index: 1
+			transform: translateY(-50%)
+			display: block
+			width: 25px
+			height: 8px
+			background: url('./../img/long-arrow.svg') 50% 50%/25px 8px no-repeat
+	.next-submenu
+		position: absolute
+		top: 50%
+		right: 0
+		transform: translateY(-50%) rotate(45deg)
+		// flex(row, nowrap, center, center)
+		width: 40px
+		height: 40px
+		padding: 0
+		border: none
+		outline: none
+		background: none
+		box-shadow: none
+		cursor: pointer
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			display: block
+			width: 5px
+			height: 5px
+			border: 2px solid #C1A0CD
+			border-left-color: transparent
+			border-bottom-color: transparent
+
+
+@media (max-width: 1024px)
+	.header-search
+		position: relative
+		width: 50px
+		.search
+			position: absolute
+			top: 50%
+			right: 0
+			transform: translateY(-50%)
+			width: 50px
+			background-color: #ffffff
+			transition: all 0.3s ease
+			&::placeholder
+				color: transparent
+			&:focus
+				width: 150px
+
+@media (max-width: 960px)
+	.header-top-wrap
+		height: auto
+	.menu-burger
+		display: inline-block
+	.cart-icon
+		width: 61px
+		height: 69px
+		padding: 21px 20px 20px
+		&.active::after
+			top: 20px
+			right: 11px
+	.header-menu
+		display: none
+	.header-phone-wrap
+		margin-right: 8px
+	.header-search
+		display: none
+	.logo, .header-experience
+		width: 100%
+		margin-bottom: 10px
+		text-align: center
+	.phones-wrap
+		order: 4
+		justify-content: center
+	.header-phone-wrap
+		margin-right: 18px
+		text-align: center
+		&:last-of-type
+			margin-right: 0
+	.menu-burger
+		order: 5
+
+@media(max-width: 640px)
+	.callback-wrap
+		display: block
+		width: 100%
+		margin-top: 10px
+		text-align: center
+	.phones-wrap
+		position: fixed
+		bottom: -100%
+		left: 0
+		z-index: -1
+		flex-flow: column nowrap
+		justify-content: space-between
+		align-items: center
+		width: 100%
+		max-width: 100%
+		max-height: 100%
+		height: 561px
+		padding: 60px
+		border-top-left-radius: 40px
+		border-top-right-radius: 40px
+		background: #000000
+		transition: all 0.4s ease
+		opacity: 0
+		&.active
+			z-index: 10
+			bottom: 0%
+			opacity: 1
+		.popup-cross, .phones-title
+			display: block
+	.phones-wrap-back
+		position: absolute
+		top: 0
+		left: 0
+		z-index: 9
+		width: 100%
+		height: 100%
+		background: #000000
+		opacity: 0
+		transition: all 0.3s ease
+		&.ready
+			opacity: 1
+	.header-phone-wrap
+		margin: 0 0 0
+		.header-phone
+			fonts(24px, 35px)
+		span
+			fonts(21px, 31px)

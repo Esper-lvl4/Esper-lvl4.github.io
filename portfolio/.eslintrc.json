@@ -1,0 +1,16 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module"
+	},
+	"extends": "eslint-config-google",
+	"parser": "espree",
+	"rules": {
+    "max-len": ["error", {
+      "code": 80,
+      "tabWidth": 2,
+      "ignoreUrls": true,
+      "ignoreRegExpLiterals": true
+    }]
+	}
+}

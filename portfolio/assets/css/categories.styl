@@ -1,0 +1,155 @@
+.categories-search
+	flex(row, nowrap, center, center)
+	padding: 0 0 37px
+	.site-input
+		flex-grow: 2
+		margin-right: 20px
+		padding: 8px 18px 7px
+		border: 1px solid $l-gray
+		border-radius: 19px
+		fonts(14px, 19px)
+
+.categories-wrap
+	display: grid
+	grid-template: auto \/ repeat(auto-fit, minmax(280px, 337px))
+	grid-gap: 50px 24px
+	justify-content: space-evenly
+	justify-items: center
+	padding: 0 0 40px
+
+.category-item
+	position: relative
+	max-width: 337px
+	width: 100%
+	padding: 0 0 50px
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 50%
+		z-index: 0
+		transform: translateX(-50%)
+		display: block
+		width: 112.5%
+		height: 100%
+		background: url('./../img/product-back.svg') 0% 100%/100% no-repeat
+	&.active
+		z-index: 3
+		background: $white
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25)
+		&::after
+			background: none
+		.category-dropdown
+			height: auto
+			box-shadow: 0px 20px 20px -20px rgba(0, 0, 0, 0.25), 20px 8px 20px -20px rgba(0, 0, 0, 0.25), -20px 8px 20px -20px rgba(0, 0, 0, 0.25)
+		.category-expand
+			display: none
+		.category-wrapper
+			background: none
+	&:hover
+		img
+			transform: scale(1.05)
+		.category-name
+			color: $purple
+
+.category-image
+	overflow: hidden
+	img
+		transition: all 0.3s ease
+
+.category-wrapper
+	position: relative
+	z-index: 1
+	box-shadow: 0 -15px 15px -12px rgba(0, 0, 0, 0.1)
+
+.category-name
+	display: block
+	padding: 31px 20px 15px
+	color: $black
+	fonts(24px, 35px)
+	text-align: center
+	text-decoration: none
+	&:hover
+		color: $purple
+
+.category-expand
+	position: absolute
+	bottom: -5%
+	left: 50%
+	z-index: 2
+	transform: translateX(-50%)
+	display: inline-block
+	width: 51px
+	height: 51px
+	border: none
+	border-radius: 50%
+	outline: none
+	box-shadow: none
+	background-image: url('./../img/bottom-arrow-hover.svg')
+	background: url('./../img/bottom-arrow.svg') 50% 50%/100% no-repeat
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+	&:hover
+		background-image: url('./../img/bottom-arrow-hover.svg')
+		cursor: pointer
+		box-shadow: 4px 4px 20px rgba(82, 39, 98, 0.5)
+
+.category-dropdown
+	position: absolute
+	top: 102%
+	left: 0
+	z-index: 1
+	flex(column, nowrap)
+	width: 100%
+	height: 0
+	padding: 0 25px
+	border-bottom-right-radius: 30px
+	border-bottom-left-radius: 30px
+	background: $white
+	transition: all 0.3s ease
+	overflow: hidden
+	a:last-of-type
+		margin-bottom: 36px
+	a:not(.more-link)
+		margin-bottom: 12px
+		color: $black
+		fonts(18px, 27px)
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+	.more-link
+		align-self: center
+		
+.brand-list-block
+	.page-title
+		margin-bottom: 31px
+.brand-list
+	column-count: 4
+	padding-bottom: 76px
+	.site-list
+		&:nth-of-type(n+2)
+			margin-top: 40px
+		&:first-of-type
+			margin-top: 0
+	a
+		color: $l-gray
+		fonts(18px, 27px)
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+
+@media (max-width: 960px)
+	.brand-list
+		column-count: 3
+
+@media (max-width: 640px)
+	.brand-list
+		column-count: 2
+
+@media (max-width: 500px)
+	.categories-search
+		flex-flow: column nowrap
+		.site-input
+			width: 100%
+			margin: 0 0 15px
+	.brand-list
+		column-count: 1

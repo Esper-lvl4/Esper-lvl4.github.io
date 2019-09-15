@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractCss = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
@@ -20,7 +20,7 @@ let cssExp = {
 // Shorthand for exporting multiple pages.
 let plugs = [
 	new CopyPlugin([
-		{from: './dev/assets/libs/', to: './'}
+		{from: './assets/libs/', to: './'}
 	]),
 	new ExtractCss({
 		filename: devMode ? './css/[name].css' : '[name].[hash].css',
@@ -30,13 +30,13 @@ let plugs = [
 ]
 
 // Just put the name of html file without extension in this list.
-let pages = ['index', 'categories', 'catalog', 'product-page', 'catalog-download', 'solution-list', 'solution-page', 'portfolio-list', 'brand-page', 'news-list', 'news-item', 'album', 'contacts', 'static-page', 'subcategories'];
+let pages = ['index'];
 
 for (let i = 0; i < pages.length; i++) {
 	plugs.push(new HtmlWebpackPlugin({
 		filename: `${pages[i]}.html`,
-		template: `dev/${pages[i]}.html`,
-		favicon: './dev/assets/img/favicon.png',
+		template: `${pages[i]}.html`,
+		favicon: './assets/img/favicon.png',
 		inject: true,
 		hash: true,
 	}))
@@ -45,7 +45,7 @@ for (let i = 0; i < pages.length; i++) {
 module.exports = {
 	mode: 'development',
 	entry: {
-		main: './dev/index.js',
+		main: './index.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -76,15 +76,16 @@ module.exports = {
 							],
 							ignore: ['/node-modules/'],
 						}
-					}
+					},
+					"eslint-loader"
 				]
 			},
 			{
 				test: /\.css$/,
 				exclude: /node-modules/,
 				use: [
-					cssExp,
-					// 'style-loader',
+					// cssExp,
+					'style-loader',
 					'css-loader',
 				]
 			},
@@ -92,8 +93,8 @@ module.exports = {
 				test: /\.styl$/,
 				exclude: /node-modules/,
 				use: [
-					cssExp,
-					// 'style-loader',
+					// cssExp,
+					'style-loader',
 					'css-loader',
 					'stylus-loader'
 				]
@@ -135,7 +136,7 @@ module.exports = {
 	},
 	plugins: plugs,
 	devServer: {
-		publicPath: '/dev/',
+		publicPath: '/',
 		hot: true,
 		compress: true,
 		port: 3000

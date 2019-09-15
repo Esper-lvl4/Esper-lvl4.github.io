@@ -1,0 +1,137 @@
+.footer-top
+	padding: 40px 0 50px
+	background-color: $black
+
+.footer-top-wrap
+	display: grid
+	grid-template: auto \/ repeat(auto-fit, 172px)
+	grid-gap: 30px 50px
+	justify-content: space-between
+
+.footer-menu
+	flex(column, nowrap)
+	a
+		margin-bottom: 14px
+		color: $white
+		fonts(14px, 21px, 300)
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+		&:last-of-type
+			margin-bottom: 0
+
+.footer-menu-title
+	position: relative
+	display: inline-block
+	padding: 0 0 3px
+	margin-bottom: 35px
+	fonts(18px, 18px, 600)
+	color: $white
+	&::after
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 35px
+		height: 1px
+		background-color: $white
+
+.show-stuff
+	position: relative
+	display: inline-block
+	padding: 0 20px 0 0
+	margin-bottom: 7px
+	border: none
+	outline: none
+	box-shadow: none
+	background: none
+	color: $pink
+	&::after
+		content: ''
+		position: absolute
+		top: 50%
+		right: 0
+		transform: translateY(-50%)
+		display: block
+		width: 6px
+		height: 10px
+		background: url('./../img/little-arrow.svg') 50% 50%/100% no-repeat
+	&.active
+		&::after
+			transform: translateY(-50%) rotate(90deg)
+		& + .hidden-address
+			height: auto
+	&:hover
+		color: $white
+		cursor: pointer
+
+.hidden-address
+	height: 0
+	color: $white
+	fonts(14px, 21px, 300)
+	overflow: hidden
+
+.footer-bottom
+	flex(row, wrap, space-between, center)
+	padding-top: 23px
+	padding-bottom: 21px
+	span
+		color: #1f272d
+		fonts(14px, 21px)
+
+.copyright
+	margin-right: 25px
+
+.return-button
+	position: fixed
+	bottom: 20px
+	left: 20px
+	z-index: 5
+	opacity: 1
+	transition: all 0.3s ease
+	&.hide
+		opacity: 0
+		z-index: -1
+
+.chat-button
+	position: fixed
+	bottom: 20px
+	right: 20px
+	z-index: 5
+
+a.unique-link
+	color: $l-gray
+	path
+		transition: fill 0.3s ease
+	&:hover
+		color: $pink
+		text-decoration: none
+		path
+			fill: $pink
+
+.social-icons
+	margin-top: 15px
+	a
+		display: inline-block
+		margin-right: 10px
+		path
+			transition: fill 0.3s ease
+		&:hover
+			path
+				fill: $white
+
+.privacy
+	color: $dark
+	fonts(14px, 21px)
+	text-decoration: none
+	&:hover
+		text-decoration: underline
+
+@media (max-width: 768px)
+	.footer-bottom
+		flex-flow: column nowrap
+		align-items: center
+		& > *:nth-child(n+2)
+			margin-top: 10px
+	.copyright
+		margin-right: 0

@@ -1,0 +1,29 @@
+.brand-page
+	.categories-wrap
+		grid-column: 1 \/ -1
+.brand-page-block
+	.page-title
+		margin: 0
+	.portfolio-list-wrap
+		padding-top: 0
+.brand-page-text
+	margin-bottom: 62px
+	color: $gray
+	fonts(14px, 19px)
+	&::after
+		content: ''
+		display: block
+		clear: both
+.brand-page-image
+	float: left
+	margin: 0 33px 55px 0
+.brand-categories
+	margin-bottom: 62px
+
+@media (max-width: 550px)
+	.brand-page-image
+		float: none
+		display: block
+		max-width: 100%
+		height: auto
+		margin: 0 auto 55px

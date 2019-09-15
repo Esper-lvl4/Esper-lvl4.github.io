@@ -1,0 +1,79 @@
+.contacts-block
+	margin-bottom: 70px
+	.tabs-nav
+		grid-column: 1 \/ -1
+.contacts-text
+	color: $gray
+	fonts(14px, 21px)
+.contacts-wrap
+	flex(row, wrap, space-between, stretch)
+	display: none
+	&.js-active
+		display: flex
+
+.distributors-wrap
+	display: none
+	&.js-active
+		display: block
+	.contacts-wrap
+		display: flex
+		margin-bottom: 70px
+		&:last-of-type
+			margin-bottom: 0
+	.block-subtitle
+		color: $purple
+		font-weight: 500
+
+.contacts-info
+	// flex(column, nowrap, center)
+	width: 48%
+	color: $gray
+	a
+		color: $gray
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+
+.contacts-map
+	width: 50%
+	iframe
+		border: none
+		width: 100%
+		height: 300px
+
+.contacts-form
+	padding: 47px 27px
+	margin-bottom: 100px
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1)
+	.page-subtitle
+		margin-bottom: 40px
+	textarea
+		resize: none
+		width: 100%
+		margin-bottom: 40px
+		&::placeholder
+			color: $l-gray
+	.site-input
+		&::placeholder
+			color: $l-gray
+	.form-row
+		margin-bottom: 25px
+		.site-input
+			margin-right: 60px
+	.submit-wrap
+		text-align: center
+		.site-button
+			fonts(20px, 29px)
+
+@media (max-width: 768px)
+	.contacts-wrap
+		flex-flow: column nowrap
+	.contacts-info, .contacts-map
+		width: 100%
+	.contacts-map
+		margin-top: 10px
+	.contacts-form
+		.form-row
+			.site-input
+				width: 100%
+				margin: 15px 0 0

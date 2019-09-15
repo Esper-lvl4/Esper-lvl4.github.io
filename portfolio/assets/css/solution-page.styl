@@ -1,0 +1,283 @@
+.solution-info
+	display: grid
+	grid-template: auto \/ 166px 1fr
+	grid-gap: 45px
+	align-items: center
+	padding-bottom: 60px
+.solution-text
+	color: $gray
+	fonts(18px, 27px)
+.solution-variants
+	.tab-content
+		max-width: 100%
+.solution-variant-wrap
+	display: none
+	&.js-active
+		display: block
+.solution-images-slider.dead-slider
+	.swiper-slide
+		width: auto
+		margin-right: 10px
+.solution-images
+	position: relative
+	width: 100%
+	padding: 26px 0
+	.prev-solution-image, .next-solution-image
+		position: absolute
+		top: 54%
+		z-index: 3
+		transform: translateY(-50%)
+	.prev-solution-image
+		left: -75px
+	.next-solution-image
+		right: -65px
+.solution-stats
+	flex(column, nowrap)
+	span
+		fonts(16px, 24px, 300)
+		&:nth-of-type(n+2)
+			margin-top: 16px
+	a
+		color: $black
+		fonts(16px, 24px, 300)
+		&:hover
+			text-decoration: none
+.solution-page-form
+	padding: 70px 0
+	.products-wrap.lines
+		display: grid
+		padding: 56px 0
+		.product-grid-head
+			// grid-template: auto/66px 26.5% 24.5% 13.5% 11.7% 10%
+			grid-template: auto \/ 1fr 3fr 5fr 1fr 1fr 2fr 1fr
+			grid-gap: 0 26px
+	.product-item.active
+		z-index: 4
+	.product-image
+		position: relative
+		flex(row, nowrap, center, center)
+		overflow: visible
+
+.solution-form-top
+	flex(row, nowrap, center, center)
+	.product-quantity
+		margin-right: 20px
+		border-color: #c1a0cd
+		&::after
+			content: ''
+			position: absolute
+			top: -7px
+			right: 0px
+			z-index: 1
+			display: block
+			width: 15px
+			height: 15px
+			border-radius: 50%
+			background: #ffd12e
+	.minus-counter, .plus-counter
+		display: none
+.solution-number-label
+	margin: 0
+	padding-right: 30px
+	color: $purple
+	fonts(18px, 27px, 400)
+	text-align: center
+.solution-tip
+	color: $l-gray
+	fonts(12px, 18px, 300)
+
+.solution-form-bottom
+	flex(row, nowrap, center, center)
+	margin-top: 24px
+	.product-price
+		padding-bottom: 2px
+		color: $black
+		fonts(20px, 20px)
+		span
+			display: inline-block
+			margin-bottom: -10px
+			color: $black
+			fonts(38px, 38px)
+	.site-button
+		margin-left: 40px
+		fonts(20px, 29px)
+
+.product-cart-remove
+	position: relative
+	width: 37px
+	height: 37px
+	padding: 0
+	border: none
+	outline: none
+	background: none
+	box-shadow: none
+	cursor: pointer
+	overflow: visible
+	&::after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		z-index: 2
+		transform: translate(-50%, -50%)
+		display: block
+		width: 17px
+		height: 17px
+		background: url('./../img/red-cross.svg') 50% 50%/17px 17px no-repeat
+	&:hover::after
+		top: 63%
+		width: 37px
+		height: 37px
+		background: url('./../img/red-cross-hover.svg') 50% 50%/37px 37px no-repeat
+.image-popup
+	position: absolute
+	top: 100%
+	left: 100%
+	z-index: 3
+	flex(row, nowrap, center, center)
+	width: 183px
+	height: 183px
+	padding: 5px
+	background: $white
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15)
+	img
+		max-height: 100%
+		width: auto
+
+.mobile-warning
+	margin: 30px 0
+	padding: 20px
+	border: 2px solid $black
+	border-radius: 29px
+	text-align: center
+
+@media (min-width: 769px)
+	.mobile-warning
+		display: none
+	.solution-page-form
+		.products-wrap.lines
+			grid-template: auto \/ 100%
+			grid-gap: 2px
+			transition: all 0.3s ease
+			box-shadow: 4px 4px 30px rgba(0, 0, 0, 0);
+			&:hover
+				img
+					transform: none
+			.product-item
+				flex(row, nowrap, flex-start, center)
+				max-width: 100%
+				padding: 9px
+				&::after
+					display: none
+				&:hover
+					box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2)
+			.product-wrapper
+				flex(row, nowrap, flex-start, center)
+				box-shadow: none
+			.product-image
+				width: 60px
+				height: 60px
+				img
+					max-height: 100%
+					width: auto
+			.product-grid-head
+				grid-column: 1 \/ -1
+				display: grid
+				grid-template: auto \/ 60px 4fr 5fr 2fr 2fr 2fr 37px
+				grid-gap: 0 26px
+				justify-items: center
+				padding: 0 9px
+				fonts(18px, 27px)
+				.product-head-start
+					justify-self: start
+			.product-item
+				display: grid
+				grid-template: auto \/ 60px 4fr 5fr 2fr 2fr 2fr 37px
+				grid-gap: 0 26px
+				justify-items: center
+				align-items: center
+				max-width: 100%
+				padding: 9px
+				&::after
+					display: none
+				&:hover
+					box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2)
+			.product-wrapper
+				flex-grow: 2
+				box-shadow: none
+			.product-image
+				width: 60px
+				height: 60px
+				img
+					max-height: 100%
+					width: auto
+			.product-name
+				align-self: center
+				grid-column: span 1
+				margin: 0
+				padding: 0
+				font-weight: 300
+			.product-description
+				grid-column: span 1
+				margin: 0
+				padding: 0
+			.product-pack
+				display: block
+				fonts(18px, 27px, 300)
+				text-align: center
+			.product-info
+				display: grid
+				grid-template: 1fr \/ 29% 27% 15% 13% 12%
+				grid-gap: 1%
+				align-items: center
+				justify-items: center
+				margin-top: 0
+			.product-price
+				grid-column: span 1
+				height: auto
+				margin: 0
+				font-size: 0
+				span
+					color: $dark
+					fonts(18px, 27px, 300)
+			.product-quantity
+				grid-column: span 1
+				grid-row: auto
+				justify-self: center
+				margin-right: 0
+			.product-cart-add
+				align-self: center
+				position: static
+				width: 20px
+				height: 26px
+				border-radius: 0
+				padding-left: 5px
+				background: url('./../img/cart-icon.svg') 50% 50%/100% no-repeat
+				box-shadow: none
+
+@media (max-width: 1300px)
+	.solution-images
+		padding: 26px 80px
+		.prev-solution-image
+			left: 0
+		.next-solution-image
+			right: 0
+
+@media (max-width: 768px)
+	.solution-info
+		grid-template: 166px 1fr \/ auto
+		justify-items: center
+		padding-top: 20px
+	.solution-page-form .products-wrap.lines
+		display: none
+	.solution-form-top
+		flex-wrap: wrap
+
+	.solution-number-label
+		width: 100%
+		margin: 0 0 15px
+		padding: 0
+	.solution-form-bottom
+		flex(column, nowrap, center, center)
+		.site-button
+			margin: 20px 0 0

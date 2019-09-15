@@ -1,0 +1,87 @@
+.album-list-wrap
+	position: relative
+	margin-bottom: 30px
+.album-swiper-prev, .prev-solution-image, .prev-similar-slide, .prev-together-item
+	position: absolute
+	top: 50%
+	left: -81px
+	z-index: 2
+	transform: translateY(-50%)
+	&:hover
+		svg
+			g
+				filter: url(#filter-album-prev-hover)
+			path
+				fill: $purple
+.album-swiper-next, .next-solution-image, .next-similar-slide, .next-together-item
+	position: absolute
+	top: 50%
+	right: -81px
+	z-index: 2
+	transform: translateY(-50%)
+	&:hover
+		svg
+			g
+				filter: url(#filter-album-next-hover)
+			path
+				fill: $purple
+.album-slider
+	box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1)
+.album-item
+	flex(row, nowrap, flex-start, stretch)
+	height: auto
+	iframe
+		width: 100%
+		height: auto
+		border: none
+.album-image
+	max-width: 65%
+	min-width: 50%
+	height: auto
+.album-info
+	flex(column, nowrap)
+	min-width: 33%
+	padding: 32px 44px
+	color: $gray
+	fonts(12px, 18px)
+	.page-subtitle
+		display: block
+		margin-bottom: 8px
+.album-text
+	margin-bottom: 10px
+	color: $black
+.album-date
+	margin-bottom: 20px
+	color: $black
+.photo-author
+	margin-bottom: 10px
+
+@media (max-width: 1300px)
+	.album-list-wrap
+		padding: 0 81px
+	.album-swiper-prev
+		left: 0
+	.album-swiper-next
+		right: 0
+
+@media (max-width: 1024px)
+	.album-info
+		padding: 12px
+		.page-subtitle
+			fonts(22px, 30px)
+	.album-image
+		max-width: 60%
+
+@media (max-width: 768px)
+	.album-item
+		flex-wrap: wrap
+	.album-image
+		max-width: 100%
+
+@media (max-width: 500px)
+	.album-list-wrap
+		padding: 0 0 60px
+	.album-swiper-prev, .album-swiper-next
+		top: auto
+		bottom: -20px
+		transform: none

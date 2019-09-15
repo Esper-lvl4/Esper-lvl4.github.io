@@ -1,0 +1,21 @@
+.solutions-list-wrap
+	grid-column: 1 \/ -1
+	display: grid
+	grid-template: repeat(auto-fit, 166px) \/ repeat(auto-fit, 166px)
+	grid-gap: 38px 38px
+	justify-content: space-evenly
+	padding-bottom: 51px
+
+.solution-item
+	flex(column, nowrap, center, center)
+	width: 166px
+	height: 166px
+	border-radius: 50%
+	text-decoration: none
+	box-shadow: none
+	transition: all 0.3s ease
+	&:hover, &.shadow
+		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1)
+	.block-subtitle
+		color: $black
+		font-weight: 600
