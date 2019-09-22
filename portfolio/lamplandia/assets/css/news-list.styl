@@ -1,0 +1,68 @@
+.news-list-page
+	.news-wrap
+		padding-bottom: 57px
+
+.news-wrap
+	display: grid
+	grid-template-rows: auto
+	grid-template-columns: repeat(3, 310px)
+	grid-gap: 49px 20px
+	justify-content: space-between
+	align-content: start
+	width: 100%
+.news-item
+	flex(column, nowrap, flex-start, stretch)
+	// padding: 20px
+	text-decoration: none
+	.small-arrow-link
+		align-self: flex-end
+	&:hover
+		// box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.17)
+		.news-title
+			color: $violet
+		.news-image::after
+			opacity: 1
+.news-title
+	flex-grow: 2
+	fonts(18px, 24px, 700)
+	transition: color 0.3s ease
+.swiper-slide .news-item
+	height: 100%
+.news-image
+	position: relative
+	flex(row, nowrap, center, flex-end)
+	margin-top: 27px
+	img
+		max-width: 100%
+		height: auto
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		display: block
+		width: 100%
+		height: 100%
+		background-color: rgba(125, 121, 228, 0.5)
+		opacity: 0
+		transition: opacity 0.3s ease
+
+.news-info
+	flex(row, nowrap, space-between, center)
+	padding: 12px 0 12px
+	span
+		color: $gray
+		fonts(10px, 13px)
+
+.news-text
+	padding: 5px 0 20px
+	fonts(12px, 16px)
+
+@media (max-width: 1024px)
+	.news-wrap
+		grid-template-columns: repeat(2, 310px)
+		justify-content: center
+
+@media (max-width: 640px)
+	.news-wrap
+		grid-template-columns: 300px

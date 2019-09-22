@@ -1,0 +1,143 @@
+.classic-block
+	background-color: #f0f0f0
+
+.classic-wrap
+	display: grid
+	grid-template-rows: auto 1fr
+	grid-template-columns: repeat(2, 48%)
+	grid-template-areas: "title image" "text image"
+	grid-gap: 0 4%
+	justify-content: space-between
+	.block-title
+		grid-area: title
+
+		margin: 44px 0 16px
+	&.fixed
+		position: relative
+		padding: 36px 0
+		height: 268px
+		.classic-text-wrap
+			padding-right: 20px
+		.block-title
+			margin-top: 0
+
+.classic-text-wrap
+	grid-area: text
+	position: relative
+	flex(column, nowrap)
+	.site-button
+		align-self: flex-end
+		margin-top: 30px
+
+.classic-wrapper
+	position: relative
+
+.classic-text
+	color: $gray
+
+.classic-nav
+	position: absolute
+	bottom: 20px
+	left: 0
+	z-index: 4
+
+.classic-image-wrap
+	grid-area: image
+	img
+		max-width: 100%
+		height: auto
+		vertical-align: bottom
+
+.main-products
+	flex(row, wrap, space-between, center)
+	padding: 30px 0 18px
+	overflow: hidden
+	.page-title
+		margin: 0 0 53px
+
+.bottom-products
+	padding-bottom: 120px
+
+.group-image-wrap img
+	position: relative
+	top: 50%
+	transform: translateY(-50%)
+
+.main-news-block
+	flex(row, wrap, space-between)
+	padding: 119px 0 50px
+	overflow: hidden
+	.page-title
+		margin: 0 0 44px
+
+.slider-wrapping
+	position: relative
+	width: 100%
+	padding: 0 40px
+	.arrow-button
+		position: absolute
+		top: 50%
+		right: 0
+		z-index: 3
+		transform: translateY(-50%)
+		background-color: rgba(255, 255, 255, 0.6)
+		&.left
+			right: auto
+			left: 0
+			transform: translateY(-50%) rotate(180deg)
+
+.main-news-slider, .products-special-slider, .main-new-products-slider
+	position: relative
+	width: 100%
+	padding: 15px 0 25px
+	text-align: center
+	overflow: visible
+	.swiper-wrapper
+		align-items: stretch
+	.product-item
+		height: 100%
+	.news-image img
+		width: 100%
+	.swiper-slide
+		// max-width: 340px
+		height: auto
+	.arrow-button
+		position: absolute
+		top: 50%
+		right: 0
+		z-index: 3
+		transform: translateY(-50%)
+		background-color: rgba(255, 255, 255, 0.6)
+		&.left
+			right: auto
+			left: 0
+			transform: translateY(-50%) rotate(180deg)
+
+.main-news-slider
+	text-align: left
+
+@media (max-width: 1180px)
+	.classic-nav
+		left: 20px
+
+	.slider-wrapping
+		overflow: hidden
+
+@media (max-width: 768px)
+	.classic-wrap
+		grid-template-rows: auto
+		grid-template-columns: 100%
+		grid-template-areas: "title" "image" "text"
+		grid-gap: 10px 0
+		padding: 36px 0
+		.block-title
+			margin-top: 0
+			text-align: center
+		&.fixed
+			height: auto
+			.group-image-wrap img
+				position: static
+				transform: none
+
+	.classic-image-wrap
+		text-align: center

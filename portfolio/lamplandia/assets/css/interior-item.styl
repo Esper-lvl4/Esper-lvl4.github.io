@@ -1,0 +1,121 @@
+.interior-top-gallery
+	position: relative
+	.arrow-button
+		position: absolute
+		top: 50%
+		right: 10px
+		z-index: 5
+		transform: translateY(-50%)
+		background-color: rgba(255, 255, 255, 0.7)
+		&.left
+			left: 10px
+			right: auto
+			transform: translateY(-50%) rotate(180deg)
+		&:hover
+			background-color: #ffffff
+	.swiper-slide
+		text-align: center
+		img
+			max-width: 100%
+			height: auto
+	.swiper-slide
+		position: relative
+
+
+.interior-gallery-thumbs
+	.swiper-slide
+		position: relative
+		text-align: center
+		cursor: pointer
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			display: block
+			width: 100%
+			height: 100%
+			background: rgba(255, 253, 253, 0.4)
+		img
+			max-width: 100%
+			height: auto
+
+.interior-spot
+	position: absolute
+	z-index: 7
+	width: 20px
+	height: 20px
+	.product-item
+		position: absolute
+		top: 50px
+		left: 50%
+		transform: translateX(-50%)
+		width: 280px
+		padding: 10px
+		background: $white
+		opacity: 0
+
+.toggle-spot
+	width: 20px
+	height: 20px
+	border: 2px solid $white
+	border-radius: 50%
+	background: transparent
+	outline: none
+	box-shadow: none
+	&.active
+		border-color: $violet
+		background: $violet
+		& + .product-item
+			opacity: 1
+	&:hover
+		border-color: $violet
+		cursor: pointer
+
+.interior-products
+	flex(row, wrap, space-between)
+	padding: 50px 0 40px
+	width: 100%
+	.upper-title
+		width: 100%
+		margin: 0 0 24px
+
+.interior-product-item
+	position: relative
+	flex(row, nowrap, space-between, center)
+	max-width: 340px
+	width: 100%
+	padding-left: 20px
+	margin: 0 20px 20px 0
+	&:last-of-type
+		margin-right: 0
+	&::before
+		content: ''
+		position: absolute
+		top: 50%
+		left: 0
+		z-index: 1
+		transform: translateY(-50%)
+		display: inline-block
+		width: 5px
+		height: 9px
+		background: url('./../img/little-arrow.png') 50% 50%/contain no-repeat
+
+.interior-product-name
+	padding-right: 10px
+	font-weight: 600
+.interior-product-price
+	margin-right: 10px
+
+@media (max-width: 550px)
+	.interior-top-gallery	.arrow-button
+		display: none
+	.interior-product-item
+		flex-flow: column nowrap
+		align-items: flex-start
+		&::before
+			top: 5px
+			transform: none
+		.small-button, .interior-product-price
+			margin-top: 10px
+			margin-right: 0

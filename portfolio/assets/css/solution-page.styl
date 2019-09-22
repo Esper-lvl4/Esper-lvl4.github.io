@@ -4,20 +4,20 @@
 	grid-gap: 45px
 	align-items: center
 	padding-bottom: 60px
+
 .solution-text
 	color: $gray
 	fonts(18px, 27px)
+
 .solution-variants
 	.tab-content
 		max-width: 100%
-.solution-variant-wrap
-	display: none
-	&.js-active
-		display: block
+
 .solution-images-slider.dead-slider
 	.swiper-slide
 		width: auto
 		margin-right: 10px
+
 .solution-images
 	position: relative
 	width: 100%
@@ -31,8 +31,10 @@
 		left: -75px
 	.next-solution-image
 		right: -65px
+
 .solution-stats
 	flex(column, nowrap)
+	margin-top: 30px
 	span
 		fonts(16px, 24px, 300)
 		&:nth-of-type(n+2)
@@ -42,6 +44,7 @@
 		fonts(16px, 24px, 300)
 		&:hover
 			text-decoration: none
+
 .solution-page-form
 	padding: 70px 0
 	.products-wrap.lines
@@ -76,12 +79,14 @@
 			background: #ffd12e
 	.minus-counter, .plus-counter
 		display: none
+
 .solution-number-label
 	margin: 0
 	padding-right: 30px
 	color: $purple
 	fonts(18px, 27px, 400)
 	text-align: center
+
 .solution-tip
 	color: $l-gray
 	fonts(12px, 18px, 300)
@@ -129,6 +134,7 @@
 		width: 37px
 		height: 37px
 		background: url('./../img/red-cross-hover.svg') 50% 50%/37px 37px no-repeat
+
 .image-popup
 	position: absolute
 	top: 100%
@@ -154,6 +160,7 @@
 @media (min-width: 769px)
 	.mobile-warning
 		display: none
+
 	.solution-page-form
 		.products-wrap.lines
 			grid-template: auto \/ 100%
@@ -268,8 +275,10 @@
 		grid-template: 166px 1fr \/ auto
 		justify-items: center
 		padding-top: 20px
+
 	.solution-page-form .products-wrap.lines
 		display: none
+
 	.solution-form-top
 		flex-wrap: wrap
 
@@ -277,6 +286,7 @@
 		width: 100%
 		margin: 0 0 15px
 		padding: 0
+
 	.solution-form-bottom
 		flex(column, nowrap, center, center)
 		.site-button

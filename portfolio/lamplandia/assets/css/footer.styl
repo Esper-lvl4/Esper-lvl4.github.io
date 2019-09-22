@@ -1,0 +1,89 @@
+.footer-wrap
+	background: $dark
+
+.footer-top
+	display: grid
+	grid-template-rows: auto
+	grid-template-columns: repeat(4, 230px)
+	grid-gap: 30px 20px
+	justify-content: space-between
+	padding: 36px 0 56px
+
+.footer-menu
+	flex(column, nowrap)
+	max-width: 230px
+	a
+		display: inline-block
+		margin-top: 17px
+		color: #cfcfcf
+		text-decoration: none
+		&:hover
+			color: $violet
+	.just-name
+		display: inline-block
+		margin-top: 17px
+		color: #cfcfcf
+	.arrow-link
+		&::after
+			background-image: url('./../img/arrow-right-gray.png')
+		&:hover::after
+				background-image: url('./../img/arrow-right-violet.png')
+
+.footer-menu-title
+	color: $white
+	fonts(18px, 24px)
+
+.violet-link, a.violet-link
+	margin-top: 17px
+	color: #a6a3e8
+	font-weight: 600
+
+.social-links
+	flex(row, nowrap, space-between, center)
+
+.social-icon
+	width: 27px
+	height: 27px
+	border-radius: 50%
+	background: url('./../img/twitter-icon.png') 50% 50%/27px 27px no-repeat
+	&:not(:last-of-type)
+		margin-right: 11px
+
+.twitter-icon
+	background-image: url('./../img/twitter-icon.png')
+	&:hover
+		background-image: url('./../img/twitter-icon-hover.png')
+.facebook-icon
+	background-image: url('./../img/facebook-icon.png')
+	&:hover
+		background-image: url('./../img/facebook-icon-hover.png')
+.instagram-icon
+	background-image: url('./../img/instagram-icon.png')
+	&:hover
+		background-image: url('./../img/instagram-icon-hover.png')
+.whatsup-icon
+	background-image: url('./../img/whatsup-icon.png')
+	&:hover
+		background-image: url('./../img/whatsup-icon-hover.png')
+.footer-bottom
+	height: 83px
+	background: $white
+
+.footer-copyright
+	flex(row, wrap, space-between, center)
+	height: 100%
+	span
+		color: #8b8b93
+		fonts(12px, 16px)
+
+@media (max-width: 960px)
+	.footer-top
+		grid-template-columns: repeat(2, 230px)
+		justify-content: center
+
+@media (max-width: 550px)
+	.footer-top
+		grid-template-columns: 230px
+
+	.footer-copyright
+		flex(column, nowrap, center, center)

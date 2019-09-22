@@ -1155,6 +1155,16 @@ window.addEventListener('DOMContentLoaded', function() {
     };
     handleClick = errorDecorator(handleClick);
 
+    /** @function render */
+    let render = function() {
+      let totalPrice = 0;
+      for (const [, value] of state.goods) {
+        totalPrice += value.price * value.quantity;
+      }
+      total.textContent = totalPrice;
+    };
+    render = errorDecorator(render);
+
     /** @function renderGoods */
     let renderGoods = function() {
       state.peopleNumber = wrap
@@ -1224,16 +1234,6 @@ window.addEventListener('DOMContentLoaded', function() {
       render();
     };
     changeQuantity = errorDecorator(changeQuantity);
-
-    /** @function render */
-    let render = function() {
-      let totalPrice = 0;
-      for (const [, value] of state.goods) {
-        totalPrice += value.price * value.quantity;
-      }
-      total.textContent = totalPrice;
-    };
-    render = errorDecorator(render);
 
     /** @function submitForm */
     let submitForm = function() {

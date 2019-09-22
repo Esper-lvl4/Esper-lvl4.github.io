@@ -1,0 +1,49 @@
+.shops-wrap
+	display: grid
+	grid-template-rows: auto
+	grid-template-columns: repeat(4, 235px)
+	grid-gap: 12px 12px
+	justify-content: space-between
+	align-content: start
+	padding-bottom: 62px
+
+.shop-item
+	flex(column, nowrap, flex-start, center)
+	padding: 34px
+	text-align: center
+	&:hover
+		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.17)
+		.small-button
+			opacity: 1
+
+.shop-image
+	flex-grow: 2
+	flex(row, nowrap, center, flex-end)
+	padding: 0 0 40px
+	img
+		max-width: 100%
+		height: auto
+
+.shops-show-map
+	padding-top: 30px
+	.small-button
+		opacity: 0
+		transition: all 0.3s ease
+
+@media (max-width: 1024px)
+	.shops-wrap
+		grid-template-columns: repeat(3, 235px)
+
+	.shop-item
+		.small-button
+			opacity: 1
+
+@media (max-width: 768px)
+	.shops-wrap
+		grid-template-columns: repeat(2, 235px)
+		justify-content: center
+		padding-bottom: 30px
+
+@media (max-width: 550px)
+	.shops-wrap
+		grid-template-columns: 235px

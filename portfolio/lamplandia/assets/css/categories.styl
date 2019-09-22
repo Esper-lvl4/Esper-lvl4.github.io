@@ -1,0 +1,141 @@
+.main-page-lamps
+	display: grid
+	grid-template-rows: auto
+	grid-template-columns: 200px 200px 300px 200px 200px
+	grid-gap: 13px 10px
+	grid-auto-flow: row dense
+	grid-auto-rows: 200px
+	padding: 16px 0 53px
+	.category
+		position: relative
+		overflow: hidden
+		&.big-category
+			grid-column: 1 \/ -1
+		&.medium-category
+			grid-column: span 2
+		&:hover
+			img
+
+				transform: scale(1.05)
+			span
+				background: $white
+	img
+		object-fit: cover
+		width: 100%
+		height: 100%
+		vertical-align: top
+		transition: all 0.3s ease
+
+	span
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		flex(row, nowrap, center, center)
+		min-width: 160px
+		max-width: 90%
+		height: 66px
+		padding: 0 15px
+		background: rgba(255, 255, 255, 0.5)
+		fonts(16px, 22px, 600)
+		text-align: center
+		transition: all 0.3s ease
+
+	.chandelier
+		grid-area: chandelier
+		span
+			width: 258px
+	.bra
+		grid-area: bra
+	.plafond
+		grid-area: plafond
+		span
+			width: 375px
+	.lifting
+		grid-area: lifting
+	.spot
+		grid-area: spot
+	.table
+		grid-area: table
+	.shade
+		grid-area: shade
+	.plafond2
+		grid-area: plafond2
+		span
+			width: 375px
+	.floor
+		grid-area: floor
+
+.product-interior-slider
+	.swiper-slide
+		flex(row, nowrap, center, center)
+	a
+		position: relative
+		width: 200px
+		height: 200px
+		overflow: hidden
+		img
+			transition: all 0.3s ease
+		&:hover
+			img
+				transform: scale(1.05)
+			span
+				background: $white
+
+.more-categories
+	flex(row, nowrap, space-between)
+.category-item
+	a
+		display: inline-block
+		width: 100%
+	&.big
+		width: 70%
+	.big-category
+		column-count: 3
+	.upper-title
+		margin: 0 0 32px
+
+@media (max-width: 1180px)
+	.main-page-lamps
+		grid-template-columns: repeat(5, 19%)
+		grid-gap: 13px 1%
+		padding: 16px 0 25px
+
+@media (max-width: 1024px)
+	.main-page-lamps span
+		padding: 20px
+
+@media (max-width: 768px)
+	.main-page-lamps
+		grid-template-columns: repeat(3, 32%)
+		grid-gap: 12px 2%
+		.category
+			height: 200px
+			&.big-category
+				grid-column: span 2
+
+	.more-categories
+		flex-direction: column
+
+	.category-item
+		&.big
+			width: 100%
+			margin-top: 20px
+
+@media(max-width: 550px)
+	.main-page-lamps
+		grid-template-columns: repeat(2, 49%)
+
+		span
+			padding: 10px
+
+	.category-item .big-category
+		column-count: 2
+
+@media(max-width: 425px)
+	.main-page-lamps
+		grid-template-columns: 100%
+		grid-gap: 12px 2%
+		.category
+			&.big-category, &.medium-category
+				grid-column: span 1

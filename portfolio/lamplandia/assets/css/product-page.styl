@@ -1,0 +1,330 @@
+.interior-item-page
+	flex(row, wrap, space-between)
+	.top-navigation
+		width: 100%
+.product-page-image
+	position: relative
+	width: 40%
+	padding-bottom: 10px
+	.like-button
+		opacity: 1
+	&::after
+		content: ''
+		position: absolute
+		top: 12px
+		right: 16px
+		z-index: 3
+		display: block
+		width: 42px
+		height: 33px
+		background: url('./../img/loupe.svg') 50% 50%/100% no-repeat
+		cursor: pointer
+.product-image-slider
+	position: relative
+	width: 100%
+	height: 456px
+	border: 1px solid #d9d9ec
+	overflow: hidden
+	.arrow-button
+		position: absolute
+		top: 50%
+		right: 10px
+		z-index: 3
+		transform: translateY(-50%)
+		&.left
+			right: auto
+			left: 10px
+			transform: translateY(-50%) rotate(180deg)
+	.swiper-slide
+		align-self: stretch
+		flex(row, nowrap, center, center)
+		overflow: hidden
+		img
+			object-fit: cover
+			min-width: 100%
+			min-height: 100%
+			width: auto
+			height: auto
+			cursor: pointer
+
+.product-thumbs-wrap
+	padding: 13px 25px
+.product-thumbs-slider
+	.swiper-slide
+		align-self: center
+		flex(row, nowrap, center, center)
+	img
+		max-width: 100%
+		max-height: 133px
+		width: auto
+		height: auto
+.product-page-info
+	flex(row, wrap, space-between)
+	width: 55%
+	.upper-title
+		display: block
+		margin: 0 0 20px
+	.page-subtitle
+		margin: 0 0 11px
+	.product-labels
+		position: static
+	.product-bottom
+		justify-content: flex-start
+		align-items: flex-start
+		min-width: 51%
+		width: 100%
+		padding: 33px 0 34px
+	.quantity-counter
+		align-self: flex-end
+		margin-left: 10px
+	.product-prices
+		flex-flow: column nowrap
+		align-items: flex-start
+		height: auto
+		span
+			padding: 0
+		.price
+			fonts(18px, 18px, 400)
+			span
+				fonts(32px, 32px, 700)
+				color: $violet
+		.discount
+			fonts(20px, 27px)
+	.small-button
+		margin: 0 70px 0 33px
+	.conditions-links
+		flex(column, nowrap)
+		a
+			fonts(11px, 15px, 300)
+			&:hover
+				color: $violet
+.product-slider-bullets
+	position: absolute
+	z-index: 3
+	text-align: center
+.product-thumbs-wrap
+	position: relative
+	.arrow-button
+		position: absolute
+		top: 50%
+		z-index: 3
+	.prev-image-thumb
+		left: -3px
+		transform: translateY(-50%) scale(0.7) rotate(180deg)
+	.next-image-thumb
+		right: -3px
+		transform: translateY(-50%) scale(0.7)
+.production-bullet
+	display: inline-block
+	width: 6px
+	height: 6px
+	padding: 0
+	border: 1px solid #bababa
+	border-radius: 50%
+	margin-right: 12px
+	outline: none
+	box-shadow: none
+	background-color: transparent
+	transition: all 0.3s ease
+	&:last-of-type
+		margin-right: 0
+	&:hover
+		border-color: $violet
+		cursor: pointer
+	&.swiper-pagination-bullet-active
+		background-color: $violet
+
+.product-info-list
+	list-style: none
+	max-height: 201px
+	padding-left: 0
+	margin: 20px 0
+	overflow: hidden
+	&.active
+		max-height: 100%
+	li:not(:first-of-type)
+		margin-top: 7px
+	a:hover
+		color: $violet
+.product-description
+	max-width: 50%
+
+.product-block
+	display: grid
+	grid-template: auto \/ auto 1fr
+	grid-gap: 47px 63px
+	max-width: 100%
+	.swiper-container
+		grid-column: 1 \/ -1
+		max-width: 100%
+	& > .arrow-link
+		justify-self: start
+		align-self: end
+		margin-bottom: 5px
+	.page-title
+		margin: 0
+	.swiper-wrapper
+		padding-top: 20px
+		padding-bottom: 25px
+		box-sizing: border-box
+
+.product-shops
+	padding: 18px 0
+	a
+		display: inline-block
+		padding-right: 5px
+		&:hover
+			color: $violet
+.product-block
+	padding: 30px 0
+.interior-category
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	display: inline-block
+	max-width: 90%
+	padding: 15px 25px
+	background: rgba(255, 255, 255, 0.5)
+	fonts(16px, 22px, 600)
+	text-align: center
+	transition: all 0.3s ease
+
+.product-in-interior, .similar-products
+	position: relative
+	.arrow-button.left
+		position: absolute
+		top: 225px
+		left: -40px
+		z-index: 5
+	.arrow-button
+		position: absolute
+		top: 225px
+		right: -40px
+		z-index: 5
+
+.similar-block
+	justify-content: flex-start
+	.page-title
+		margin-right: 63px
+	.arrow-link
+		margin-bottom: 42px
+
+
+
+.product-interior-slider
+	position: relative
+	.swiper-slide
+		position: relative
+		text-align: center
+
+.similar-products
+	.product-item
+		text-align: center
+	.arrow-button.left, .arrow-button
+		top: 280px
+
+.top-scroll-wrap
+	position: fixed
+	top: 0
+	left: 0
+	z-index: -1
+	width: 100%
+	padding: 7px 0
+	background: $white
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15)
+	opacity: 0
+	transition: opacity 0.5s ease
+	&.active
+		z-index: 8
+		opacity: 1
+.top-scroll-block
+	flex(row, wrap, center, center)
+	.product-thumb
+		flex(row, nowrap, center, center)
+		width: 62px
+		height: 63px
+		margin-right: 56px
+		border: 1px solid #D9D9EC
+		img
+			max-width: 100%
+			max-height: 100%
+			width: auto
+			height: auto
+	.small-logo
+		margin-right: 49px
+	.product-bottom
+		padding-top: 0
+	.product-prices
+		height: auto
+		.price
+			font-weight: 400
+			span
+				fonts(32px, 32px, 700)
+				color: $violet
+		.discount
+			fonts(20px, 27px)
+	.small-button
+		margin-left: 15px
+
+.top-scroll-left
+	flex(row, wrap, center, center)
+	margin-right: auto
+
+@media (max-width: 1230px)
+	.product-in-interior, .similar-products
+		.arrow-button.left
+			left: 0
+			background-color: rgba(255, 255, 255, 0.6)
+		.arrow-button
+			right: 0
+			background-color: rgba(255, 255, 255, 0.6)
+
+@media (max-width: 960px)
+	.product-page-image
+		width: 100%
+	.product-page-info
+		width: 100%
+		.page-subtitle
+			width: 100%
+			text-align: center
+		.product-labels
+			text-align: center
+		.product-bottom
+			justify-content: center
+			width: 100%
+	.top-scroll-block
+		flex-flow: column nowrap
+	.top-scroll-left
+		margin: 0 0 15px
+
+@media (max-width: 600px)
+	.product-page-info
+		flex-flow: column nowrap
+		justify-content: flex-start
+		align-items: stretch
+	.product-description
+		max-width: 100%
+
+@media (max-width: 550px)
+	// .top-scroll-wrap
+	// 	display: none
+	.small-logo
+		display: none
+	.top-scroll-block
+		.block-subtitle, .product-thumb
+			display: none
+
+@media (max-width: 450px)
+	.product-page-info
+		.product-bottom
+			flex-flow: column nowrap
+			justify-content: flex-start
+			align-items: center
+		.product-prices
+			flex-flow: row nowrap
+			margin-bottom: 15px
+		.discount
+			margin-left: 15px
+		.small-button
+			margin: 0 0 15px

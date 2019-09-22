@@ -1,0 +1,23 @@
+/* Variables */
+$black = #000000
+$white = #ffffff
+$dark = #2c2c3e
+$l-gray = #c4c4c4
+$gray = #7a7a7a
+$violet = #7d79e4
+$d-violet = #3b36bd
+$yellow = #e9c888
+$red = #ff0000
+
+/* Mixins */
+
+flex($dir = row, $wrap = wrap, $justify = flex-start, $align = flex-start)
+	display: flex
+	flex-flow: $dir $wrap
+	justify-content: $justify
+	align-items: $align
+
+fonts($size = 14px, $height = 19px, $weight = 400)
+	font-size: $size
+	line-height: $height
+	font-weight: $weight

@@ -1,0 +1,43 @@
+.interior-list-wrap
+	display: grid
+	grid-template-rows: auto
+	grid-template-columns: repeat(3, 350px)
+	grid-gap: 37px 30px
+	justify-content: space-between
+	align-content: start
+	padding: 0 0 60px
+
+.interior-item
+	flex(column, nowrap)
+	padding: 15px
+	transition: all 0.3s ease
+	text-decoration: none
+	&:hover
+		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.17)
+	.small-arrow-link
+		align-self: flex-end
+
+.interior-image
+	flex-grow: 2
+	flex(row, nowrap, center, flex-end)
+	padding-bottom: 12px
+	img
+		max-width: 100%
+		height: auto
+
+.interior-text
+	padding: 10px 0 20px
+	fonts(12px, 16px)
+
+@media (max-width: 1180px)
+	.interior-list-wrap
+		grid-template-columns: repeat(2, 340px)
+		justify-content: center
+
+@media (max-width: 768px)
+	.interior-list-wrap
+		grid-template-columns: 340px
+
+@media (max-width: 400px)
+	.interior-list-wrap
+		grid-template-columns: 100%
