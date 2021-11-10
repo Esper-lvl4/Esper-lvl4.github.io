@@ -1,675 +1,829 @@
-${require('./assets/header.html')}
-	<div class="main-page">
-		<div class="main-page-lamps site-size">
-			<a href="#" class="category big-category">
-				<img src="./assets/img/chandelier.jpg" alt="floor-lamp" width="1140" height="276">
-				<span>Люстры</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/bra.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Бра</span>
-			</a>
-			<a href="#" class="category medium-category">
-				<img src="./assets/img/plafond.jpg" alt="floor-lamp" width="500" height="200">
-				<span>Настенно-потолочный-светильник</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/lifting-bar.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Подвесы</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/spot.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Споты</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/table-lamp.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Настольная лампа</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/lamp-shade.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Абажур</span>
-			</a>
-			<a href="#" class="category medium-category">
-				<img src="./assets/img/plafond2.jpg" alt="floor-lamp" width="500" height="200">
-				<span>Потолочный светильник</span>
-			</a>
-			<a href="#" class="category">
-				<img src="./assets/img/floor-lamp.jpg" alt="floor-lamp" width="200" height="200">
-				<span>Торшер</span>
-			</a>
-		</div>
-		<article class="classic-block">
-			<div class="classic-wrapper site-size">
-				<div class="classic-adv-slider swiper-container">
-					<div class="swiper-wrapper">
-						<div class="classic-wrap swiper-slide">
-							<h2 class="block-title">Классика в современном исполнении</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/swiper.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="./css/lamplandia.css">
+</head>
+<body>
+	<div id="apps"></div>
+	<div class="global-wrap" id="app">
+		<header>
+			<div class="header-top site-size">
+				<a href="#" class="logo-wrap"><img src="./img/logo.png" alt="logo" width="196" height="39"></a>
+				<div class="logo-text">Группа компаний <br>LampLandia</div>
+				<a href="tel:+78123088811" class="header-phone">+7&nbsp;(812)&nbsp;308-88-11</a>
+				<a href="mailto:info@lamplandia.ru" class="header-email">info@lamplandia.ru</a>
+				<div class="header-user-link">
+					<a href="#" class="site-icon user-icon"></a>
+					<a href="#" class="site-icon heart-icon"></a>
+					<a href="#" class="site-icon cart-icon active"></a>
+				</div>
+			</div>
+			<div class="header-bottom">
+				<nav class="site-size header-menu" id="header-menu">
+					<a href="#" class="catalog-menu-hover">Пример меню</a>
+					<button class="burger-menu" id="burger-button"><span></span>Меню</button>
+					<a href="https://esper-playground.ru/about/">Назад к резюме</a>
+					<a href="#">Контакты</a>
+					<a href="#">Где купить</a>
+					<a href="#">Доставка</a>
+					<a href="/portfolio/compiled/index.html">Restochef</a>
+					<form class="header-search">
+						<input class="site-input search" name="search-query" type="text" placeholder="Поиск">
+						<button class="site-button" id="toggle-search-button">
+							<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M18.6014 16.8889L13.641 11.9112C14.5268 10.6667 15.0583 9.15556 15.0583 7.55556C15.0583 3.37774 11.6923 0 7.52916 0C3.36601 0 0 3.37779 0 7.55556C0 11.7333 3.36597 15.1111 7.52911 15.1111C9.12352 15.1111 10.6294 14.5778 11.8695 13.6889L16.8298 18.6667C17.2727 19.1111 18.0699 19.1111 18.6014 18.6667C19.1329 18.1334 19.1329 17.4222 18.6014 16.8889ZM7.52911 13.3334C4.3403 13.3334 1.77156 10.7556 1.77156 7.5556C1.77156 4.35559 4.3403 1.77783 7.52911 1.77783C10.7179 1.77783 13.2867 4.35559 13.2867 7.5556C13.2867 10.7556 10.7179 13.3334 7.52911 13.3334Z" fill="#ffffff"/>
+							</svg>
+						</button>
+					</form>
+				</nav>
+				<nav class="catalog-menu" id="catalog-menu">
+					<div class="site-size">
+						<div class="catalog-menu-item">
+							<h2 class="upper-title">Товары по назначению</h2>
+							<a href="#">Люстры</a>
+							<a href="#">Бра</a>
+							<a href="#">Настенно-потолочный светильник</a>
+							<a href="#">Подвесы</a>
+							<a href="#">Споты</a>
+							<a href="#">Настольные лампы</a>
+							<a href="#">Потолочные светильники</a>
+							<a href="#">Абажур</a>
+							<a href="#">Торшер</a>
+							<a href="#" class="arrow-link">Показать все</a>
+						</div>
+						<div class="catalog-menu-item">
+							<h2 class="upper-title">Товары по стилю</h2>
+							<a href="#">Современный</a>
+							<a href="#">LED</a>
+							<a href="#">Американский</a>
+							<a href="#">Лофт</a>
+							<a href="#">Классический</a>
+							<a href="#">Скандинавия</a>
+						</div>
+						<div class="catalog-menu-item">
+							<h2 class="upper-title">Товары по коллекциям</h2>
+							<div class="big-category">
+								<a href="#">Bradal</a>
+								<a href="#">Eyran</a>
+								<a href="#">Hongyi</a>
+								<a href="#">Kenny</a>
+								<a href="#">IDEA</a>
+								<a href="#">Finase</a>
+								<a href="#">Ido</a>
+								<a href="#">Kingbery</a>
+								<a href="#">Yanlighting</a>
+								<a href="#">First</a>
+								<a href="#">Indoorlux</a>
+								<a href="#">Lissin</a>
+								<a href="#">EJ</a>
+								<a href="#">Himiter</a>
+								<a href="#">Kadywell</a>
+								<a href="#">Luoka</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<main class="main-wrap">
+				<div class="main-page">
+					<div class="main-page-lamps site-size">
+						<a href="#" class="category big-category">
+							<img src="./assets/img/chandelier.jpg" alt="floor-lamp" width="1140" height="276">
+							<span>Люстры</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/bra.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Бра</span>
+						</a>
+						<a href="#" class="category medium-category">
+							<img src="./assets/img/plafond.jpg" alt="floor-lamp" width="500" height="200">
+							<span>Настенно-потолочный-светильник</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/lifting-bar.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Подвесы</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/spot.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Споты</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/table-lamp.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Настольная лампа</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/lamp-shade.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Абажур</span>
+						</a>
+						<a href="#" class="category medium-category">
+							<img src="./assets/img/plafond2.jpg" alt="floor-lamp" width="500" height="200">
+							<span>Потолочный светильник</span>
+						</a>
+						<a href="#" class="category">
+							<img src="./assets/img/floor-lamp.jpg" alt="floor-lamp" width="200" height="200">
+							<span>Торшер</span>
+						</a>
+					</div>
+					<article class="classic-block">
+						<div class="classic-wrapper site-size">
+							<div class="classic-adv-slider swiper-container">
+								<div class="swiper-wrapper">
+									<div class="classic-wrap swiper-slide">
+										<h2 class="block-title">Классика в современном исполнении</h2>
+										<div class="classic-text-wrap">
+											<div class="classic-text">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>
+											<a href="#" class="site-button">Подробнее</a>
+										</div>
+										<div class="classic-image-wrap">
+											<img src="./assets/img/kitchen.jpg" alt="kitchen" width="581" height="313">
+										</div>
+									</div>
+									<div class="classic-wrap swiper-slide">
+										<h2 class="block-title">Классика в современном исполнении</h2>
+										<div class="classic-text-wrap">
+											<div class="classic-text">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>
+											<a href="#" class="site-button">Подробнее</a>
+										</div>
+										<div class="classic-image-wrap">
+											<img src="./assets/img/kitchen.jpg" alt="kitchen" width="581" height="313">
+										</div>
+									</div>
+								</div>
+								<div class="classic-nav">
+									<button class="arrow-button prev-adv left" slot="button-prev"></button>
+									<button class="arrow-button next-adv" slot="button-next"></button>
+								</div>
+							</div>
+						</div>
+					</article>
+					<div class="main-products site-size">
+						<h2 class="page-title">Новинки</h2>
+						<a href="#" class="arrow-link">Показать все</a>
+						<div class="slider-wrapping">
+							<div class="main-new-products-slider swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="new-product-label">Новинка</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon pressed"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp2.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="new-product-label">Новинка</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="new-product-label">Новинка</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="new-product-label">Новинка</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<button class="arrow-button next-new" slot="button-next"></button>
+							<button class="arrow-button prev-new left" slot="button-prev"></button>
+						</div>
+					</div>
+					<div class="main-products site-size bottom-products">
+						<h2 class="page-title">Спецпредложения</h2>
+						<a href="#" class="arrow-link">Показать все</a>
+						<div class="slider-wrapping">
+							<div class="products-special-slider swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="cheap-product-label">Выгода</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="discount">7 700 руб.</span>
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="cheap-product-label">Выгода</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="discount">7 700 руб.</span>
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp4.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="cheap-product-label">Выгода</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="discount">7 700 руб.</span>
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#" class="product-item">
+											<div class="like-button">
+												<span class="site-icon heart-icon"></span>
+											</div>
+											<div class="product-image">
+												<img src="./assets/img/product-lamp4.png" alt="product-image" width="228" height="162">
+											</div>
+											<div class="product-item-info">
+												<div class="product-labels">
+													<span class="cheap-product-label">Выгода</span>
+												</div>
+												<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+											</div>
+											<div class="product-bottom">
+												<div class="product-prices">
+													<span class="discount">7 700 руб.</span>
+													<span class="price">3 658 руб.</span>
+												</div>
+												<span class="small-button">Корзина</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<button class="arrow-button next-special" slot="button-next"></button>
+							<button class="arrow-button prev-special left" slot="button-prev"></button>
+						</div>
+					</div>
+					<section class="classic-block">
+						<div class="classic-wrap site-size fixed">
+							<h1 class="block-title">Группа компаний LampLandia</h1>
 							<div class="classic-text-wrap">
-								<div class="classic-text">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>
-								<a href="#" class="site-button">Подробнее</a>
+								<div class="classic-text">Наша компания была основана в 2000 году и на сегодняшний день она является  одной из крупнейших компанией  в России, специализирующихся на поставке светильников. Мы предлагаем оптовые поставки: Люстр, Светильников, Бра, Торшеров. Компания реализует как эксклюзивную продукцию мировых производителей, так и фабрик давно и хорошо зарекомендовавших себя на рынке.</div>
 							</div>
-							<div class="classic-image-wrap">
-								<img src="./assets/img/kitchen.jpg" alt="kitchen" width="581" height="313">
-							</div>
-						</div>
-						<div class="classic-wrap swiper-slide">
-							<h2 class="block-title">Классика в современном исполнении</h2>
-							<div class="classic-text-wrap">
-								<div class="classic-text">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>
-								<a href="#" class="site-button">Подробнее</a>
-							</div>
-							<div class="classic-image-wrap">
-								<img src="./assets/img/kitchen.jpg" alt="kitchen" width="581" height="313">
+							<div class="classic-image-wrap group-image-wrap">
+								<img src="./assets/img/lamp-group.jpg" alt="lamp group" width="497" height="373">
 							</div>
 						</div>
-					</div>
-					<div class="classic-nav">
-						<button class="arrow-button prev-adv left" slot="button-prev"></button>
-						<button class="arrow-button next-adv" slot="button-next"></button>
-					</div>
-				</div>
-			</div>
-		</article>
-		<div class="main-products site-size">
-			<h2 class="page-title">Новинки</h2>
-			<a href="#" class="arrow-link">Показать все</a>
-			<div class="slider-wrapping">
-				<div class="main-new-products-slider swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="new-product-label">Новинка</span>
+					</section>
+					<div class="main-news-block site-size">
+						<h2 class="page-title">Новости</h2>
+						<a href="#" class="arrow-link">Показать все</a>
+						<div class="slider-wrapping">
+							<div class="main-news-slider swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<a href="#" class="news-item">
+											<span class="news-title">Как найти подходящее освещение для дизайна в стиле лофт</span>
+											<div class="news-image">
+												<img src="./assets/img/news-image1.jpg" alt="news image" width="309" height="211">
+											</div>
+											<div class="news-info">
+												<span class="news-date">29.08.2019</span>
+												<span class="news-name">Автор: Ирина Иванова</span>
+											</div>
+											<div class="news-text">
+												Нашумевший стиль интерьера под названием «лофт» привнёс в индустрию дух раскрепощённой и креативности...
+											</div>
+											<span class="small-arrow-link">Читать</span>
+										</a>
 									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-									  <span class="price">3 658 руб.</span>
+									<div class="swiper-slide">
+										<a href="#" class="news-item">
+											<span class="news-title">Российский дизайнер Дима Логинов показал новые лампы на Salone del Mobile</span>
+											<div class="news-image">
+												<img src="./assets/img/news-image2.jpg" alt="news image" width="309" height="211">
+											</div>
+											<div class="news-info">
+												<span class="news-date">29.08.2019</span>
+												<span class="news-name">Автор: Ирина Иванова</span>
+											</div>
+											<div class="news-text">
+												Промышленный дизайнер из России Дима Логинов представил в Милане на Salone del Mobile коллекции светильников Urban и...
+											</div>
+											<span class="small-arrow-link">Читать</span>
+										</a>
 									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon pressed"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp2.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="new-product-label">Новинка</span>
+									<div class="swiper-slide">
+										<a href="#" class="news-item">
+											<span class="news-title">Точечные светильники: разновидности и роль в дизайне</span>
+											<div class="news-image">
+												<img src="./assets/img/news-image3.jpg" alt="news image" width="309" height="211">
+											</div>
+											<div class="news-info">
+												<span class="news-date">29.08.2019</span>
+												<span class="news-name">Автор: Ирина Иванова</span>
+											</div>
+											<div class="news-text">
+												Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...
+											</div>
+											<span class="small-arrow-link">Читать</span>
+										</a>
 									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-									  <span class="price">3 658 руб.</span>
+									<div class="swiper-slide">
+										<a href="#" class="news-item">
+											<span class="news-title">Точечные светильники: разновидности и роль в дизайне</span>
+											<div class="news-image">
+												<img src="./assets/img/news-image3.jpg" alt="news image" width="309" height="211">
+											</div>
+											<div class="news-info">
+												<span class="news-date">29.08.2019</span>
+												<span class="news-name">Автор: Ирина Иванова</span>
+											</div>
+											<div class="news-text">
+												Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...
+											</div>
+											<span class="small-arrow-link">Читать</span>
+										</a>
 									</div>
-									<span class="small-button">Корзина</span>
 								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="new-product-label">Новинка</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="new-product-label">Новинка</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
+							</div>
+							<button class="arrow-button next-news" slot="button-next"></button>
+							<button class="arrow-button prev-news left" slot="button-prev"></button>
 						</div>
 					</div>
 				</div>
-				<button class="arrow-button next-new" slot="button-next"></button>
-				<button class="arrow-button prev-new left" slot="button-prev"></button>
-			</div>
-		</div>
-		<div class="main-products site-size bottom-products">
-			<h2 class="page-title">Спецпредложения</h2>
-			<a href="#" class="arrow-link">Показать все</a>
-			<div class="slider-wrapping">
-				<div class="products-special-slider swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="cheap-product-label">Выгода</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-										<span class="discount">7 700 руб.</span>
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="cheap-product-label">Выгода</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-										<span class="discount">7 700 руб.</span>
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp4.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="cheap-product-label">Выгода</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-										<span class="discount">7 700 руб.</span>
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="product-item">
-								<div class="like-button">
-									<span class="site-icon heart-icon"></span>
-								</div>
-								<div class="product-image">
-									<img src="./assets/img/product-lamp4.png" alt="product-image" width="228" height="162">
-								</div>
-								<div class="product-item-info">
-									<div class="product-labels">
-										<span class="cheap-product-label">Выгода</span>
-									</div>
-									<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-								</div>
-								<div class="product-bottom">
-									<div class="product-prices">
-										<span class="discount">7 700 руб.</span>
-									  <span class="price">3 658 руб.</span>
-									</div>
-									<span class="small-button">Корзина</span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-				<button class="arrow-button next-special" slot="button-next"></button>
-				<button class="arrow-button prev-special left" slot="button-prev"></button>
-			</div>
-		</div>
-		<section class="classic-block">
-			<div class="classic-wrap site-size fixed">
-				<h1 class="block-title">Группа компаний LampLandia</h1>
-				<div class="classic-text-wrap">
-					<div class="classic-text">Наша компания была основана в 2000 году и на сегодняшний день она является  одной из крупнейших компанией  в России, специализирующихся на поставке светильников. Мы предлагаем оптовые поставки: Люстр, Светильников, Бра, Торшеров. Компания реализует как эксклюзивную продукцию мировых производителей, так и фабрик давно и хорошо зарекомендовавших себя на рынке.</div>
-				</div>
-				<div class="classic-image-wrap group-image-wrap">
-					<img src="./assets/img/lamp-group.jpg" alt="lamp group" width="497" height="373">
-				</div>
-			</div>
-		</section>
-		<div class="main-news-block site-size">
-			<h2 class="page-title">Новости</h2>
-			<a href="#" class="arrow-link">Показать все</a>
-			<div class="slider-wrapping">
-				<div class="main-news-slider swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="#" class="news-item">
-								<span class="news-title">Как найти подходящее освещение для дизайна в стиле лофт</span>
-								<div class="news-image">
-									<img src="./assets/img/news-image1.jpg" alt="news image" width="309" height="211">
-								</div>
-								<div class="news-info">
-									<span class="news-date">29.08.2019</span>
-									<span class="news-name">Автор: Ирина Иванова</span>
-								</div>
-								<div class="news-text">
-									Нашумевший стиль интерьера под названием «лофт» привнёс в индустрию дух раскрепощённой и креативности...
-								</div>
-								<span class="small-arrow-link">Читать</span>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="news-item">
-								<span class="news-title">Российский дизайнер Дима Логинов показал новые лампы на Salone del Mobile</span>
-								<div class="news-image">
-									<img src="./assets/img/news-image2.jpg" alt="news image" width="309" height="211">
-								</div>
-								<div class="news-info">
-									<span class="news-date">29.08.2019</span>
-									<span class="news-name">Автор: Ирина Иванова</span>
-								</div>
-								<div class="news-text">
-									Промышленный дизайнер из России Дима Логинов представил в Милане на Salone del Mobile коллекции светильников Urban и...
-								</div>
-								<span class="small-arrow-link">Читать</span>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="news-item">
-								<span class="news-title">Точечные светильники: разновидности и роль в дизайне</span>
-								<div class="news-image">
-									<img src="./assets/img/news-image3.jpg" alt="news image" width="309" height="211">
-								</div>
-								<div class="news-info">
-									<span class="news-date">29.08.2019</span>
-									<span class="news-name">Автор: Ирина Иванова</span>
-								</div>
-								<div class="news-text">
-									Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...
-								</div>
-								<span class="small-arrow-link">Читать</span>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="news-item">
-								<span class="news-title">Точечные светильники: разновидности и роль в дизайне</span>
-								<div class="news-image">
-									<img src="./assets/img/news-image3.jpg" alt="news image" width="309" height="211">
-								</div>
-								<div class="news-info">
-									<span class="news-date">29.08.2019</span>
-									<span class="news-name">Автор: Ирина Иванова</span>
-								</div>
-								<div class="news-text">
-									Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...
-								</div>
-								<span class="small-arrow-link">Читать</span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<button class="arrow-button next-news" slot="button-next"></button>
-				<button class="arrow-button prev-news left" slot="button-prev"></button>
-			</div>
-		</div>
-	</div>
 
 
-<div class="interior-item-page page-block site-size">
-	<div class="top-scroll-wrap" id="top-scroll-wrap">
-		<div class="top-scroll-block site-size">
-			<div class="top-scroll-left">
-				<img class="small-logo" src="./assets/img/smaller-logo.svg" alt="small logo" width="43" height="43">
-				<div class="product-thumb">
-					<img src="./assets/img/product-page-image.jpg" alt="product thumb" width="443" height="443">
+			<div class="interior-item-page page-block site-size">
+				<div class="top-scroll-wrap" id="top-scroll-wrap">
+					<div class="top-scroll-block site-size">
+						<div class="top-scroll-left">
+							<img class="small-logo" src="./assets/img/smaller-logo.svg" alt="small logo" width="43" height="43">
+							<div class="product-thumb">
+								<img src="./assets/img/product-page-image.jpg" alt="product thumb" width="443" height="443">
+							</div>
+							<span class="block-subtitle">Люстра EMMA</span>
+						</div>
+						<div class="product-bottom">
+							<div class="product-prices">
+								<span class="discount">42 000 руб.</span>
+								<span class="price"><span>33 503</span> руб.</span>
+							</div>
+							<button class="small-button">В корзину</button>
+						</div>
+					</div>
 				</div>
-				<span class="block-subtitle">Люстра EMMA</span>
-			</div>
-			<div class="product-bottom">
-				<div class="product-prices">
-					<span class="discount">42 000 руб.</span>
-					<span class="price"><span>33 503</span> руб.</span>
+				<div class="top-navigation">
+					<a href="#" class="back-arrow-link">Назад</a>
+					<a href="#" class="arrow-link">Вперед</a>
 				</div>
-				<button class="small-button">В корзину</button>
-			</div>
-		</div>
-	</div>
-	<div class="top-navigation">
-		<a href="#" class="back-arrow-link">Назад</a>
-		<a href="#" class="arrow-link">Вперед</a>
-	</div>
-	<div class="product-page-image">
-		<div class="like-button">
-			<span class="site-icon heart-icon"></span>
-		</div>
-		<div class="product-image-slider swiper-container" id="product-image-slider">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
-				</div>
-		    <div class="swiper-slide">
-					<img src="./assets/img/product-page-image1.jpg" alt="product image" width="443" height="295">
-				</div>
-				<div class="swiper-slide">
-					<img src="./assets/img/product-page-image2.jpg" alt="product image" width="295" height="443">
-				</div>
-				<div class="swiper-slide">
-					<img src="./assets/img/product-page-image3.jpg" alt="product image" width="295" height="443">
-				</div>
-				<div class="swiper-slide">
-					<img src="./assets/img/product-page-image4.jpg" alt="product image" width="443" height="295">
-				</div>
-			</div>
-			<button class="arrow-button next-image" slot="button-next"></button>
-	    <button class="arrow-button prev-image left" slot="button-prev"></button>
-			<div class="product-slider-bullets" slot="pagination"></div>
-		</div>
+				<div class="product-page-image">
+					<div class="like-button">
+						<span class="site-icon heart-icon"></span>
+					</div>
+					<div class="product-image-slider swiper-container" id="product-image-slider">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
+							</div>
+							<div class="swiper-slide">
+								<img src="./assets/img/product-page-image1.jpg" alt="product image" width="443" height="295">
+							</div>
+							<div class="swiper-slide">
+								<img src="./assets/img/product-page-image2.jpg" alt="product image" width="295" height="443">
+							</div>
+							<div class="swiper-slide">
+								<img src="./assets/img/product-page-image3.jpg" alt="product image" width="295" height="443">
+							</div>
+							<div class="swiper-slide">
+								<img src="./assets/img/product-page-image4.jpg" alt="product image" width="443" height="295">
+							</div>
+						</div>
+						<button class="arrow-button next-image" slot="button-next"></button>
+						<button class="arrow-button prev-image left" slot="button-prev"></button>
+						<div class="product-slider-bullets" slot="pagination"></div>
+					</div>
 
-		<div class="product-thumbs-wrap">
-			<div class="product-thumbs-slider swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
-					</div>
-			    <div class="swiper-slide">
-						<img src="./assets/img/product-page-image1.jpg" alt="product image" width="443" height="295">
-					</div>
-					<div class="swiper-slide">
-						<img src="./assets/img/product-page-image2.jpg" alt="product image" width="295" height="443">
-					</div>
-					<div class="swiper-slide">
-						<img src="./assets/img/product-page-image3.jpg" alt="product image" width="295" height="443">
-					</div>
-					<div class="swiper-slide">
-						<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
-					</div>
-				</div>
-			</div>
-			<button class="arrow-button next-image-thumb" slot="button-next"></button>
-			<button class="arrow-button prev-image-thumb left" slot="button-prev"></button>
-		</div>
-	</div>
-	<div class="product-page-info">
-		<h1 class="page-subtitle">Люстра EMMA</h1>
-		<div class="product-labels">
-			<span class="new-product-label">Новинка</span>
-			<span class="cheap-product-label">Выгода</span>
-		</div>
-		<div class="product-bottom" id="top-block-limit">
-			<div class="product-prices">
-				<span class="price"><span>3 503</span> руб.</span>
-				<span class="discount">4 200 руб.</span>
-			</div>
-			<button class="small-button">В корзину</button>
-			<div class="conditions-links">
-				<a href="#">Условия оплаты</a>
-				<a href="#">Условия доставки</a>
-			</div>
-		</div>
-		<div class="product-description">
-			<span class="upper-title">Описание</span>
-			<div class="site-text">
-				Классическая хрустальная люстра. Основание выполнено из хромированного металла. Подойдет для спальни или гостиной.
-			</div>
-			<ul class="product-info-list">
-				<li>Наличие: <span>Есть</span></li>
-				<li>Поступление: <span>май 2020</span></li>
-				<li>Артикул: <span>7379-6</span></li>
-				<li>Серия: <a href="#">Deamur</a></li>
-				<li>Коллекция: <a href="#">EMMA</a></li>
-				<li>Стиль: <a href="#">EMMA</a></li>
-			</ul>
-		</div>
-		<div class="product-stats" id="product-stats">
-			<span class="upper-title">Характеристики</span>
-			<ul class="product-info-list">
-				<li>Мощность: <a href="#">40 Вт</a></li>
-				<li>Гарантийный срок: <span>12 месяцев</span></li>
-				<li>Патрон: <span>Е14</span></li>
-				<li>Материал плафона: <a href="#">Стекло</a>, <a href="#">Хрусталь</a></li>
-				<li>Материал арматуры: <a href="#">Металл</a></li>
-				<li>Вид светильника: <a href="#">Потолочный</a></li>
-				<li>Кол-во лампочек: <span>3</span></li>
-			</ul>
-			<a href="#" class="small-link more" data-text="Скрыть">Показать еще</a>
-		</div>
-		<div class="product-shops">
-			<span class="upper-title">Где купить</span>
-			<a href="#">220 Вольт</a>
-			<a href="#">Максидом</a>
-			<a href="#">Леруа Мерлин</a>
-			<a href="#">Маркет Света</a>
-		</div>
-	</div>
-	<div class="product-block product-in-interior">
-		<h2 class="page-title">В интерьере</h2>
-		<a href="#" class="arrow-link">Показать все</a>
-		<div class="product-interior-slider swiper-container">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Столовая</span>
-					</a>
-				</div>
-		    <div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Люстра</span>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Столовая</span>
-					</a>
-				</div>
-		     <div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Люстра</span>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Столовая</span>
-					</a>
-				</div>
-		   <div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Люстра</span>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Столовая</span>
-					</a>
-				</div>
-		    <div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Люстра</span>
-					</a>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Столовая</span>
-					</a>
-				</div>
-		    <div class="swiper-slide">
-					<a href="#">
-						<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
-						<span class="interior-category">Люстра</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<button class="arrow-button next-interior" slot="button-next"></button>
-		<button class="arrow-button prev-interior left" slot="button-prev"></button>
-	</div>
-	<div class="main-products site-size similar-block">
-		<h2 class="page-title">Похожие товары</h2>
-		<a href="#" class="arrow-link">Показать все</a>
-		<div class="slider-wrapping">
-			<div class="main-new-products-slider swiper-container">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="#" class="product-item">
-							<div class="like-button">
-								<span class="site-icon heart-icon"></span>
-							</div>
-							<div class="product-image">
-								<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
-							</div>
-							<div class="product-item-info">
-								<div class="product-labels">
-									<span class="new-product-label">Новинка</span>
+					<div class="product-thumbs-wrap">
+						<div class="product-thumbs-slider swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
 								</div>
-								<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-							</div>
-							<div class="product-bottom">
-								<div class="product-prices">
-									<span class="price">3 658 руб.</span>
+								<div class="swiper-slide">
+									<img src="./assets/img/product-page-image1.jpg" alt="product image" width="443" height="295">
 								</div>
-								<span class="small-button">Корзина</span>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="#" class="product-item">
-							<div class="like-button">
-								<span class="site-icon heart-icon pressed"></span>
-							</div>
-							<div class="product-image">
-								<img src="./assets/img/product-lamp2.png" alt="product-image" width="228" height="162">
-							</div>
-							<div class="product-item-info">
-								<div class="product-labels">
-									<span class="new-product-label">Новинка</span>
+								<div class="swiper-slide">
+									<img src="./assets/img/product-page-image2.jpg" alt="product image" width="295" height="443">
 								</div>
-								<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-							</div>
-							<div class="product-bottom">
-								<div class="product-prices">
-									<span class="price">3 658 руб.</span>
+								<div class="swiper-slide">
+									<img src="./assets/img/product-page-image3.jpg" alt="product image" width="295" height="443">
 								</div>
-								<span class="small-button">Корзина</span>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="#" class="product-item">
-							<div class="like-button">
-								<span class="site-icon heart-icon"></span>
-							</div>
-							<div class="product-image">
-								<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
-							</div>
-							<div class="product-item-info">
-								<div class="product-labels">
-									<span class="new-product-label">Новинка</span>
+								<div class="swiper-slide">
+									<img src="./assets/img/product-page-image.jpg" alt="product image" width="443" height="443">
 								</div>
-								<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
 							</div>
-							<div class="product-bottom">
-								<div class="product-prices">
-									<span class="price">3 658 руб.</span>
-								</div>
-								<span class="small-button">Корзина</span>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="#" class="product-item">
-							<div class="like-button">
-								<span class="site-icon heart-icon"></span>
-							</div>
-							<div class="product-image">
-								<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
-							</div>
-							<div class="product-item-info">
-								<div class="product-labels">
-									<span class="new-product-label">Новинка</span>
-								</div>
-								<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
-							</div>
-							<div class="product-bottom">
-								<div class="product-prices">
-									<span class="price">3 658 руб.</span>
-								</div>
-								<span class="small-button">Корзина</span>
-							</div>
-						</a>
+						</div>
+						<button class="arrow-button next-image-thumb" slot="button-next"></button>
+						<button class="arrow-button prev-image-thumb left" slot="button-prev"></button>
 					</div>
 				</div>
-			</div>
-			<button class="arrow-button next-new" slot="button-next"></button>
-			<button class="arrow-button prev-new left" slot="button-prev"></button>
-		</div>
-	</div>
+				<div class="product-page-info">
+					<h1 class="page-subtitle">Люстра EMMA</h1>
+					<div class="product-labels">
+						<span class="new-product-label">Новинка</span>
+						<span class="cheap-product-label">Выгода</span>
+					</div>
+					<div class="product-bottom" id="top-block-limit">
+						<div class="product-prices">
+							<span class="price"><span>3 503</span> руб.</span>
+							<span class="discount">4 200 руб.</span>
+						</div>
+						<button class="small-button">В корзину</button>
+						<div class="conditions-links">
+							<a href="#">Условия оплаты</a>
+							<a href="#">Условия доставки</a>
+						</div>
+					</div>
+					<div class="product-description">
+						<span class="upper-title">Описание</span>
+						<div class="site-text">
+							Классическая хрустальная люстра. Основание выполнено из хромированного металла. Подойдет для спальни или гостиной.
+						</div>
+						<ul class="product-info-list">
+							<li>Наличие: <span>Есть</span></li>
+							<li>Поступление: <span>май 2020</span></li>
+							<li>Артикул: <span>7379-6</span></li>
+							<li>Серия: <a href="#">Deamur</a></li>
+							<li>Коллекция: <a href="#">EMMA</a></li>
+							<li>Стиль: <a href="#">EMMA</a></li>
+						</ul>
+					</div>
+					<div class="product-stats" id="product-stats">
+						<span class="upper-title">Характеристики</span>
+						<ul class="product-info-list">
+							<li>Мощность: <a href="#">40 Вт</a></li>
+							<li>Гарантийный срок: <span>12 месяцев</span></li>
+							<li>Патрон: <span>Е14</span></li>
+							<li>Материал плафона: <a href="#">Стекло</a>, <a href="#">Хрусталь</a></li>
+							<li>Материал арматуры: <a href="#">Металл</a></li>
+							<li>Вид светильника: <a href="#">Потолочный</a></li>
+							<li>Кол-во лампочек: <span>3</span></li>
+						</ul>
+						<a href="#" class="small-link more" data-text="Скрыть">Показать еще</a>
+					</div>
+					<div class="product-shops">
+						<span class="upper-title">Где купить</span>
+						<a href="#">220 Вольт</a>
+						<a href="#">Максидом</a>
+						<a href="#">Леруа Мерлин</a>
+						<a href="#">Маркет Света</a>
+					</div>
+				</div>
+				<div class="product-block product-in-interior">
+					<h2 class="page-title">В интерьере</h2>
+					<a href="#" class="arrow-link">Показать все</a>
+					<div class="product-interior-slider swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Столовая</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Люстра</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Столовая</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Люстра</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Столовая</span>
+								</a>
+							</div>
+						<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Люстра</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Столовая</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Люстра</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide1.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Столовая</span>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<img src="./assets/img/interior-product-slide2.jpg" alt="product image" width="200" height="200">
+									<span class="interior-category">Люстра</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<button class="arrow-button next-interior" slot="button-next"></button>
+					<button class="arrow-button prev-interior left" slot="button-prev"></button>
+				</div>
+				<div class="main-products site-size similar-block">
+					<h2 class="page-title">Похожие товары</h2>
+					<a href="#" class="arrow-link">Показать все</a>
+					<div class="slider-wrapping">
+						<div class="main-new-products-slider swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#" class="product-item">
+										<div class="like-button">
+											<span class="site-icon heart-icon"></span>
+										</div>
+										<div class="product-image">
+											<img src="./assets/img/product-lamp1.png" alt="product-image" width="228" height="162">
+										</div>
+										<div class="product-item-info">
+											<div class="product-labels">
+												<span class="new-product-label">Новинка</span>
+											</div>
+											<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+										</div>
+										<div class="product-bottom">
+											<div class="product-prices">
+												<span class="price">3 658 руб.</span>
+											</div>
+											<span class="small-button">Корзина</span>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="product-item">
+										<div class="like-button">
+											<span class="site-icon heart-icon pressed"></span>
+										</div>
+										<div class="product-image">
+											<img src="./assets/img/product-lamp2.png" alt="product-image" width="228" height="162">
+										</div>
+										<div class="product-item-info">
+											<div class="product-labels">
+												<span class="new-product-label">Новинка</span>
+											</div>
+											<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+										</div>
+										<div class="product-bottom">
+											<div class="product-prices">
+												<span class="price">3 658 руб.</span>
+											</div>
+											<span class="small-button">Корзина</span>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="product-item">
+										<div class="like-button">
+											<span class="site-icon heart-icon"></span>
+										</div>
+										<div class="product-image">
+											<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
+										</div>
+										<div class="product-item-info">
+											<div class="product-labels">
+												<span class="new-product-label">Новинка</span>
+											</div>
+											<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+										</div>
+										<div class="product-bottom">
+											<div class="product-prices">
+												<span class="price">3 658 руб.</span>
+											</div>
+											<span class="small-button">Корзина</span>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#" class="product-item">
+										<div class="like-button">
+											<span class="site-icon heart-icon"></span>
+										</div>
+										<div class="product-image">
+											<img src="./assets/img/product-lamp3.png" alt="product-image" width="228" height="162">
+										</div>
+										<div class="product-item-info">
+											<div class="product-labels">
+												<span class="new-product-label">Новинка</span>
+											</div>
+											<div class="product-title">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>
+										</div>
+										<div class="product-bottom">
+											<div class="product-prices">
+												<span class="price">3 658 руб.</span>
+											</div>
+											<span class="small-button">Корзина</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<button class="arrow-button next-new" slot="button-next"></button>
+						<button class="arrow-button prev-new left" slot="button-prev"></button>
+					</div>
+				</div>
 
 
-	<div class="popup-wrap" id="product-popup">
-		<div class="popup-body">
-			<button class="popup-close"></button>
-			<div class="image-wrap">
+				<div class="popup-wrap" id="product-popup">
+					<div class="popup-body">
+						<button class="popup-close"></button>
+						<div class="image-wrap">
+
+						</div>
+					</div>
+				</div>
 
 			</div>
+			</main>
+			<footer class="footer-wrap">
+				<div class="footer-top site-size">
+					<div class="footer-menu">
+						<span class="footer-menu-title">Карта сайта</span>
+						<a href="#">Главная</a>
+						<a href="#">О компании</a>
+						<a href="#">Где купить</a>
+						<a href="#">Доставка</a>
+						<a href="#">Интерьеры</a>
+						<a href="#">Новинки</a>
+					</div>
+					<div class="footer-menu">
+						<span class="footer-menu-title">Популярные покупки</span>
+						<a href="#">Настенно-потолочный светильник 12067/2 Soul</a>
+						<a href="#">Настольная лампа L1117P Finn, E14* макс. 40Вт</a>
+						<a href="#">Бра 8952-2 PRINCESSA ANNA</a>
+						<a href="#">Люкстра L1052-5 Concept, E14*макс 60Вт</a>
+						<a href="#">Настенно-потолочный светильник 12067/2 Soul</a>
+						<a class="arrow-link" href="#">Показать все</a>
+					</div>
+					<div class="footer-menu">
+						<span class="footer-menu-title">Партнеры</span>
+						<a href="#">ООО "Южный Скобяной Двор"</a>
+						<a href="#">Мебельный Клуб</a>
+						<a href="#">Маркет света</a>
+						<a href="#">220 Вольт</a>
+						<a href="#">Максидом</a>
+						<a href="#">Домовой</a>
+						<a href="#">ЛЕРУА МЕРЛЕН</a>
+					</div>
+					<div class="footer-menu">
+						<span class="footer-menu-title">Контакты</span>
+						<span class="just-name">Головной офис</span>
+						<a class="violet-link" href="tel:+78123088811">+7&nbsp;(812)&nbsp;308-88-11</a>
+						<a class="violet-link" href="mailto:info@lamplandia.ru">info@lamplandia.ru</a>
+						<span class="violet-link">197022, Санкт-Петербург,<br> Каменоостровский пр-т,<br> д.62, лит. А пом. 7Н</span>
+						<a href="#">Схема прохода в офис</a>
+						<a href="#">Новинки</a>
+						<div class="social-links">
+							<a class="social-icon twitter-icon" href="#"></a>
+							<a class="social-icon facebook-icon" href="#"></a>
+							<a class="social-icon instagram-icon" href="#"></a>
+							<a class="social-icon whatsup-icon" href="#"></a>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="footer-copyright site-size">
+						<span>&copy; 2011 Группа компаний LampLandia</span>
+						<span>Разработано в Аccept.agency</span>
+					</div>
+				</div>
+			</footer>
 		</div>
-	</div>
+		<script src="./js/swiper.min.js"></script>
+		<script src="./js/lamplandia.js"></script>
+	</body>
+</html>
 
-</div>
-${require('./assets/footer.html')}
