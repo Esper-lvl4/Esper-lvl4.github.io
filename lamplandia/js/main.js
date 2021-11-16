@@ -1,383 +1,55 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 206:
+/***/ 690:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var LazyLoad = __webpack_require__(886);
+var Swiper = __webpack_require__(191);
 
-var Swiper = __webpack_require__(381);
-
-var noUiSlider = __webpack_require__(414);
-
-window.addEventListener('DOMContentLoaded', function () {
-  // Overwrites native 'children' prototype.
-  // Adds Document & DocumentFragment support for IE9 & Safari.
-  // Returns array instead of HTMLCollection.
-  (function (constructor) {
-    if (constructor && constructor.prototype && constructor.prototype.children == null) {
-      Object.defineProperty(constructor.prototype, 'children', {
-        get: function get() {
-          var i = 0;
-          var node;
-          var nodes = this.childNodes;
-          var children = [];
-
-          while (node = nodes[i++]) {
-            if (node.nodeType === 1) {
-              children.push(node);
-            }
-          }
-
-          return children;
-        }
-      });
-    }
-  })(window.Node || window.Element); // Lazy load images.
-
-
-  new LazyLoad({
-    elements_selector: '.lazy'
-  }); // Init sliders.
-
-  var productPageSlider = document.querySelector('#product-main-image-slider');
-  var productPreviews = document.querySelector('#product-image-previews');
-
-  if (productPageSlider && productPreviews) {
-    var quantity = productPreviews.querySelectorAll('.swiper-slide').length;
-
-    if (quantity >= 3) {
-      productPreviews = new Swiper('.previews-slider', {
-        spaceBetween: 20,
-        slidesPerView: quantity > 2 ? 2 : quantity,
-        loop: false,
-        normalizeSlideIndex: false,
-        navigation: {
-          nextEl: '.previews-next',
-          prevEl: '.previews-prev'
-        }
-      });
-      productPageSlider = new Swiper('.main-image-slider', {
-        spaceBetween: 20,
-        slidesPerView: 1,
-        loop: false,
-        normalizeSlideIndex: false
-      });
-      productPageSlider.controller.control = productPreviews;
-      productPreviews.controller.control = productPageSlider;
-    } else {
-      var parent = productPreviews.$el[0].parentElement;
-      parent.querySelector('.previews-next').classList.add('js-none');
-      parent.querySelector('.previews-prev').classList.add('js-none');
-    }
-  }
-
-  var solutionSlider = document.querySelector('#solution-images-slider');
-
-  if (solutionSlider) {
-    var _quantity = solutionSlider.querySelectorAll('.swiper-slide').length;
-    solutionSlider = new Swiper('.solution-images-slider', {
-      spaceBetween: 20,
-      slidesPerView: _quantity >= 4 ? 4 : _quantity,
-      loop: _quantity >= 4,
-      loopedSlides: _quantity,
-      navigation: {
-        prevEl: '.prev-solution-image',
-        nextEl: '.next-solution-image'
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 3
-        },
-        640: {
-          slidesPerView: 2
-        },
-        500: {
-          slidesPerView: 1
-        }
-      }
-    });
-
-    if (_quantity < 4) {
-      solutionSlider.el.parentElement.querySelectorAll('.svg-button').forEach(function (button) {
-        button.classList.add('js-none');
-      });
-      solutionSlider.el.classList.add('dead-slider');
-    }
-  }
-
-  var productSimilarItems = document.querySelector('#product-similar-items');
-
-  if (productSimilarItems) {
-    productSimilarItems = new Swiper('#product-similar-items', {
-      spaceBetween: 20,
-      slidesPerView: 3,
-      loop: true,
-      navigation: {
-        prevEl: '.prev-similar-slide',
-        nextEl: '.next-similar-slide'
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 2
-        },
-        768: {
-          slidesPerView: 1
-        }
-      }
-    });
-  }
-
-  var productTogetherItems = document.querySelector('#product-together-items');
-
-  if (productTogetherItems) {
-    productTogetherItems = new Swiper('#product-together-items', {
-      spaceBetween: 20,
-      slidesPerView: 3,
-      loop: true,
-      navigation: {
-        prevEl: '.prev-together-item',
-        nextEl: '.next-together-item'
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 2
-        },
-        768: {
-          slidesPerView: 1
-        }
-      }
-    });
-  }
-
-  var albumSlider = document.querySelector('#album-slider');
-
-  if (albumSlider) {
-    albumSlider = new Swiper('#album-slider', {
-      spaceBetween: 20,
-      slidesPerView: 1,
-      loop: true,
-      navigation: {
-        prevEl: '.album-swiper-prev',
-        nextEl: '.album-swiper-next'
-      }
-    });
-  }
-
-  var reviewSlider = document.querySelector('#review-slider');
-
-  if (reviewSlider) {
-    reviewSlider = new Swiper('#review-slider', {
-      spaceBetween: 50,
-      slidesPerView: 1,
-      loop: true,
-      navigation: {
-        prevEl: '.prev-review',
-        nextEl: '.next-review'
-      }
-    });
-  } // Main page slider
-
-
-  var mainSwiper = document.querySelector('#main-swiper');
-
-  if (mainSwiper) {
-    /** @function renderDots */
-    var renderDots = function renderDots() {
-      var index = null;
-      var slides = mainSwiper.el.querySelectorAll('.swiper-slide');
-
-      var _iterator = _createForOfIteratorHelper(slides),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var slide = _step.value;
-
-          if (slide.classList.contains('swiper-slide-active')) {
-            index = slide.dataset.swiperSlideIndex;
-            break;
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      if (index !== null) {
-        var _iterator2 = _createForOfIteratorHelper(pagination.children),
-            _step2;
-
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var dot = _step2.value;
-
-            if (+dot.dataset.slide === +index) {
-              dot.classList.add('active');
-            } else {
-              dot.classList.remove('active');
-            }
-          }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
-        }
-      }
-    };
-
-    var slides = mainSwiper.querySelectorAll('.swiper-slide');
-    console.log(slides);
-    mainSwiper = new Swiper('#main-swiper', {
-      spaceBetween: 20,
-      slidesPerView: 1,
-      loop: true
-    });
-    var pagination = mainSwiper.$el[0].querySelector('.slider-nav');
-
-    for (var i = 0; i < slides.length; i++) {
-      var label = document.createElement('LABEL');
-      var image = slides[i].querySelector('img');
-      label.className = 'slider-dot';
-      label.innerHTML = "\n        <span class=\"dot-number\">".concat((i < 11 ? '0' : '') + (i + 1) + '.', "</span>\n        <span class=\"dot-text\">\n        ").concat(image.dataset.title.replace(/\s{2,}/, '').slice(0, 34), "\n        ...\n        </span>\n      ");
-      label.dataset.slide = i;
-      pagination.appendChild(label);
-    }
-
-    mainSwiper.on('slideChangeTransitionEnd', renderDots);
-    pagination.addEventListener('click', function (event) {
-      if (event.target.closest('.slider-dot')) {
-        event.stopPropagation();
-        var index = +event.target.closest('.slider-dot').dataset.slide;
-        mainSwiper.slideToLoop(index);
-        renderDots();
-      }
-    });
-    renderDots();
-  } // Debouncer.
-
-  /** @function debounce
-  * @param {Function} func
-  * @param {Number} time
-  * @return {Function}
-  */
-
-
-  function debounce(func, time) {
-    var timer = null;
-    return function () {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      if (timer) {
-        clearTimeout(timer);
-      }
-
-      timer = setTimeout(function () {
-        func.apply(void 0, args);
-      }, time);
-    };
-  } // Error decorator.
-
-  /** @function errorDecorator
-  * @param {Function} func
-  * @return {Function}
-  */
-
-
-  function errorDecorator(func) {
-    return function () {
-      try {
-        func.apply(void 0, arguments);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  } // Function for getting coordinates of the element.
-
-  /** @function getCoordinates
-  * @param {HTMLElement} elem
-  * @return {Object}
-  */
-
-
-  function getCoordinates(elem) {
-    return {
-      top: window.pageYOffset + elem.getBoundingClientRect().top,
-      left: window.pageXOffset + elem.getBoundingClientRect().left
-    };
-  } // Reset and clear.
-
-  /** @function resetAll */
-
-
-  function resetAll() {
-    clearDropdowns();
-  }
-
-  document.addEventListener('click', resetAll); // Ui elements.
-  // Quantity counter.
+window.addEventListener('load', function () {
+  // Quantity counter webcomponent.
 
   /** @function initCounter
-  * @param {HTMLInputElement} input
-  */
-
+   * @param {HTMLInputElement} input
+   */
   function initCounter(input) {
     var min = 1;
-    var max = 9999;
+    var max = 999;
     var value = input.value == '' ? min : input.value;
     var wrap = document.createElement('DIV');
-    wrap.innerHTML = "\n      <button class=\"minus-counter\" data-action=\"minus\">-</button>\n      <input type=\"text\" class=\"counter-value\" value=".concat(value, ">\n      <button class=\"plus-counter\" data-action=\"plus\">+</button>\n    ");
+    wrap.innerHTML = "\n      \u041A\u043E\u043B-\u0432\u043E: <button>-</button>\n      <input type=\"text\" class=\"counter-value\" value=".concat(value, ">\n      <button>+</button>\n    ");
     wrap.className = input.className;
     input.parentElement.insertBefore(wrap, input);
     wrap.appendChild(input);
     input.setAttribute('style', 'display: none;');
     var inputValue = wrap.querySelector('.counter-value');
     /** @function changeCounter
-    * @param {Event} event
-    */
+     * @param {Event} event
+     */
 
     function changeCounter(event) {
       if (event.target.tagName.toLowerCase() === 'button') {
-        event.preventDefault(); // event.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
 
-        if (event.target.dataset.action == 'plus' && value !== max) {
+        if (event.target.textContent == '+' && value !== max) {
           value = ++value;
-        } else if (event.target.dataset.action == 'minus' && value !== min) {
+        } else if (event.target.textContent == '-' && value !== min) {
           value = --value;
         }
 
         render();
       }
     }
-    /** @function setValue
-    * @param {Event} event
-    */
-
-
-    function setValue(event) {
-      value = input.value;
-      render();
-    }
     /** @function validate
-    * @param {Event} event
-    */
+     * @param {Event} event
+     */
 
 
     function validate(event) {
@@ -397,345 +69,607 @@ window.addEventListener('DOMContentLoaded', function () {
     function render() {
       inputValue.value = value;
       input.value = value;
-      input.dispatchEvent(new Event('change', {
-        bubbles: true
-      }));
+      input.dispatchEvent(new Event('change'));
     }
 
     wrap.addEventListener('click', changeCounter);
     inputValue.addEventListener('input', validate);
     inputValue.addEventListener('change', validate);
     input.classList.add('js-init');
-    input.addEventListener('change-value', setValue);
   }
   /** @function beautifyCounters */
 
 
   function beautifyCounters() {
-    var counters = document.querySelectorAll('input.product-quantity:not(.js-init)');
+    var counters = document.querySelectorAll('input.quantity-counter:not(.js-init)');
 
     if (counters.length !== 0) {
-      var _iterator3 = _createForOfIteratorHelper(counters),
-          _step3;
+      var _iterator = _createForOfIteratorHelper(counters),
+          _step;
 
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var counter = _step3.value;
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var counter = _step.value;
           initCounter(counter);
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator.e(err);
       } finally {
-        _iterator3.f();
+        _iterator.f();
       }
     }
   }
 
   beautifyCounters();
-  document.body.addEventListener('reinit-counters', beautifyCounters); // Beautify selects.
+  document.body.addEventListener('reinit-counters', beautifyCounters);
+  var elems = document.querySelectorAll('.sort-item select');
+  M.FormSelect.init(elems, {}); // Catalog selectors redirects.
 
-  /** @function initSelector
-  * @param {HTMLSelectElement} select
-  */
+  if (elems.length !== 0) {
+    /** @function redirectFromSelect
+     * @param {Event} event
+     */
+    var redirectFromSelect = function redirectFromSelect(event) {
+      var childs = event.target.children;
 
-  function initSelector(select) {
-    var value = select.value;
-    var wrap = document.createElement('DIV');
-    var options = '';
+      var _iterator2 = _createForOfIteratorHelper(childs),
+          _step2;
 
-    for (var _i = 0, _Array$from = Array.from(select.children); _i < _Array$from.length; _i++) {
-      var opt = _Array$from[_i];
-      options += "<span>".concat(opt.value, "</span>");
-    }
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var option = _step2.value;
 
-    wrap.innerHTML = "\n      <button class=\"site-selector-value\"></button>\n      <div class=\"site-select-list\">\n        ".concat(options, "\n      </div>\n    ");
-    wrap.className = select.className;
-    select.parentElement.insertBefore(wrap, select);
-    wrap.appendChild(select);
-    var optionsWrap = wrap.querySelector('.site-select-list');
-    var valueEl = wrap.querySelector('.site-selector-value');
-    /** @function render */
+          if (option.selected) {
+            if (option.dataset.hasOwnProperty('url')) {
+              var href = window.location.href;
+              window.location.href = href.slice(0, href.indexOf('/')) + option.dataset.url;
+            }
 
-    function render() {
-      valueEl.textContent = value;
-    }
-    /** @function toggleSelect
-    * @param {Event} event
-    */
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    };
+
+    elems.forEach(function (el) {
+      el.addEventListener('change', redirectFromSelect);
+    });
+  } // Debouncer for scroll events.
+
+  /** @function redirectFromSelect
+   * @param {Function} func
+   * @param {Number} ms
+   * @return {Function}
+   */
 
 
-    function toggleSelect(event) {
+  function debounce(func, ms) {
+    var timer = null;
+    return function () {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(function () {
+        func.apply(void 0, args);
+        timer = null;
+      }, ms);
+    };
+  }
+
+  ; // Handler for showing or hiding products on interior item page.
+
+  var spots = document.getElementsByClassName('toggle-spot');
+  /** @function toggleSpot
+   * @param {Event} event
+   */
+
+  function toggleSpot(event) {
+    if (event.target.classList.contains('toggle-spot')) {
       event.preventDefault();
       event.stopPropagation();
 
-      if (!event.target.closest('.site-select-list')) {
-        document.body.dispatchEvent(new Event('close-selects'));
-      }
-
-      wrap.classList.toggle('active');
-    }
-    /** @function choose
-    * @param {Event} event
-    */
-
-
-    function choose(event) {
-      var target = event.target;
-
-      if (target.classList.contains('site-select-list')) {
-        event.stopPropagation();
-      }
-
-      value = target.textContent;
-      select.value = value;
-      select.dispatchEvent(new Event('change'));
-      render();
-    }
-
-    render();
-    optionsWrap.addEventListener('click', choose);
-    wrap.addEventListener('click', toggleSelect);
-  }
-  /** @function closeSelects
-  * @param {Event} event
-  */
-
-
-  function closeSelects(event) {
-    document.querySelectorAll('div.site-selector.active').forEach(function (select) {
-      select.classList.remove('active');
-    });
-  }
-
-  var selectors = document.querySelectorAll('.site-selector');
-
-  if (selectors.length !== 0) {
-    selectors.forEach(function (selector) {
-      initSelector(selector);
-    });
-    document.body.addEventListener('close-selects', closeSelects);
-    document.body.addEventListener('click', closeSelects);
-  } // Range sliders.
-
-
-  var ranges = document.querySelectorAll('.range-input');
-
-  var _iterator4 = _createForOfIteratorHelper(ranges),
-      _step4;
-
-  try {
-    var _loop2 = function _loop2() {
-      var range = _step4.value;
-      var minValue = range.dataset.min !== undefined && !isNaN(range.dataset.min) ? +range.dataset.min : 0;
-      var maxValue = range.dataset.max !== undefined && !isNaN(range.dataset.max) ? +range.dataset.max : 100;
-      var percent = (maxValue - minValue) / 100;
-      var name = range.dataset.name;
-      console.log(minValue, maxValue);
-      noUiSlider.create(range, {
-        start: [minValue, maxValue],
-        connect: false,
-        range: {
-          min: minValue,
-          max: maxValue
-        },
-        margin: (maxValue - minValue) / 10 * 1.8,
-        step: 1,
-        cssClasses: {
-          target: 'range-target',
-          base: 'base',
-          origin: 'origin',
-          handle: 'range-handle',
-          handleLower: 'handle-lower',
-          handleUpper: 'handle-upper',
-          touchArea: 'touch-area',
-          horizontal: 'horizontal',
-          vertical: 'vertical',
-          background: 'background',
-          connect: 'connect',
-          connects: 'connects',
-          ltr: 'ltr',
-          rtl: 'rtl',
-          draggable: 'draggable',
-          drag: 'state-drag',
-          tap: 'state-tap',
-          active: 'active',
-          tooltip: 'tooltip',
-          pips: 'pips',
-          pipsHorizontal: 'pips-horizontal',
-          pipsVertical: 'pips-vertical',
-          marker: 'marker',
-          markerHorizontal: 'marker-horizontal',
-          markerVertical: 'marker-vertical',
-          markerNormal: 'marker-normal',
-          markerLarge: 'marker-large',
-          markerSub: 'marker-sub',
-          value: 'value',
-          valueHorizontal: 'value-horizontal',
-          valueVertical: 'value-vertical',
-          valueNormal: 'value-normal',
-          valueLarge: 'value-large',
-          valueSub: 'value-sub'
+      for (var i = 0; i < spots.length; i++) {
+        if (event.target !== spots[i]) {
+          spots[i].classList.remove('active');
         }
+      }
+
+      event.target.classList.toggle('active');
+    }
+  }
+
+  ;
+  var interiorGallery = document.getElementById('interior-top-gallery');
+
+  if (interiorGallery) {
+    interiorGallery.addEventListener('click', toggleSpot);
+  } // Product Page. Show product info, when page is scrolled down.
+
+
+  var topBlockLimit = document.getElementById('top-block-limit');
+  var topScrollWrap = document.getElementById('top-scroll-wrap');
+  /** @function toggleTopProductBlock
+   * @param {Event} event
+   */
+
+  function toggleTopProductBlock() {
+    if (!topBlockLimit) return;
+
+    if (window.pageYOffset > topBlockLimit.getBoundingClientRect().bottom + window.pageYOffset) {
+      topScrollWrap.classList.add('active');
+    } else {
+      topScrollWrap.classList.remove('active');
+    }
+  }
+
+  if (topBlockLimit) {
+    toggleTopProductBlock();
+    var func = debounce(toggleTopProductBlock, 100);
+    window.addEventListener('scroll', func);
+  } // Hide filter, when it's not in the viewport.
+
+
+  var catalogFilter = document.getElementsByClassName('catalog-filter');
+  var catalogWrap = document.getElementById('catalog-wrap');
+  /** @function hideOrShowFilter */
+
+  function hideOrShowFilter() {
+    if (!catalogFilter || window.innerWidth <= 640) return;
+
+    if (window.pageYOffset > catalogFilter.getBoundingClientRect().bottom + window.pageYOffset) {
+      catalogWrap.classList.add('hidden');
+    } else {
+      catalogWrap.classList.remove('hidden');
+    }
+  }
+
+  if (catalogFilter.length !== 0) {
+    catalogFilter = catalogFilter[0];
+    hideOrShowFilter();
+
+    var _func = debounce(hideOrShowFilter, 100);
+
+    window.addEventListener('scroll', _func);
+  } // Product image popup. (to fix)
+
+
+  var productImage = document.getElementById('product-image-slider');
+  var productPopup = document.getElementById('product-popup');
+  var productImageWrap = productPopup ? productPopup.querySelector('.image-wrap') : null;
+  /** @function showProductPopup
+   * @param {Event} event
+   */
+
+  function showProductPopup(event) {
+    if (event.target.tagName.toLowerCase() === 'img') {
+      productImageWrap.innerHTML = '';
+      var bigImage = event.target.getAttribute('data-image');
+      var img = new Image();
+      img.alt = 'popup image';
+      img.addEventListener('load', function () {
+        fixPopupImageWidth(img);
+        console.log(img);
       });
-      var min = range.querySelector('.range-min-output');
-      var max = range.querySelector('.range-max-output');
-      var minInput = range.querySelector("[name=\"min-".concat(name, "\"]"));
-      var maxInput = range.querySelector("[name=\"max-".concat(name, "\"]"));
-      /** @function changeRangeValue
-      * @param {Array} values
-      */
+      console.log(bigImage);
 
-      function changeRangeValue(values) {
-        min.textContent = "\u043E\u0442\xA0" + Math.round(values[0]);
-        max.textContent = "\u0434\u043E\xA0" + Math.round(values[1]);
-        minInput.value = Math.round(values[0]);
-        maxInput.value = Math.round(values[1]);
-        min.style.left = values[0] / percent + '%';
-        max.style.left = values[1] / percent + '%';
+      if (bigImage) {
+        img.src = bigImage;
+      } else {
+        img.src = event.target.src;
       }
-
-      range.noUiSlider.on('update', changeRangeValue);
-    };
-
-    for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-      _loop2();
-    } // All tabs on site functionality.
-
-  } catch (err) {
-    _iterator4.e(err);
-  } finally {
-    _iterator4.f();
-  }
-
-  var tabsElements = document.getElementsByClassName('site-tabs');
-
-  if (tabsElements.length !== 0) {
-    /** @function changeTab
-    * @param {Event} event
-    */
-    var changeTab = function changeTab(event) {
-      var target = event.target;
-
-      if (target.classList.contains('tab-button') && target.getAttribute('data-tab')) {
-        var tabId = target.dataset.tab;
-        var allTabs = target.closest('.site-tabs').querySelectorAll('.tab-content *[data-tab]');
-        var position = {
-          left: target.offsetLeft,
-          top: target.offsetTop + target.offsetHeight
-        };
-        var brick = target.closest('.site-tabs').querySelector('.tabs-brick');
-        brick.style.left = position.left + 'px';
-        brick.style.top = position.top + 'px';
-
-        var _iterator5 = _createForOfIteratorHelper(allTabs),
-            _step5;
-
-        try {
-          for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-            var tab = _step5.value;
-
-            if (tab.dataset.tab == tabId) {
-              tab.classList.add('js-active');
-            } else {
-              tab.classList.remove('js-active');
-            }
-          }
-        } catch (err) {
-          _iterator5.e(err);
-        } finally {
-          _iterator5.f();
-        }
-      }
-    };
-
-    for (var t = 0; t < tabsElements.length; t++) {
-      tabsElements[t].querySelector('.tabs-nav').addEventListener('click', changeTab);
-      tabsElements[t].querySelector('.tab-button').dispatchEvent(new Event('click', {
-        bubbles: true
-      }));
     }
-  } // Categories dropdown
+  }
+  /** @function fixPopupImageWidth
+   * @param {HTMLImageElement} img
+   */
 
 
-  var categoriesWraps = document.getElementsByClassName('categories-wrap');
-  /** @function showCategoryDropdown
-  * @param {Event} event
-  */
+  function fixPopupImageWidth(img) {
+    var width = img.naturalWidth;
+    var height = img.naturalHeight;
+    var maxWidth = window.innerWidth * 0.9 - 80;
+    var maxHeight = window.innerHeight * 0.9 - 80;
+    var coef = width / height;
 
-  function showCategoryDropdown(event) {
-    if (event.target.classList.contains('category-expand')) {
-      event.stopPropagation(); // first - remove all active dropdowns.
+    if (width > maxWidth) {
+      width = maxWidth;
+      height = width / coef;
+    }
 
-      clearDropdowns();
-      var item = event.target.closest('.category-item');
-      item.classList.add('active');
-    } else if (event.target.closest('.category-item')) {
+    if (height > maxHeight) {
+      height = maxHeight;
+      width = height * coef;
+    }
+
+    img.width = width;
+    img.height = height;
+    productImageWrap.appendChild(img);
+    productPopup.classList.add('active');
+  }
+  /** @function closePopup
+   * @param {Event} event
+   */
+
+
+  function closePopup(event) {
+    var target = event.target;
+
+    if (target == productPopup || target.classList.contains('popup-close')) {
+      event.preventDefault();
       event.stopPropagation();
+      productPopup.classList.remove('active');
     }
   }
-  /** @function clearDropdowns */
+
+  if (productImage) {
+    productImage.addEventListener('click', showProductPopup);
+    productPopup.addEventListener('click', closePopup);
+  } // Toggles for Filter and his props.
 
 
-  function clearDropdowns() {
-    var drops = document.getElementsByClassName('category-item');
+  var filters = document.getElementsByClassName('filter-form');
+  var filterToggle = document.getElementsByClassName('filter-toggle');
+  /** @function toggleFilterProp
+   * @param {Event} event
+   */
 
-    var _iterator6 = _createForOfIteratorHelper(drops),
+  function toggleFilterProp(event) {
+    var classes = event.target.classList;
+
+    if (classes.contains('spread-all')) {
+      event.preventDefault();
+      classes.toggle('active');
+      event.target.previousElementSibling.classList.toggle('show');
+    }
+  }
+  /** @function toggleFilter
+   * @param {Event} event
+   */
+
+
+  function toggleFilter(event) {
+    event.preventDefault();
+    var target = event.target;
+
+    if (target.classList.contains('upper-title')) {
+      target.parentNode.classList.toggle('active');
+    }
+  }
+  /** @function hideFilterBlock
+   * @param {HTMLElement} filterBlock
+   */
+
+
+  function hideFilterBlock(filterBlock) {
+    var children = filterBlock.querySelectorAll('.site-checkbox-label');
+
+    if (children.length > 4) {
+      var button = document.createElement('BUTTON');
+      button.className = 'spread-all';
+      button.textContent = 'Развернуть';
+
+      if (filterBlock.nextElementSibling) {
+        filterBlock.parentElement.insertBefore(button, filterBlock.nextElementSibling);
+      } else {
+        filterBlock.parentElement.appendChild(button);
+      }
+
+      filterBlock.style.maxHeight = children[3].offsetTop + children[3].offsetHeight + 'px';
+    }
+  }
+
+  if (filters.length !== 0) {
+    var _iterator3 = _createForOfIteratorHelper(filters),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var filter = _step3.value;
+        filter.addEventListener('click', toggleFilterProp);
+        filter.querySelectorAll('.filter-block').forEach(function (block) {
+          hideFilterBlock(block);
+        });
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+  }
+
+  if (filterToggle.length !== 0) {
+    var _iterator4 = _createForOfIteratorHelper(filterToggle),
+        _step4;
+
+    try {
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+        var toggle = _step4.value;
+        toggle.addEventListener('click', toggleFilter);
+      }
+    } catch (err) {
+      _iterator4.e(err);
+    } finally {
+      _iterator4.f();
+    }
+  } // Catalog view change
+
+
+  var productWrap = document.getElementById('product-wrap');
+  var catalogChangeButtons = document.querySelectorAll('.grid-icon, .lines-icon');
+  /** @function changeCatalog
+   * @param {Event} event
+   */
+
+  function changeCatalog(event) {
+    event.preventDefault();
+    var type = event.target.dataset.type;
+
+    if (type == 'grid') {
+      productWrap.classList.remove('lines');
+    } else if (type == 'lines') {
+      productWrap.classList.add('lines');
+    }
+
+    var _iterator5 = _createForOfIteratorHelper(catalogChangeButtons),
+        _step5;
+
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var button = _step5.value;
+        button.classList.remove('active');
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
+    }
+
+    event.target.classList.add('active');
+  }
+
+  if (catalogChangeButtons.length !== 0 && productWrap) {
+    var _iterator6 = _createForOfIteratorHelper(catalogChangeButtons),
         _step6;
 
     try {
       for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-        var drop = _step6.value;
-        drop.classList.remove('active');
+        var button = _step6.value;
+        button.addEventListener('click', changeCatalog);
       }
     } catch (err) {
       _iterator6.e(err);
     } finally {
       _iterator6.f();
     }
+  } // Header interactions.
+
+
+  var headMenu = document.getElementById('header-menu');
+  var catalogMenuButton = document.querySelector('.catalog-menu-hover');
+  var catalogMenu = document.getElementById('catalog-menu');
+  var burgerButton = document.getElementById('burger-button');
+  var searchButton = document.querySelector('#toggle-search-button'); // Clicks on menu button.
+
+  /** @function toggleMenu */
+
+  function toggleMenu() {
+    headMenu.classList.toggle('active');
+  } // Hovers on menu button.
+
+  /** @function showHeadCatalog
+   * @param {Event} event
+   */
+
+
+  function showHeadCatalog(event) {
+    catalogMenu.classList.add('active');
+  }
+  /** @function hideHeadCatalog
+   * @param {Event} event
+   */
+
+
+  function hideHeadCatalog(event) {
+    if (event.relatedTarget) {
+      var classes = event.relatedTarget.classList;
+
+      if (!classes.contains('catalog-menu') && !classes.contains('catalog-menu-hover')) {
+        catalogMenu.classList.remove('active');
+      }
+    } else {
+      catalogMenu.classList.remove('active');
+    }
+  }
+  /** @function toggleSearch
+   * @param {Event} event
+   */
+
+
+  function toggleSearch(event) {
+    event.preventDefault();
+    event.target.closest('.header-search').classList.toggle('active');
   }
 
-  if (categoriesWraps.length !== 0) {
-    var _iterator7 = _createForOfIteratorHelper(categoriesWraps),
+  if (headMenu && catalogMenu && catalogMenuButton) {
+    catalogMenuButton.addEventListener('mouseenter', showHeadCatalog);
+    catalogMenuButton.addEventListener('mouseleave', hideHeadCatalog);
+    catalogMenu.addEventListener('mouseenter', showHeadCatalog);
+    catalogMenu.addEventListener('mouseleave', hideHeadCatalog);
+  }
+
+  if (burgerButton && headMenu) {
+    burgerButton.addEventListener('click', toggleMenu);
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener('click', toggleSearch);
+    var searchWrap = document.querySelector('.header-search');
+    searchWrap.addEventListener('keypress', function (event) {
+      if (event.code == 'Enter') {
+        console.log(event);
+        searchWrap.submit();
+      }
+    });
+  } // Product page characteristics.
+
+
+  var stats = document.getElementById('product-stats');
+  /** @function toggleMoreStats
+   * @param {Event} event
+   */
+
+  function toggleMoreStats() {
+    var target = event.target;
+
+    if (target.classList.contains('more')) {
+      event.preventDefault();
+      stats.querySelector('.product-info-list').classList.toggle('active');
+      var text = target.textContent;
+      target.textContent = target.dataset.text;
+      target.dataset.text = text;
+    }
+  }
+
+  if (stats) {
+    var list = stats.querySelector('.product-info-list');
+    var height = 0;
+
+    var _iterator7 = _createForOfIteratorHelper(list.children),
         _step7;
 
     try {
       for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-        var wrap = _step7.value;
-        wrap.addEventListener('click', showCategoryDropdown);
+        var child = _step7.value;
+        height += child.offsetHeight + 7;
       }
     } catch (err) {
       _iterator7.e(err);
     } finally {
       _iterator7.f();
     }
-  } // Footer dropdowns
 
-
-  var footerDrop = document.getElementById('footer-dropdowns');
-  /** @function footerDropdown
-  * @param {Event} event
-  */
-
-  function footerDropdown(event) {
-    if (event.target.classList.contains('show-stuff')) {
-      event.stopPropagation();
-      resetFooterDropdowns();
-      event.target.classList.add('active');
+    if (height < 210) {
+      stats.querySelector('.more').classList.add('js-none');
+    } else {
+      stats.addEventListener('click', toggleMoreStats);
     }
-  }
-  /** @function resetFooterDropdowns */
+  } // Initialize sliders.
 
 
-  function resetFooterDropdowns() {
-    var drops = document.getElementsByClassName('show-stuff');
+  new Swiper('.classic-adv-slider', {
+    spaceBetween: 20,
+    slidesPerView: 1,
+    navigation: {
+      nextEl: '.next-adv',
+      prevEl: '.prev-adv'
+    }
+  });
+  new Swiper('.main-new-products-slider', {
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centerInsufficientSlides: true,
+    setWrapperSize: true,
+    navigation: {
+      nextEl: '.next-new',
+      prevEl: '.prev-new'
+    },
+    breakpoints: {
+      400: {
+        slidesOffsetBefore: 0,
+        spaceBetween: 40,
+        slidesPerView: 1
+      },
+      550: {
+        slidesPerView: 1
+      },
+      800: {
+        slidesPerView: 2
+      }
+    }
+  });
+  new Swiper('.products-special-slider', {
+    spaceBetween: 30,
+    slidesPerView: 3,
+    centerInsufficientSlides: true,
+    setWrapperSize: true,
+    navigation: {
+      nextEl: '.next-special',
+      prevEl: '.prev-special'
+    },
+    breakpoints: {
+      400: {
+        slidesOffsetBefore: 0,
+        spaceBetween: 40,
+        slidesPerView: 1
+      },
+      550: {
+        slidesPerView: 1
+      },
+      800: {
+        slidesPerView: 2
+      }
+    }
+  });
+  new Swiper('.main-news-slider', {
+    spaceBetween: 42,
+    slidesPerView: 3,
+    centerInsufficientSlides: true,
+    setWrapperSize: true,
+    navigation: {
+      nextEl: '.next-news',
+      prevEl: '.prev-news'
+    },
+    breakpoints: {
+      400: {
+        slidesOffsetBefore: 0,
+        spaceBetween: 40,
+        slidesPerView: 1
+      },
+      550: {
+        slidesPerView: 1
+      },
+      800: {
+        slidesPerView: 2
+      }
+    }
+  });
+  var swiperProduct = new Swiper('.product-image-slider', {
+    spaceBetween: 10,
+    slidesPerView: 1,
+    loop: true,
+    loopedSlides: 5,
+    navigation: {
+      nextEl: '.next-image',
+      prevEl: '.prev-image'
+    },
+    pagination: {
+      el: '.product-slider-bullets',
+      type: 'bullets',
+      bulletElement: 'button',
+      clickable: true,
+      bulletClass: 'production-bullet'
+    }
+  });
+  var sliderImages = document.querySelectorAll('.product-image-slider img');
 
-    var _iterator8 = _createForOfIteratorHelper(drops),
+  if (sliderImages.length !== 0) {
+    var _iterator8 = _createForOfIteratorHelper(sliderImages),
         _step8;
 
     try {
       for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-        var drop = _step8.value;
-        drop.classList.remove('active');
+        var image = _step8.value;
+        image.width = image.naturalWidth;
+        image.height = image.naturalHeight;
       }
     } catch (err) {
       _iterator8.e(err);
@@ -744,2259 +678,77 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  if (footerDrop) {
-    footerDrop.addEventListener('click', footerDropdown);
-  } // Show/hide fixed button.
-
-
-  var returnButton = document.getElementById('return-top-button');
-  /** @function handleScroll
-  * @param {Event} event
-  */
-
-  function handleScroll(event) {
-    if (window.pageYOffset < 700) {
-      returnButton.classList.add('hide');
-    } else {
-      returnButton.classList.remove('hide');
+  var swiperProductThumbs = new Swiper('.product-thumbs-slider', {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    touchRatio: 0.2,
+    loop: true,
+    loopedSlides: 5,
+    slideToClickedSlide: true,
+    navigation: {
+      nextEl: '.next-image-thumb',
+      prevEl: '.prev-image-thumb'
     }
-  }
-  /** @function returnToTop */
+  }); // Wiring product sliders together on product page.
 
-
-  function returnToTop() {
-    var currentY = window.pageYOffset;
-    var distancePart = currentY / 20;
-
-    var _loop = function _loop(_i2) {
-      setTimeout(function () {
-        window.scrollTo(0, distancePart * _i2);
-      }, 20 * (20 - _i2));
-    };
-
-    for (var _i2 = 19; _i2 >= 0; _i2--) {
-      _loop(_i2);
-    }
+  if (swiperProduct.$el && swiperProductThumbs.$el) {
+    swiperProduct.controller.control = swiperProductThumbs;
+    swiperProductThumbs.controller.control = swiperProduct;
   }
 
-  if (returnButton) {
-    // Add handler to button itself.
-    returnButton.addEventListener('click', returnToTop); // Add scroll handler.
-
-    window.addEventListener('scroll', debounce(handleScroll, 100)); // Use it, when page has been loaded. But only if the button is present.
-
-    handleScroll();
-  } // Header menu.
-
-
-  var burgerButton = document.getElementById('head-burger');
-  var headMenu = document.getElementById('head-menu');
-  /** @function toggleMenu
-  * @param {Event} event
-  */
-
-  function toggleMenu(event) {
-    if (event.target.tagName.toLowerCase() !== 'a') {
-      event.preventDefault();
-      headMenu.classList.toggle('active');
-    }
-  }
-
-  if (burgerButton && headMenu) {
-    burgerButton.addEventListener('click', toggleMenu);
-    headMenu.addEventListener('click', toggleMenu);
-  }
-
-  if (headMenu) {
-    headerPopup(headMenu);
-  } // Header popup menu
-
-  /** @function headerPopup
-  * @param {HTMLElement} menuWrapper
-  */
-
-
-  function headerPopup(menuWrapper) {
-    var currentBranch = null;
-    /** @function showHeaderSubmenu
-    * @param {Event} event
-    */
-
-    function showHeaderSubmenu(event) {
-      var target = event.target;
-      var pimp = target.parentElement.querySelector('.menu-pimp');
-
-      if (target.tagName.toLowerCase() === 'a' && target.nextElementSibling && target.nextElementSibling.classList.contains('header-popup-menu')) {
-        target.nextElementSibling.classList.add('active');
-        pimp.setAttribute('style', 'left: ' + (target.offsetLeft + Math.ceil(target.offsetWidth / 2 - pimp.offsetWidth / 2)) + 'px;');
-        currentBranch = target.closest('.header-menu > .menu-item');
-      }
-    }
-    /** @function hideHeaderMenu
-    * @param {Event} event
-    */
-
-
-    function hideHeaderMenu(event) {
-      var related = event.relatedTarget;
-
-      if (!related || related.closest('.header-menu > .menu-item') != currentBranch) {
-        menuWrapper.querySelectorAll('.header-popup-menu').forEach(function (submenu) {
-          submenu.classList.remove('active');
-        });
-      }
-    }
-
-    menuWrapper.addEventListener('mouseover', showHeaderSubmenu);
-    menuWrapper.addEventListener('mouseout', hideHeaderMenu);
-  } // Mobile version of menu.
-
-  /** @function initMobileMenu
-  * @param {HTMLElement} el
-  * @param {HTMLElement} caller
-  */
-
-
-  function initMobileMenu(el, caller) {
-    if (!el || !caller) {
-      console.error('Provide menu element and button, that will open it!');
-      return;
-    }
-
-    var wrap = el;
-    var menuMap = null;
-    var currentMenu = [];
-    var popupBody = document.createElement('DIV');
-    popupBody.className = 'black-popup-wrap';
-    var menuIsOpenned = false; // Function, that return new menu every time. Old menu gets overwritten.
-
-    /** @function getTemplate
-    * @param {Map} map
-    * @return {String}
-    */
-
-    function getTemplate(map) {
-      var length = currentMenu.length;
-      var list = '';
-
-      var _iterator9 = _createForOfIteratorHelper(map),
-          _step9;
-
-      try {
-        for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-          var _step9$value = _slicedToArray(_step9.value, 2),
-              link = _step9$value[0],
-              value = _step9$value[1];
-
-          list += "\n          <div class=\"menu-item".concat(value.submenu ? ' has-sub' : '', "\">\n            <a ").concat(value.classes ? 'class="' + value.classes + '"' : '', "\n            href=\"").concat(value.href, "\">").concat(link, "</a>\n            ").concat(value.submenu ? '<button class="next-submenu"></button>' : '', "\n          </div>\n        ");
-        }
-      } catch (err) {
-        _iterator9.e(err);
-      } finally {
-        _iterator9.f();
-      }
-
-      return "\n        <div class=\"menu-wrapper\">\n          <div class=\"menu-top\">\n            <button class=\"back-to-parent".concat(length === 0 ? ' js-hide' : '', "\">\n              <svg width=\"15\" height=\"17\" viewBox=\"0 0 15 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.26203\n                16.6619L0.319526 9.31619C-0.106501 8.86542 -0.106501 8.13458\n                0.319527 7.68381L7.26203 0.338077C7.68805 -0.112694 8.37878\n                -0.112694 8.80481 0.338077C9.23083 0.788848 9.23083 1.51969\n                8.80481 1.97046L3.7246 7.34573L15 7.34573L15 9.65427L3.7246\n                9.65427L8.8048 15.0295C9.23083 15.4803 9.23083 16.2112 8.8048\n                16.6619C8.37878 17.1127 7.68805 17.1127 7.26203 16.6619Z\"\n                fill=\"white\"/>\n              </svg>\n            </button>\n            <form>\n              <input type=\"text\" class=\"menu-search site-input\"\n              placeholder=\"\u041F\u043E\u0438\u0441\u043A\">\n            </form>\n            <button class=\"exit-menu popup-cross\"></button>\n          </div>\n          <div class=\"current-place\">\n            ").concat(length === 0 ? 'Меню' : currentMenu[length - 1] + '', "\n          </div>\n          <div class=\"scrollable-list\" data-simplebar>\n            <div class=\"link-list\">\n              ").concat(list, "\n            </div>\n          </div>\n        </div>\n      ");
-    }
-    /** @function clickHandler
-    * @param {Event} event
-    */
-
-
-    function clickHandler(event) {
-      var target = event.target;
-
-      if (target.classList.contains('next-submenu')) {
-        enterSubmenu(target);
-      } else if (target.classList.contains('back-to-parent') || target.closest('.back-to-parent')) {
-        exitSubmenu();
-      } else if (target.classList.contains('exit-menu')) {
-        closeMenu();
-      }
-    }
-    /** @function enterSubmenu
-    * @param {HTMLElement} target
-    */
-
-
-    function enterSubmenu(target) {
-      var link = target.closest('.menu-item').querySelector('a').textContent.replace(/\s\s/g, '');
-      var menuItem = findMapItem(link, menuMap);
-
-      if (menuItem) {
-        currentMenu.push(menuItem.link);
-        renderMenu();
-      } else {
-        console.error('Submenu were not found!');
-      }
-    }
-    /** @function exitSubmenu */
-
-
-    function exitSubmenu() {
-      currentMenu.pop();
-      renderMenu();
-    }
-    /** @function closeMenu */
-
-
-    function closeMenu() {
-      if (menuIsOpenned) {
-        popupBody.remove();
-        menuIsOpenned = false;
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-      }
-    }
-    /** @function openMenu
-    * @param {Event} event
-    */
-
-
-    function openMenu(event) {
-      if (!menuIsOpenned) {
-        renderMenu();
-        document.body.appendChild(popupBody);
-        menuIsOpenned = true;
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    /** @function findMapItem
-    * @param {HTMLElement} target
-    * @param {Map} map
-    * @return {Object|Null}
-    */
-
-
-    function findMapItem(target, map) {
-      var tempArr = [];
-
-      var _iterator10 = _createForOfIteratorHelper(map),
-          _step10;
-
-      try {
-        for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-          var _step10$value = _slicedToArray(_step10.value, 2),
-              link = _step10$value[0],
-              value = _step10$value[1];
-
-          if (value.submenu === null) continue;
-
-          if (link === target) {
-            return {
-              link: link,
-              value: value
-            };
-          } else {
-            tempArr.push(value);
-          }
-        } // If it's not on this level, search deeper.
-
-      } catch (err) {
-        _iterator10.e(err);
-      } finally {
-        _iterator10.f();
-      }
-
-      var result = null;
-
-      for (var _i3 = 0, _tempArr = tempArr; _i3 < _tempArr.length; _i3++) {
-        var list = _tempArr[_i3];
-        result = findMapItem(target, list.submenu);
-
-        if (result) {
-          break;
-        }
-      }
-
-      return result;
-    } // Parse menu to make a map of it. Use map to navigate in menu.
-
-    /** @function parseMenu
-    * @param {HTMLElement} wrapper
-    * @return {Map}
-    */
-
-
-    function parseMenu(wrapper) {
-      var item = wrapper.querySelector('.menu-item');
-      if (!item) return null;
-      var children = item.parentElement.children;
-      var map = new Map();
-
-      for (var _i4 = 0; _i4 < children.length; _i4++) {
-        if (children[_i4].classList.contains('menu-item')) {
-          var submenu = children[_i4].querySelector('.submenu');
-
-          var linkName = children[_i4].querySelector('a').textContent.replace(/\s\s/g, '');
-
-          var linkHref = children[_i4].querySelector('a').href;
-
-          map.set(linkName, {
-            href: linkHref,
-            classes: children[_i4].querySelector('a').className,
-            submenu: submenu ? parseMenu(submenu) : null
-          });
-        } else if (children[_i4].classList.contains('menu-item-list')) {
-          var itemLists = children[_i4].querySelectorAll('.menu-item');
-
-          for (var j = 0; j < itemLists.length; j++) {
-            var _linkName = itemLists[j].querySelector('a').textContent.replace(/\s\s/g, '');
-
-            var _linkHref = itemLists[j].querySelector('a').href;
-            map.set(_linkName, {
-              href: _linkHref,
-              classes: itemLists[j].querySelector('a').className,
-              submenu: null
-            });
-          }
-        }
-      }
-
-      return map;
-    }
-
-    menuMap = parseMenu(wrap);
-    /* Render menu every time user clicks on something,
-      that is not link, or search field.*/
-
-    /** @function renderMenu */
-
-    function renderMenu() {
-      popupBody.classList.add('hide-scroll');
-      var menuItems = null;
-
-      if (currentMenu.length !== 0) {
-        menuItems = getMenu(currentMenu[currentMenu.length - 1], menuMap);
-      } else {
-        menuItems = menuMap;
-      }
-
-      popupBody.innerHTML = getTemplate(menuItems);
-      setTimeout(function () {
-        popupBody.classList.remove('hide-scroll');
-      });
-    }
-    /** @function getMenu
-    * @param {HTMLElement} elem
-    * @param {Map} map
-    * @return {Map|undefined}
-    */
-
-
-    function getMenu(elem, map) {
-      var mapItem = map.get(elem);
-
-      if (mapItem) {
-        return mapItem.submenu;
-      } else {
-        var result;
-
-        var _iterator11 = _createForOfIteratorHelper(menuMap),
-            _step11;
-
-        try {
-          for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-            var _step11$value = _slicedToArray(_step11.value, 2),
-                value = _step11$value[1];
-
-            if (value.submenu) {
-              result = getMenu(elem, value.submenu);
-              if (result) break;
-            }
-          }
-        } catch (err) {
-          _iterator11.e(err);
-        } finally {
-          _iterator11.f();
-        }
-
-        return result;
-      }
-    }
-
-    caller.addEventListener('click', openMenu);
-    popupBody.addEventListener('click', clickHandler);
-  }
-
-  if (headMenu) {
-    initMobileMenu(headMenu, burgerButton);
-  } // Function for hiding sidebars when they ar enot visible.
-
-  /** @function hideColumn
-  * @param {HTMLElement} wrap
-  * @param {HTMLElement} column
-  */
-
-
-  function hideColumn(wrap, column) {
-    if (getCoordinates(column).top + column.offsetHeight < window.pageYOffset) {
-      wrap.classList.add('hidden');
-    } else {
-      wrap.classList.remove('hidden');
-    }
-  } // News list scroll past column.
-
-
-  var expertColumn = document.getElementById('news-expert-column');
-  var newsListWrap = document.getElementById('news-wrap');
-  /** @function hideExpertColumn */
-
-  function hideExpertColumn() {
-    hideColumn(newsListWrap, expertColumn);
-  }
-
-  if (expertColumn && newsListWrap) {
-    window.addEventListener('scroll', debounce(hideExpertColumn, 100));
-    hideExpertColumn();
-  } // ... and Catalog scroll too.
-
-
-  var catalogWrap = document.querySelector('#catalog-wrap');
-  var catalogFilter = document.querySelector('#catalog-filter');
-  /** @function hideFilterColumn */
-
-  function hideFilterColumn() {
-    hideColumn(catalogWrap, catalogFilter);
-  } // Toggle filter groups
-
-  /** @function toggleFilterBlock
-  * @param {Event} event
-  */
-
-
-  function toggleFilterBlock(event) {
-    var target = event.target;
-
-    if (target.classList.contains('filter-item-title')) {
-      target.classList.toggle('hidden');
-    }
-  }
-  /** @function toggleFilter
-  * @param {Event} event
-  */
-
-
-  function toggleFilter(event) {
-    var target = event.target;
-
-    if (target.classList.contains('filter-toggle')) {
-      catalogFilter.classList.toggle('show');
-    }
-  }
-
-  if (catalogWrap && catalogFilter) {
-    window.addEventListener('scroll', debounce(hideFilterColumn, 100));
-    hideFilterColumn();
-    catalogFilter.addEventListener('click', toggleFilterBlock);
-    catalogFilter.addEventListener('click', toggleFilter);
-  } // Change catalog view.
-
-
-  var productWraps = document.querySelectorAll('.products-wrap');
-  var sortButtons = document.querySelectorAll('.sort-button');
-  /** @function changeCatalogView
-  * @param {Event} event
-  */
-
-  function changeCatalogView(event) {
-    var target = event.target;
-    if (!target.closest('.sort-button')) return;
-    event.preventDefault();
-
-    if (target.closest('.sort-button').dataset.view === 'lines') {
-      productWraps.forEach(function (wrap) {
-        wrap.classList.add('lines');
-      });
-      target.closest('.sort-button').classList.add('active');
-      document.querySelector('[data-view="grid"]').classList.remove('active');
-    } else {
-      productWraps.forEach(function (wrap) {
-        wrap.classList.remove('lines');
-      });
-      target.closest('.sort-button').classList.add('active');
-      document.querySelector('[data-view="lines"]').classList.remove('active');
-    }
-  }
-
-  if (productWraps.length !== 0 && sortButtons.length !== 0) {
-    sortButtons.forEach(function (button) {
-      button.addEventListener('click', changeCatalogView);
-    });
-  } // Solution page Calculator.
-
-  /** @function initCalculator
-  * @param {HTMLElement} elem
-  */
-
-
-  function initCalculator(elem) {
-    var wrap = elem;
-    var total = wrap.querySelector('.total-price span');
-    var removePopup = document.querySelector('#remove-product-popup');
-    var removePopupIsInitiated = false;
-    var products = new Map();
-    var targetCache = null;
-
-    var _iterator12 = _createForOfIteratorHelper(wrap.querySelectorAll('.product-item')),
-        _step12;
-
-    try {
-      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-        var product = _step12.value;
-        products.set(product.dataset.id, {
-          quantity: product.querySelector('[type="number"]').value,
-          price: +product.querySelector('.product-price span').textContent.replace(/\D/g, ''),
-          coefficient: product.dataset.coef && !isNaN(product.dataset.coef) ? +product.dataset.coef.replace(/[\s]/g, '') : 1
-        });
-      }
-    } catch (err) {
-      _iterator12.e(err);
-    } finally {
-      _iterator12.f();
-    }
-
-    var state = {
-      peopleNumber: +wrap.querySelector('[name="number-of-people"]').value.replace(/\D/g),
-      goods: products
-    };
-    /** @function handleHover
-    * @param {Event} event
-    */
-
-    var handleHover = function handleHover(event) {
-      var target = event.target.closest('.product-image img');
-
-      if (target) {
-        var imageWrap = document.createElement('DIV');
-        imageWrap.className = 'image-popup';
-
-        var _image = new Image(target.naturalWidth, target.naturalHeight);
-
-        _image.src = target.src;
-        _image.alt = target.alt;
-        imageWrap.appendChild(_image);
-        target.closest('.product-image').appendChild(imageWrap);
-
-        var _iterator13 = _createForOfIteratorHelper(target.closest('.solution-page-form').querySelectorAll('.product-item')),
-            _step13;
-
-        try {
-          for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-            var item = _step13.value;
-            item.classList.remove('active');
-          }
-        } catch (err) {
-          _iterator13.e(err);
-        } finally {
-          _iterator13.f();
-        }
-
-        target.closest('.product-item').classList.add('active');
-      }
-    };
-
-    handleHover = errorDecorator(handleHover);
-    /** @function handleOut
-    * @param {Event} event
-    */
-
-    var handleOut = function handleOut(event) {
-      var target = event.target.closest('.product-image img');
-
-      if (target) {
-        document.querySelectorAll('.image-popup').forEach(function (pop) {
-          pop.remove();
-        });
-      }
-    };
-
-    handleOut = errorDecorator(handleOut);
-    /** @function handleClick
-    * @param {Event} event
-    */
-
-    var handleClick = function handleClick(event) {
-      var target = event.target;
-
-      if (target.classList.contains('apply-changes')) {
-        event.preventDefault();
-        renderGoods();
-      } else if (target.classList.contains('product-cart-remove')) {
-        event.preventDefault();
-        showPopup(target);
-      } else if (target.closest('.product-quantity')) {
-        changeQuantity(target, event.type);
-      } else if (target.classList.contains('complete-order')) {
-        event.preventDefault();
-        submitForm();
-      }
-    };
-
-    handleClick = errorDecorator(handleClick);
-    /** @function render */
-
-    var render = function render() {
-      var totalPrice = 0;
-
-      var _iterator14 = _createForOfIteratorHelper(state.goods),
-          _step14;
-
-      try {
-        for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-          var _step14$value = _slicedToArray(_step14.value, 2),
-              value = _step14$value[1];
-
-          totalPrice += value.price * value.quantity;
-        }
-      } catch (err) {
-        _iterator14.e(err);
-      } finally {
-        _iterator14.f();
-      }
-
-      total.textContent = totalPrice;
-    };
-
-    render = errorDecorator(render);
-    /** @function renderGoods */
-
-    var renderGoods = function renderGoods() {
-      state.peopleNumber = wrap.querySelector('[name="number-of-people"]').value;
-
-      var _iterator15 = _createForOfIteratorHelper(state.goods),
-          _step15;
-
-      try {
-        for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-          var _step15$value = _slicedToArray(_step15.value, 2),
-              key = _step15$value[0],
-              value = _step15$value[1];
-
-          value.quantity = Math.ceil(state.peopleNumber * value.coefficient);
-          var prod = document.querySelector("[data-id=\"".concat(key, "\"]"));
-          prod.querySelector('[type="number"]').value = value.quantity;
-          prod.querySelector('[type="number"]').dispatchEvent(new Event('change-value'));
-        }
-      } catch (err) {
-        _iterator15.e(err);
-      } finally {
-        _iterator15.f();
-      }
-
-      render();
-    };
-
-    renderGoods = errorDecorator(renderGoods);
-    renderGoods();
-    /** @function popupHandler
-    * @param {Event} event
-    */
-
-    var popupHandler = function popupHandler(event) {
-      event.preventDefault();
-      var target = event.target;
-
-      if (target.dataset.action) {
-        if (target.dataset.action == 'cancel') {
-          removePopup.classList.add('js-none');
-        } else if (target.dataset.action == 'delete') {
-          removePopup.classList.add('js-none');
-          removeProduct(targetCache);
-          render();
-        }
-      }
-    };
-
-    popupHandler = errorDecorator(popupHandler);
-    /** @function showPopup
-    * @param {HTMLElement} target
-    */
-
-    var showPopup = function showPopup(target) {
-      removePopup.classList.remove('js-none');
-
-      if (!removePopupIsInitiated) {
-        removePopup.addEventListener('click', popupHandler);
-        removePopupIsInitiated = true;
-      }
-
-      targetCache = target;
-    };
-
-    showPopup = errorDecorator(showPopup);
-    /** @function removeProduct
-    * @param {HTMLElement} target
-    */
-
-    var removeProduct = function removeProduct(target) {
-      state.goods["delete"](target.closest('.product-item').dataset.id);
-      target.closest('.product-item').remove();
-      targetCache = null;
-    };
-
-    removeProduct = errorDecorator(removeProduct);
-    /** @function changeQuantity
-    * @param {HTMLElement} target
-    * @param {String} eventType
-    */
-
-    var changeQuantity = function changeQuantity(target, eventType) {
-      if (!target.closest('.product-item') || eventType !== 'change') return;
-      var key = target.closest('.product-item').dataset.id;
-      var values = state.goods.get(key);
-      values.quantity = target.value;
-      render();
-    };
-
-    changeQuantity = errorDecorator(changeQuantity);
-    /** @function submitForm */
-
-    var submitForm = function submitForm() {
-      var jsonArr = [{}];
-
-      var _iterator16 = _createForOfIteratorHelper(state.goods),
-          _step16;
-
-      try {
-        for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
-          var _step16$value = _slicedToArray(_step16.value, 2),
-              key = _step16$value[0],
-              value = _step16$value[1];
-
-          jsonArr[0][key] = value.quantity;
-        }
-      } catch (err) {
-        _iterator16.e(err);
-      } finally {
-        _iterator16.f();
-      }
-
-      console.log(jsonArr);
-      var requestData = JSON.stringify(jsonArr);
-      console.log(requestData); // Ajax here. Just send requestData.
-    };
-
-    submitForm = errorDecorator(submitForm);
-    render();
-    wrap.addEventListener('click', handleClick);
-    wrap.addEventListener('change', handleClick);
-    wrap.addEventListener('mouseover', handleHover);
-    wrap.addEventListener('mouseout', handleOut);
-  }
-
-  var solutionForms = document.querySelectorAll('.solution-page-form');
-
-  if (solutionForms.length !== 0) {
-    solutionForms.forEach(function (form) {
-      initCalculator(form);
-    });
-  }
-
-  var specialistPopupButton = document.querySelector('#ask-spec-button');
-  var specialistPopup = document.querySelector('#ask-specialist');
-  /** @function toggleSpecPopup
-  * @param {Event} event
-  */
-
-  function toggleSpecPopup(event) {
-    event.preventDefault();
-    var target = event.target;
-
-    if (target.closest('.popup-wrap') && (target.classList.contains('popup-close') || target.classList.contains('popup-wrap'))) {
-      specialistPopup.classList.toggle('js-none');
-    } else if (target.tagName.toLowerCase() == 'a') {
-      specialistPopup.classList.toggle('js-none');
-    }
-  }
-
-  if (specialistPopup && specialistPopupButton) {
-    specialistPopupButton.addEventListener('click', toggleSpecPopup);
-    specialistPopup.addEventListener('click', toggleSpecPopup);
-  } // Contacts form validation
-
-  /** @function validateContactsForm
-  * @param {Event} event
-  */
-
-
-  function validateContactsForm(event) {
-    var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    event.preventDefault();
-    var allowSubmit = true;
-    var email = event.target.querySelector('[name="email"]');
-
-    if (email.value.length < 5 || !email.value.match(emailRegex)) {
-      email.classList.add('js-invalid-input');
-      allowSubmit = false;
-    }
-
-    if (allowSubmit) {
-      console.log('ajax'); // ajax here
-    }
-  }
-  /** @function clearErrors
-  * @param {Event} event
-  */
-
-
-  function clearErrors(event) {
-    event.target.classList.remove('js-invalid-input');
-  }
-
-  var contactsForm = document.querySelector('#contacts-form');
-
-  if (contactsForm) {
-    contactsForm.addEventListener('submit', validateContactsForm);
-    contactsForm.addEventListener('input', clearErrors);
-    contactsForm.addEventListener('change', clearErrors);
-  } // Spread text on content pages.
-
-
-  var spreadButtons = document.querySelectorAll('.js-spread-text');
-
-  if (spreadButtons.length !== 0) {
-    document.body.addEventListener('click', function (event) {
-      var target = event.target;
-
-      if (target.classList.contains('js-spread-text')) {
-        event.preventDefault();
-
-        var _parent = target.closest('.page-content');
-
-        if (_parent) {
-          var dataText = target.textContent;
-          target.textContent = target.dataset.text;
-          target.dataset.text = dataText;
-
-          _parent.classList.toggle('show');
+  var swiperProductInteriorWrap = document.querySelector('.product-interior-slider .swiper-wrapper');
+
+  if (swiperProductInteriorWrap) {
+    new Swiper('.product-interior-slider', {
+      spaceBetween: 10,
+      slidesPerView: swiperProductInteriorWrap.children.length < 5 ? swiperProductInteriorWrap.children.length : 5,
+      navigation: {
+        nextEl: '.next-interior',
+        prevEl: '.prev-interior'
+      },
+      breakpoints: {
+        460: {
+          slidesPerView: 1
+        },
+        660: {
+          slidesPerView: swiperProductInteriorWrap.children.length < 2 ? swiperProductInteriorWrap.children.length : 2
+        },
+        960: {
+          slidesPerView: swiperProductInteriorWrap.children.length < 3 ? swiperProductInteriorWrap.children.length : 3
+        },
+        1120: {
+          slidesPerView: swiperProductInteriorWrap.children.length < 4 ? swiperProductInteriorWrap.children.length : 4
         }
       }
     });
+  } // Add to cart popup.
 
-    var _iterator17 = _createForOfIteratorHelper(spreadButtons),
-        _step17;
 
-    try {
-      for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-        var button = _step17.value;
+  var cartPopup = document.querySelector('#cart-popup');
+  /** @function closeCartPopups
+   * @param {Event} event
+   */
 
-        var _parent2 = button.closest('.page-content');
-
-        if (_parent2) {
-          if (_parent2.offsetHeight < 400) {
-            button.classList.add('js-none');
-          }
-        } else {
-          button.classList.add('js-none');
-        }
-      }
-    } catch (err) {
-      _iterator17.e(err);
-    } finally {
-      _iterator17.f();
+  function closeCartPopup(event) {
+    if (!event) {
+      cartPopup.classList.remove('active');
     }
-  }
 
-  var callPopup = document.querySelector('#call-popup');
-  var phonesWrap = document.querySelector('#phones-wrap');
-  /** @function togglePhonePopup
-  * @param {Event} event
-  */
-
-  function togglePhonesPopup(event) {
     var target = event.target;
 
-    if (target.dataset.action == 'open') {
-      var back = document.createElement('DIV');
-      back.classList.add('phones-wrap-back');
-      phonesWrap.classList.add('active');
-      document.body.appendChild(back);
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      setTimeout(function () {
-        back.classList.add('ready');
-      }, 500);
-    } else if (target.dataset.action == 'close') {
-      phonesWrap.classList.remove('active');
-      document.querySelectorAll('.phones-wrap-back').forEach(function (el) {
-        el.remove();
-      });
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
+    if (target.classList.contains('popup-wrap')) {
+      cartPopup.classList.remove('active');
     }
   }
 
-  if (callPopup && phonesWrap) {
-    callPopup.addEventListener('click', togglePhonesPopup);
-    phonesWrap.addEventListener('click', togglePhonesPopup);
+  if (cartPopup) {
+    cartPopup.addEventListener('click', closeCartPopup);
   }
 });
 
 /***/ }),
 
-/***/ 886:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _extends() {
-  return (_extends = Object.assign || function (t) {
-    for (var e = 1; e < arguments.length; e++) {
-      var n = arguments[e];
-
-      for (var o in n) {
-        Object.prototype.hasOwnProperty.call(n, o) && (t[o] = n[o]);
-      }
-    }
-
-    return t;
-  }).apply(this, arguments);
-}
-
-function _typeof(t) {
-  return (_typeof = "function" == typeof Symbol && "symbol" == _typeof2(Symbol.iterator) ? function (t) {
-    return _typeof2(t);
-  } : function (t) {
-    return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : _typeof2(t);
-  })(t);
-}
-
-!function (t, e) {
-  "object" === ( false ? 0 : _typeof(exports)) && "undefined" != "object" ? module.exports = e() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (e),
-		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-		__WEBPACK_AMD_DEFINE_FACTORY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : 0;
-}(this, function () {
-  "use strict";
-
-  var t = "undefined" != typeof window,
-      e = t && !("onscroll" in window) || "undefined" != typeof navigator && /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),
-      n = t && "IntersectionObserver" in window,
-      o = t && "classList" in document.createElement("p"),
-      r = {
-    elements_selector: "img",
-    container: e || t ? document : null,
-    threshold: 300,
-    thresholds: null,
-    data_src: "src",
-    data_srcset: "srcset",
-    data_sizes: "sizes",
-    data_bg: "bg",
-    class_loading: "loading",
-    class_loaded: "loaded",
-    class_error: "error",
-    load_delay: 0,
-    auto_unobserve: !0,
-    callback_enter: null,
-    callback_exit: null,
-    callback_reveal: null,
-    callback_loaded: null,
-    callback_error: null,
-    callback_finish: null,
-    use_native: !1
-  },
-      a = function a(t, e) {
-    var n,
-        o = new t(e);
-
-    try {
-      n = new CustomEvent("LazyLoad::Initialized", {
-        detail: {
-          instance: o
-        }
-      });
-    } catch (t) {
-      (n = document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized", !1, !1, {
-        instance: o
-      });
-    }
-
-    window.dispatchEvent(n);
-  };
-
-  var i = function i(t, e) {
-    return t.getAttribute("data-" + e);
-  },
-      s = function s(t, e, n) {
-    var o = "data-" + e;
-    null !== n ? t.setAttribute(o, n) : t.removeAttribute(o);
-  },
-      c = function c(t) {
-    return "true" === i(t, "was-processed");
-  },
-      l = function l(t, e) {
-    return s(t, "ll-timeout", e);
-  },
-      u = function u(t) {
-    return i(t, "ll-timeout");
-  },
-      d = function d(t, e) {
-    t && t(e);
-  },
-      f = function f(t, e) {
-    t._loadingCount += e, 0 === t._elements.length && 0 === t._loadingCount && d(t._settings.callback_finish);
-  },
-      _ = function _(t) {
-    for (var e, n = [], o = 0; e = t.children[o]; o += 1) {
-      "SOURCE" === e.tagName && n.push(e);
-    }
-
-    return n;
-  },
-      v = function v(t, e, n) {
-    n && t.setAttribute(e, n);
-  },
-      g = function g(t, e) {
-    v(t, "sizes", i(t, e.data_sizes)), v(t, "srcset", i(t, e.data_srcset)), v(t, "src", i(t, e.data_src));
-  },
-      m = {
-    IMG: function IMG(t, e) {
-      var n = t.parentNode;
-      n && "PICTURE" === n.tagName && _(n).forEach(function (t) {
-        g(t, e);
-      });
-      g(t, e);
-    },
-    IFRAME: function IFRAME(t, e) {
-      v(t, "src", i(t, e.data_src));
-    },
-    VIDEO: function VIDEO(t, e) {
-      _(t).forEach(function (t) {
-        v(t, "src", i(t, e.data_src));
-      }), v(t, "src", i(t, e.data_src)), t.load();
-    }
-  },
-      b = function b(t, e) {
-    var n,
-        o,
-        r = e._settings,
-        a = t.tagName,
-        s = m[a];
-    if (s) return s(t, r), f(e, 1), void (e._elements = (n = e._elements, o = t, n.filter(function (t) {
-      return t !== o;
-    })));
-    !function (t, e) {
-      var n = i(t, e.data_src),
-          o = i(t, e.data_bg);
-      n && (t.style.backgroundImage = 'url("'.concat(n, '")')), o && (t.style.backgroundImage = o);
-    }(t, r);
-  },
-      h = function h(t, e) {
-    o ? t.classList.add(e) : t.className += (t.className ? " " : "") + e;
-  },
-      p = function p(t, e, n) {
-    t.addEventListener(e, n);
-  },
-      y = function y(t, e, n) {
-    t.removeEventListener(e, n);
-  },
-      E = function E(t, e, n) {
-    y(t, "load", e), y(t, "loadeddata", e), y(t, "error", n);
-  },
-      w = function w(t, e, n) {
-    var r = n._settings,
-        a = e ? r.class_loaded : r.class_error,
-        i = e ? r.callback_loaded : r.callback_error,
-        s = t.target;
-    !function (t, e) {
-      o ? t.classList.remove(e) : t.className = t.className.replace(new RegExp("(^|\\s+)" + e + "(\\s+|$)"), " ").replace(/^\s+/, "").replace(/\s+$/, "");
-    }(s, r.class_loading), h(s, a), d(i, s), f(n, -1);
-  },
-      I = function I(t, e) {
-    var n = function n(r) {
-      w(r, !0, e), E(t, n, o);
-    },
-        o = function o(r) {
-      w(r, !1, e), E(t, n, o);
-    };
-
-    !function (t, e, n) {
-      p(t, "load", e), p(t, "loadeddata", e), p(t, "error", n);
-    }(t, n, o);
-  },
-      k = ["IMG", "IFRAME", "VIDEO"],
-      A = function A(t, e) {
-    var n = e._observer;
-    z(t, e), n && e._settings.auto_unobserve && n.unobserve(t);
-  },
-      L = function L(t) {
-    var e = u(t);
-    e && (clearTimeout(e), l(t, null));
-  },
-      x = function x(t, e) {
-    var n = e._settings.load_delay,
-        o = u(t);
-    o || (o = setTimeout(function () {
-      A(t, e), L(t);
-    }, n), l(t, o));
-  },
-      z = function z(t, e, n) {
-    var o = e._settings;
-    !n && c(t) || (k.indexOf(t.tagName) > -1 && (I(t, e), h(t, o.class_loading)), b(t, e), function (t) {
-      s(t, "was-processed", "true");
-    }(t), d(o.callback_reveal, t), d(o.callback_set, t));
-  },
-      O = function O(t) {
-    return !!n && (t._observer = new IntersectionObserver(function (e) {
-      e.forEach(function (e) {
-        return function (t) {
-          return t.isIntersecting || t.intersectionRatio > 0;
-        }(e) ? function (t, e) {
-          var n = e._settings;
-          d(n.callback_enter, t), n.load_delay ? x(t, e) : A(t, e);
-        }(e.target, t) : function (t, e) {
-          var n = e._settings;
-          d(n.callback_exit, t), n.load_delay && L(t);
-        }(e.target, t);
-      });
-    }, {
-      root: (e = t._settings).container === document ? null : e.container,
-      rootMargin: e.thresholds || e.threshold + "px"
-    }), !0);
-    var e;
-  },
-      N = ["IMG", "IFRAME"],
-      C = function C(t, e) {
-    return function (t) {
-      return t.filter(function (t) {
-        return !c(t);
-      });
-    }((n = t || function (t) {
-      return t.container.querySelectorAll(t.elements_selector);
-    }(e), Array.prototype.slice.call(n)));
-    var n;
-  },
-      M = function M(t, e) {
-    this._settings = function (t) {
-      return _extends({}, r, t);
-    }(t), this._loadingCount = 0, O(this), this.update(e);
-  };
-
-  return M.prototype = {
-    update: function update(t) {
-      var n,
-          o = this,
-          r = this._settings;
-      (this._elements = C(t, r), !e && this._observer) ? (function (t) {
-        return t.use_native && "loading" in HTMLImageElement.prototype;
-      }(r) && ((n = this)._elements.forEach(function (t) {
-        -1 !== N.indexOf(t.tagName) && (t.setAttribute("loading", "lazy"), z(t, n));
-      }), this._elements = C(t, r)), this._elements.forEach(function (t) {
-        o._observer.observe(t);
-      })) : this.loadAll();
-    },
-    destroy: function destroy() {
-      var t = this;
-      this._observer && (this._elements.forEach(function (e) {
-        t._observer.unobserve(e);
-      }), this._observer = null), this._elements = null, this._settings = null;
-    },
-    load: function load(t, e) {
-      z(t, this, e);
-    },
-    loadAll: function loadAll() {
-      var t = this;
-
-      this._elements.forEach(function (e) {
-        A(e, t);
-      });
-    }
-  }, t && function (t, e) {
-    if (e) if (e.length) for (var n, o = 0; n = e[o]; o += 1) {
-      a(t, n);
-    } else a(t, e);
-  }(M, window.lazyLoadOptions), M;
-});
-
-/***/ }),
-
-/***/ 414:
-/***/ ((module, exports) => {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*! nouislider - 14.0.2 - 6/28/2019 */
-!function (t) {
-   true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
-		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : 0;
-}(function () {
-  "use strict";
-
-  var lt = "14.0.2";
-
-  function ut(t) {
-    t.parentElement.removeChild(t);
-  }
-
-  function s(t) {
-    return null != t;
-  }
-
-  function ct(t) {
-    t.preventDefault();
-  }
-
-  function i(t) {
-    return "number" == typeof t && !isNaN(t) && isFinite(t);
-  }
-
-  function pt(t, e, r) {
-    0 < r && (ht(t, e), setTimeout(function () {
-      mt(t, e);
-    }, r));
-  }
-
-  function ft(t) {
-    return Math.max(Math.min(t, 100), 0);
-  }
-
-  function dt(t) {
-    return Array.isArray(t) ? t : [t];
-  }
-
-  function e(t) {
-    var e = (t = String(t)).split(".");
-    return 1 < e.length ? e[1].length : 0;
-  }
-
-  function ht(t, e) {
-    t.classList ? t.classList.add(e) : t.className += " " + e;
-  }
-
-  function mt(t, e) {
-    t.classList ? t.classList.remove(e) : t.className = t.className.replace(new RegExp("(^|\\b)" + e.split(" ").join("|") + "(\\b|$)", "gi"), " ");
-  }
-
-  function gt(t) {
-    var e = void 0 !== window.pageXOffset,
-        r = "CSS1Compat" === (t.compatMode || "");
-    return {
-      x: e ? window.pageXOffset : r ? t.documentElement.scrollLeft : t.body.scrollLeft,
-      y: e ? window.pageYOffset : r ? t.documentElement.scrollTop : t.body.scrollTop
-    };
-  }
-
-  function c(t, e) {
-    return 100 / (e - t);
-  }
-
-  function p(t, e) {
-    return 100 * e / (t[1] - t[0]);
-  }
-
-  function f(t, e) {
-    for (var r = 1; t >= e[r];) {
-      r += 1;
-    }
-
-    return r;
-  }
-
-  function r(t, e, r) {
-    if (r >= t.slice(-1)[0]) return 100;
-    var n,
-        i,
-        o = f(r, t),
-        a = t[o - 1],
-        s = t[o],
-        l = e[o - 1],
-        u = e[o];
-    return l + (i = r, p(n = [a, s], n[0] < 0 ? i + Math.abs(n[0]) : i - n[0]) / c(l, u));
-  }
-
-  function n(t, e, r, n) {
-    if (100 === n) return n;
-    var i,
-        o,
-        a = f(n, t),
-        s = t[a - 1],
-        l = t[a];
-    return r ? (l - s) / 2 < n - s ? l : s : e[a - 1] ? t[a - 1] + (i = n - t[a - 1], o = e[a - 1], Math.round(i / o) * o) : n;
-  }
-
-  function o(t, e, r) {
-    var n;
-    if ("number" == typeof e && (e = [e]), !Array.isArray(e)) throw new Error("noUiSlider (" + lt + "): 'range' contains invalid value.");
-    if (!i(n = "min" === t ? 0 : "max" === t ? 100 : parseFloat(t)) || !i(e[0])) throw new Error("noUiSlider (" + lt + "): 'range' value isn't numeric.");
-    r.xPct.push(n), r.xVal.push(e[0]), n ? r.xSteps.push(!isNaN(e[1]) && e[1]) : isNaN(e[1]) || (r.xSteps[0] = e[1]), r.xHighestCompleteStep.push(0);
-  }
-
-  function a(t, e, r) {
-    if (e) if (r.xVal[t] !== r.xVal[t + 1]) {
-      r.xSteps[t] = p([r.xVal[t], r.xVal[t + 1]], e) / c(r.xPct[t], r.xPct[t + 1]);
-      var n = (r.xVal[t + 1] - r.xVal[t]) / r.xNumSteps[t],
-          i = Math.ceil(Number(n.toFixed(3)) - 1),
-          o = r.xVal[t] + r.xNumSteps[t] * i;
-      r.xHighestCompleteStep[t] = o;
-    } else r.xSteps[t] = r.xHighestCompleteStep[t] = r.xVal[t];
-  }
-
-  function l(t, e, r) {
-    var n;
-    this.xPct = [], this.xVal = [], this.xSteps = [r || !1], this.xNumSteps = [!1], this.xHighestCompleteStep = [], this.snap = e;
-    var i = [];
-
-    for (n in t) {
-      t.hasOwnProperty(n) && i.push([t[n], n]);
-    }
-
-    for (i.length && "object" == _typeof(i[0][0]) ? i.sort(function (t, e) {
-      return t[0][0] - e[0][0];
-    }) : i.sort(function (t, e) {
-      return t[0] - e[0];
-    }), n = 0; n < i.length; n++) {
-      o(i[n][1], i[n][0], this);
-    }
-
-    for (this.xNumSteps = this.xSteps.slice(0), n = 0; n < this.xNumSteps.length; n++) {
-      a(n, this.xNumSteps[n], this);
-    }
-  }
-
-  l.prototype.getMargin = function (t) {
-    var e = this.xNumSteps[0];
-    if (e && t / e % 1 != 0) throw new Error("noUiSlider (" + lt + "): 'limit', 'margin' and 'padding' must be divisible by step.");
-    return 2 === this.xPct.length && p(this.xVal, t);
-  }, l.prototype.toStepping = function (t) {
-    return t = r(this.xVal, this.xPct, t);
-  }, l.prototype.fromStepping = function (t) {
-    return function (t, e, r) {
-      if (100 <= r) return t.slice(-1)[0];
-      var n,
-          i = f(r, e),
-          o = t[i - 1],
-          a = t[i],
-          s = e[i - 1],
-          l = e[i];
-      return n = [o, a], (r - s) * c(s, l) * (n[1] - n[0]) / 100 + n[0];
-    }(this.xVal, this.xPct, t);
-  }, l.prototype.getStep = function (t) {
-    return t = n(this.xPct, this.xSteps, this.snap, t);
-  }, l.prototype.getDefaultStep = function (t, e, r) {
-    var n = f(t, this.xPct);
-    return (100 === t || e && t === this.xPct[n - 1]) && (n = Math.max(n - 1, 1)), (this.xVal[n] - this.xVal[n - 1]) / r;
-  }, l.prototype.getNearbySteps = function (t) {
-    var e = f(t, this.xPct);
-    return {
-      stepBefore: {
-        startValue: this.xVal[e - 2],
-        step: this.xNumSteps[e - 2],
-        highestStep: this.xHighestCompleteStep[e - 2]
-      },
-      thisStep: {
-        startValue: this.xVal[e - 1],
-        step: this.xNumSteps[e - 1],
-        highestStep: this.xHighestCompleteStep[e - 1]
-      },
-      stepAfter: {
-        startValue: this.xVal[e],
-        step: this.xNumSteps[e],
-        highestStep: this.xHighestCompleteStep[e]
-      }
-    };
-  }, l.prototype.countStepDecimals = function () {
-    var t = this.xNumSteps.map(e);
-    return Math.max.apply(null, t);
-  }, l.prototype.convert = function (t) {
-    return this.getStep(this.toStepping(t));
-  };
-  var u = {
-    to: function to(t) {
-      return void 0 !== t && t.toFixed(2);
-    },
-    from: Number
-  };
-
-  function d(t) {
-    if ("object" == _typeof(e = t) && "function" == typeof e.to && "function" == typeof e.from) return !0;
-    var e;
-    throw new Error("noUiSlider (" + lt + "): 'format' requires 'to' and 'from' methods.");
-  }
-
-  function h(t, e) {
-    if (!i(e)) throw new Error("noUiSlider (" + lt + "): 'step' is not numeric.");
-    t.singleStep = e;
-  }
-
-  function m(t, e) {
-    if ("object" != _typeof(e) || Array.isArray(e)) throw new Error("noUiSlider (" + lt + "): 'range' is not an object.");
-    if (void 0 === e.min || void 0 === e.max) throw new Error("noUiSlider (" + lt + "): Missing 'min' or 'max' in 'range'.");
-    if (e.min === e.max) throw new Error("noUiSlider (" + lt + "): 'range' 'min' and 'max' cannot be equal.");
-    t.spectrum = new l(e, t.snap, t.singleStep);
-  }
-
-  function g(t, e) {
-    if (e = dt(e), !Array.isArray(e) || !e.length) throw new Error("noUiSlider (" + lt + "): 'start' option is incorrect.");
-    t.handles = e.length, t.start = e;
-  }
-
-  function v(t, e) {
-    if ("boolean" != typeof (t.snap = e)) throw new Error("noUiSlider (" + lt + "): 'snap' option must be a boolean.");
-  }
-
-  function b(t, e) {
-    if ("boolean" != typeof (t.animate = e)) throw new Error("noUiSlider (" + lt + "): 'animate' option must be a boolean.");
-  }
-
-  function S(t, e) {
-    if ("number" != typeof (t.animationDuration = e)) throw new Error("noUiSlider (" + lt + "): 'animationDuration' option must be a number.");
-  }
-
-  function x(t, e) {
-    var r,
-        n = [!1];
-
-    if ("lower" === e ? e = [!0, !1] : "upper" === e && (e = [!1, !0]), !0 === e || !1 === e) {
-      for (r = 1; r < t.handles; r++) {
-        n.push(e);
-      }
-
-      n.push(!1);
-    } else {
-      if (!Array.isArray(e) || !e.length || e.length !== t.handles + 1) throw new Error("noUiSlider (" + lt + "): 'connect' option doesn't match handle count.");
-      n = e;
-    }
-
-    t.connect = n;
-  }
-
-  function w(t, e) {
-    switch (e) {
-      case "horizontal":
-        t.ort = 0;
-        break;
-
-      case "vertical":
-        t.ort = 1;
-        break;
-
-      default:
-        throw new Error("noUiSlider (" + lt + "): 'orientation' option is invalid.");
-    }
-  }
-
-  function y(t, e) {
-    if (!i(e)) throw new Error("noUiSlider (" + lt + "): 'margin' option must be numeric.");
-    if (0 !== e && (t.margin = t.spectrum.getMargin(e), !t.margin)) throw new Error("noUiSlider (" + lt + "): 'margin' option is only supported on linear sliders.");
-  }
-
-  function E(t, e) {
-    if (!i(e)) throw new Error("noUiSlider (" + lt + "): 'limit' option must be numeric.");
-    if (t.limit = t.spectrum.getMargin(e), !t.limit || t.handles < 2) throw new Error("noUiSlider (" + lt + "): 'limit' option is only supported on linear sliders with 2 or more handles.");
-  }
-
-  function C(t, e) {
-    if (!i(e) && !Array.isArray(e)) throw new Error("noUiSlider (" + lt + "): 'padding' option must be numeric or array of exactly 2 numbers.");
-    if (Array.isArray(e) && 2 !== e.length && !i(e[0]) && !i(e[1])) throw new Error("noUiSlider (" + lt + "): 'padding' option must be numeric or array of exactly 2 numbers.");
-
-    if (0 !== e) {
-      if (Array.isArray(e) || (e = [e, e]), !(t.padding = [t.spectrum.getMargin(e[0]), t.spectrum.getMargin(e[1])]) === t.padding[0] || !1 === t.padding[1]) throw new Error("noUiSlider (" + lt + "): 'padding' option is only supported on linear sliders.");
-      if (t.padding[0] < 0 || t.padding[1] < 0) throw new Error("noUiSlider (" + lt + "): 'padding' option must be a positive number(s).");
-      if (100 < t.padding[0] + t.padding[1]) throw new Error("noUiSlider (" + lt + "): 'padding' option must not exceed 100% of the range.");
-    }
-  }
-
-  function N(t, e) {
-    switch (e) {
-      case "ltr":
-        t.dir = 0;
-        break;
-
-      case "rtl":
-        t.dir = 1;
-        break;
-
-      default:
-        throw new Error("noUiSlider (" + lt + "): 'direction' option was not recognized.");
-    }
-  }
-
-  function U(t, e) {
-    if ("string" != typeof e) throw new Error("noUiSlider (" + lt + "): 'behaviour' must be a string containing options.");
-    var r = 0 <= e.indexOf("tap"),
-        n = 0 <= e.indexOf("drag"),
-        i = 0 <= e.indexOf("fixed"),
-        o = 0 <= e.indexOf("snap"),
-        a = 0 <= e.indexOf("hover"),
-        s = 0 <= e.indexOf("unconstrained");
-
-    if (i) {
-      if (2 !== t.handles) throw new Error("noUiSlider (" + lt + "): 'fixed' behaviour must be used with 2 handles");
-      y(t, t.start[1] - t.start[0]);
-    }
-
-    if (s && (t.margin || t.limit)) throw new Error("noUiSlider (" + lt + "): 'unconstrained' behaviour cannot be used with margin or limit");
-    t.events = {
-      tap: r || o,
-      drag: n,
-      fixed: i,
-      snap: o,
-      hover: a,
-      unconstrained: s
-    };
-  }
-
-  function k(t, e) {
-    if (!1 !== e) if (!0 === e) {
-      t.tooltips = [];
-
-      for (var r = 0; r < t.handles; r++) {
-        t.tooltips.push(!0);
-      }
-    } else {
-      if (t.tooltips = dt(e), t.tooltips.length !== t.handles) throw new Error("noUiSlider (" + lt + "): must pass a formatter for all handles.");
-      t.tooltips.forEach(function (t) {
-        if ("boolean" != typeof t && ("object" != _typeof(t) || "function" != typeof t.to)) throw new Error("noUiSlider (" + lt + "): 'tooltips' must be passed a formatter or 'false'.");
-      });
-    }
-  }
-
-  function P(t, e) {
-    d(t.ariaFormat = e);
-  }
-
-  function A(t, e) {
-    d(t.format = e);
-  }
-
-  function V(t, e) {
-    if ("boolean" != typeof (t.keyboardSupport = e)) throw new Error("noUiSlider (" + lt + "): 'keyboardSupport' option must be a boolean.");
-  }
-
-  function M(t, e) {
-    t.documentElement = e;
-  }
-
-  function O(t, e) {
-    if ("string" != typeof e && !1 !== e) throw new Error("noUiSlider (" + lt + "): 'cssPrefix' must be a string or `false`.");
-    t.cssPrefix = e;
-  }
-
-  function L(t, e) {
-    if ("object" != _typeof(e)) throw new Error("noUiSlider (" + lt + "): 'cssClasses' must be an object.");
-    if ("string" == typeof t.cssPrefix) for (var r in t.cssClasses = {}, e) {
-      e.hasOwnProperty(r) && (t.cssClasses[r] = t.cssPrefix + e[r]);
-    } else t.cssClasses = e;
-  }
-
-  function vt(e) {
-    var r = {
-      margin: 0,
-      limit: 0,
-      padding: 0,
-      animate: !0,
-      animationDuration: 300,
-      ariaFormat: u,
-      format: u
-    },
-        n = {
-      step: {
-        r: !1,
-        t: h
-      },
-      start: {
-        r: !0,
-        t: g
-      },
-      connect: {
-        r: !0,
-        t: x
-      },
-      direction: {
-        r: !0,
-        t: N
-      },
-      snap: {
-        r: !1,
-        t: v
-      },
-      animate: {
-        r: !1,
-        t: b
-      },
-      animationDuration: {
-        r: !1,
-        t: S
-      },
-      range: {
-        r: !0,
-        t: m
-      },
-      orientation: {
-        r: !1,
-        t: w
-      },
-      margin: {
-        r: !1,
-        t: y
-      },
-      limit: {
-        r: !1,
-        t: E
-      },
-      padding: {
-        r: !1,
-        t: C
-      },
-      behaviour: {
-        r: !0,
-        t: U
-      },
-      ariaFormat: {
-        r: !1,
-        t: P
-      },
-      format: {
-        r: !1,
-        t: A
-      },
-      tooltips: {
-        r: !1,
-        t: k
-      },
-      keyboardSupport: {
-        r: !0,
-        t: V
-      },
-      documentElement: {
-        r: !1,
-        t: M
-      },
-      cssPrefix: {
-        r: !0,
-        t: O
-      },
-      cssClasses: {
-        r: !0,
-        t: L
-      }
-    },
-        i = {
-      connect: !1,
-      direction: "ltr",
-      behaviour: "tap",
-      orientation: "horizontal",
-      keyboardSupport: !0,
-      cssPrefix: "noUi-",
-      cssClasses: {
-        target: "target",
-        base: "base",
-        origin: "origin",
-        handle: "handle",
-        handleLower: "handle-lower",
-        handleUpper: "handle-upper",
-        touchArea: "touch-area",
-        horizontal: "horizontal",
-        vertical: "vertical",
-        background: "background",
-        connect: "connect",
-        connects: "connects",
-        ltr: "ltr",
-        rtl: "rtl",
-        draggable: "draggable",
-        drag: "state-drag",
-        tap: "state-tap",
-        active: "active",
-        tooltip: "tooltip",
-        pips: "pips",
-        pipsHorizontal: "pips-horizontal",
-        pipsVertical: "pips-vertical",
-        marker: "marker",
-        markerHorizontal: "marker-horizontal",
-        markerVertical: "marker-vertical",
-        markerNormal: "marker-normal",
-        markerLarge: "marker-large",
-        markerSub: "marker-sub",
-        value: "value",
-        valueHorizontal: "value-horizontal",
-        valueVertical: "value-vertical",
-        valueNormal: "value-normal",
-        valueLarge: "value-large",
-        valueSub: "value-sub"
-      }
-    };
-    e.format && !e.ariaFormat && (e.ariaFormat = e.format), Object.keys(n).forEach(function (t) {
-      if (!s(e[t]) && void 0 === i[t]) {
-        if (n[t].r) throw new Error("noUiSlider (" + lt + "): '" + t + "' is required.");
-        return !0;
-      }
-
-      n[t].t(r, s(e[t]) ? e[t] : i[t]);
-    }), r.pips = e.pips;
-    var t = document.createElement("div"),
-        o = void 0 !== t.style.msTransform,
-        a = void 0 !== t.style.transform;
-    r.transformRule = a ? "transform" : o ? "msTransform" : "webkitTransform";
-    return r.style = [["left", "top"], ["right", "bottom"]][r.dir][r.ort], r;
-  }
-
-  function z(t, f, o) {
-    var l,
-        u,
-        a,
-        c,
-        i,
-        s,
-        e,
-        p,
-        d = window.navigator.pointerEnabled ? {
-      start: "pointerdown",
-      move: "pointermove",
-      end: "pointerup"
-    } : window.navigator.msPointerEnabled ? {
-      start: "MSPointerDown",
-      move: "MSPointerMove",
-      end: "MSPointerUp"
-    } : {
-      start: "mousedown touchstart",
-      move: "mousemove touchmove",
-      end: "mouseup touchend"
-    },
-        h = window.CSS && CSS.supports && CSS.supports("touch-action", "none") && function () {
-      var t = !1;
-
-      try {
-        var e = Object.defineProperty({}, "passive", {
-          get: function get() {
-            t = !0;
-          }
-        });
-        window.addEventListener("test", null, e);
-      } catch (t) {}
-
-      return t;
-    }(),
-        y = t,
-        E = f.spectrum,
-        m = [],
-        g = [],
-        v = [],
-        b = 0,
-        S = {},
-        x = t.ownerDocument,
-        w = f.documentElement || x.documentElement,
-        C = x.body,
-        N = -1,
-        U = 0,
-        k = 1,
-        P = 2,
-        A = "rtl" === x.dir || 1 === f.ort ? 0 : 100;
-
-    function V(t, e) {
-      var r = x.createElement("div");
-      return e && ht(r, e), t.appendChild(r), r;
-    }
-
-    function M(t, e) {
-      var r = V(t, f.cssClasses.origin),
-          n = V(r, f.cssClasses.handle);
-      return V(n, f.cssClasses.touchArea), n.setAttribute("data-handle", e), f.keyboardSupport && (n.setAttribute("tabindex", "0"), n.addEventListener("keydown", function (t) {
-        return function (t, e) {
-          if (L() || z(e)) return !1;
-          var r = ["Left", "Right"],
-              n = ["Down", "Up"];
-          f.dir && !f.ort ? r.reverse() : f.ort && !f.dir && n.reverse();
-          var i = t.key.replace("Arrow", ""),
-              o = i === n[0] || i === r[0],
-              a = i === n[1] || i === r[1];
-          if (!o && !a) return !0;
-          t.preventDefault();
-          var s = o ? 0 : 1,
-              l = st(e)[s];
-          if (null === l) return !1;
-          !1 === l && (l = E.getDefaultStep(g[e], o, 10));
-          return l = Math.max(l, 1e-7), l *= o ? -1 : 1, rt(e, E.toStepping(m[e] + l), !0, !0), J("slide", e), J("update", e), J("change", e), J("set", e), !1;
-        }(t, e);
-      })), n.setAttribute("role", "slider"), n.setAttribute("aria-orientation", f.ort ? "vertical" : "horizontal"), 0 === e ? ht(n, f.cssClasses.handleLower) : e === f.handles - 1 && ht(n, f.cssClasses.handleUpper), r;
-    }
-
-    function O(t, e) {
-      return !!e && V(t, f.cssClasses.connect);
-    }
-
-    function r(t, e) {
-      return !!f.tooltips[e] && V(t.firstChild, f.cssClasses.tooltip);
-    }
-
-    function L() {
-      return y.hasAttribute("disabled");
-    }
-
-    function z(t) {
-      return u[t].hasAttribute("disabled");
-    }
-
-    function j() {
-      i && (G("update.tooltips"), i.forEach(function (t) {
-        t && ut(t);
-      }), i = null);
-    }
-
-    function H() {
-      j(), i = u.map(r), $("update.tooltips", function (t, e, r) {
-        if (i[e]) {
-          var n = t[e];
-          !0 !== f.tooltips[e] && (n = f.tooltips[e].to(r[e])), i[e].innerHTML = n;
-        }
-      });
-    }
-
-    function F(e, i, o) {
-      var a = x.createElement("div"),
-          s = [];
-      s[U] = f.cssClasses.valueNormal, s[k] = f.cssClasses.valueLarge, s[P] = f.cssClasses.valueSub;
-      var l = [];
-      l[U] = f.cssClasses.markerNormal, l[k] = f.cssClasses.markerLarge, l[P] = f.cssClasses.markerSub;
-      var u = [f.cssClasses.valueHorizontal, f.cssClasses.valueVertical],
-          c = [f.cssClasses.markerHorizontal, f.cssClasses.markerVertical];
-
-      function p(t, e) {
-        var r = e === f.cssClasses.value,
-            n = r ? s : l;
-        return e + " " + (r ? u : c)[f.ort] + " " + n[t];
-      }
-
-      return ht(a, f.cssClasses.pips), ht(a, 0 === f.ort ? f.cssClasses.pipsHorizontal : f.cssClasses.pipsVertical), Object.keys(e).forEach(function (t) {
-        !function (t, e, r) {
-          if ((r = i ? i(e, r) : r) !== N) {
-            var n = V(a, !1);
-            n.className = p(r, f.cssClasses.marker), n.style[f.style] = t + "%", U < r && ((n = V(a, !1)).className = p(r, f.cssClasses.value), n.setAttribute("data-value", e), n.style[f.style] = t + "%", n.innerHTML = o.to(e));
-          }
-        }(t, e[t][0], e[t][1]);
-      }), a;
-    }
-
-    function D() {
-      c && (ut(c), c = null);
-    }
-
-    function T(t) {
-      D();
-
-      var m,
-          g,
-          v,
-          b,
-          e,
-          r,
-          S,
-          x,
-          w,
-          n = t.mode,
-          i = t.density || 1,
-          o = t.filter || !1,
-          a = function (t, e, r) {
-        if ("range" === t || "steps" === t) return E.xVal;
-
-        if ("count" === t) {
-          if (e < 2) throw new Error("noUiSlider (" + lt + "): 'values' (>= 2) required for mode 'count'.");
-          var n = e - 1,
-              i = 100 / n;
-
-          for (e = []; n--;) {
-            e[n] = n * i;
-          }
-
-          e.push(100), t = "positions";
-        }
-
-        return "positions" === t ? e.map(function (t) {
-          return E.fromStepping(r ? E.getStep(t) : t);
-        }) : "values" === t ? r ? e.map(function (t) {
-          return E.fromStepping(E.getStep(E.toStepping(t)));
-        }) : e : void 0;
-      }(n, t.values || !1, t.stepped || !1),
-          s = (m = i, g = n, v = a, b = {}, e = E.xVal[0], r = E.xVal[E.xVal.length - 1], x = S = !1, w = 0, (v = v.slice().sort(function (t, e) {
-        return t - e;
-      }).filter(function (t) {
-        return !this[t] && (this[t] = !0);
-      }, {}))[0] !== e && (v.unshift(e), S = !0), v[v.length - 1] !== r && (v.push(r), x = !0), v.forEach(function (t, e) {
-        var r,
-            n,
-            i,
-            o,
-            a,
-            s,
-            l,
-            u,
-            c,
-            p,
-            f = t,
-            d = v[e + 1],
-            h = "steps" === g;
-        if (h && (r = E.xNumSteps[e]), r || (r = d - f), !1 !== f && void 0 !== d) for (r = Math.max(r, 1e-7), n = f; n <= d; n = (n + r).toFixed(7) / 1) {
-          for (u = (a = (o = E.toStepping(n)) - w) / m, p = a / (c = Math.round(u)), i = 1; i <= c; i += 1) {
-            b[(s = w + i * p).toFixed(5)] = [E.fromStepping(s), 0];
-          }
-
-          l = -1 < v.indexOf(n) ? k : h ? P : U, !e && S && (l = 0), n === d && x || (b[o.toFixed(5)] = [n, l]), w = o;
-        }
-      }), b),
-          l = t.format || {
-        to: Math.round
-      };
-
-      return c = y.appendChild(F(s, o, l));
-    }
-
-    function R() {
-      var t = l.getBoundingClientRect(),
-          e = "offset" + ["Width", "Height"][f.ort];
-      return 0 === f.ort ? t.width || l[e] : t.height || l[e];
-    }
-
-    function B(n, i, o, a) {
-      var e = function e(t) {
-        return !!(t = function (t, e, r) {
-          var n,
-              i,
-              o = 0 === t.type.indexOf("touch"),
-              a = 0 === t.type.indexOf("mouse"),
-              s = 0 === t.type.indexOf("pointer");
-          0 === t.type.indexOf("MSPointer") && (s = !0);
-
-          if (o) {
-            var l = function l(t) {
-              return t.target === r || r.contains(t.target);
-            };
-
-            if ("touchstart" === t.type) {
-              var u = Array.prototype.filter.call(t.touches, l);
-              if (1 < u.length) return !1;
-              n = u[0].pageX, i = u[0].pageY;
-            } else {
-              var c = Array.prototype.find.call(t.changedTouches, l);
-              if (!c) return !1;
-              n = c.pageX, i = c.pageY;
-            }
-          }
-
-          e = e || gt(x), (a || s) && (n = t.clientX + e.x, i = t.clientY + e.y);
-          return t.pageOffset = e, t.points = [n, i], t.cursor = a || s, t;
-        }(t, a.pageOffset, a.target || i)) && !(L() && !a.doNotReject) && (e = y, r = f.cssClasses.tap, !((e.classList ? e.classList.contains(r) : new RegExp("\\b" + r + "\\b").test(e.className)) && !a.doNotReject) && !(n === d.start && void 0 !== t.buttons && 1 < t.buttons) && (!a.hover || !t.buttons) && (h || t.preventDefault(), t.calcPoint = t.points[f.ort], void o(t, a)));
-        var e, r;
-      },
-          r = [];
-
-      return n.split(" ").forEach(function (t) {
-        i.addEventListener(t, e, !!h && {
-          passive: !0
-        }), r.push([t, e]);
-      }), r;
-    }
-
-    function q(t) {
-      var e,
-          r,
-          n,
-          i,
-          o,
-          a,
-          s = 100 * (t - (e = l, r = f.ort, n = e.getBoundingClientRect(), i = e.ownerDocument, o = i.documentElement, a = gt(i), /webkit.*Chrome.*Mobile/i.test(navigator.userAgent) && (a.x = 0), r ? n.top + a.y - o.clientTop : n.left + a.x - o.clientLeft)) / R();
-      return s = ft(s), f.dir ? 100 - s : s;
-    }
-
-    function X(t, e) {
-      "mouseout" === t.type && "HTML" === t.target.nodeName && null === t.relatedTarget && _(t, e);
-    }
-
-    function Y(t, e) {
-      if (-1 === navigator.appVersion.indexOf("MSIE 9") && 0 === t.buttons && 0 !== e.buttonsProperty) return _(t, e);
-      var r = (f.dir ? -1 : 1) * (t.calcPoint - e.startCalcPoint);
-      Z(0 < r, 100 * r / e.baseSize, e.locations, e.handleNumbers);
-    }
-
-    function _(t, e) {
-      e.handle && (mt(e.handle, f.cssClasses.active), b -= 1), e.listeners.forEach(function (t) {
-        w.removeEventListener(t[0], t[1]);
-      }), 0 === b && (mt(y, f.cssClasses.drag), et(), t.cursor && (C.style.cursor = "", C.removeEventListener("selectstart", ct))), e.handleNumbers.forEach(function (t) {
-        J("change", t), J("set", t), J("end", t);
-      });
-    }
-
-    function I(t, e) {
-      if (e.handleNumbers.some(z)) return !1;
-      var r;
-      1 === e.handleNumbers.length && (r = u[e.handleNumbers[0]].children[0], b += 1, ht(r, f.cssClasses.active));
-      t.stopPropagation();
-      var n = [],
-          i = B(d.move, w, Y, {
-        target: t.target,
-        handle: r,
-        listeners: n,
-        startCalcPoint: t.calcPoint,
-        baseSize: R(),
-        pageOffset: t.pageOffset,
-        handleNumbers: e.handleNumbers,
-        buttonsProperty: t.buttons,
-        locations: g.slice()
-      }),
-          o = B(d.end, w, _, {
-        target: t.target,
-        handle: r,
-        listeners: n,
-        doNotReject: !0,
-        handleNumbers: e.handleNumbers
-      }),
-          a = B("mouseout", w, X, {
-        target: t.target,
-        handle: r,
-        listeners: n,
-        doNotReject: !0,
-        handleNumbers: e.handleNumbers
-      });
-      n.push.apply(n, i.concat(o, a)), t.cursor && (C.style.cursor = getComputedStyle(t.target).cursor, 1 < u.length && ht(y, f.cssClasses.drag), C.addEventListener("selectstart", ct, !1)), e.handleNumbers.forEach(function (t) {
-        J("start", t);
-      });
-    }
-
-    function n(t) {
-      t.stopPropagation();
-      var i,
-          o,
-          a,
-          e = q(t.calcPoint),
-          r = (i = e, a = !(o = 100), u.forEach(function (t, e) {
-        if (!z(e)) {
-          var r = g[e],
-              n = Math.abs(r - i);
-          (n < o || n <= o && r < i || 100 === n && 100 === o) && (a = e, o = n);
-        }
-      }), a);
-      if (!1 === r) return !1;
-      f.events.snap || pt(y, f.cssClasses.tap, f.animationDuration), rt(r, e, !0, !0), et(), J("slide", r, !0), J("update", r, !0), J("change", r, !0), J("set", r, !0), f.events.snap && I(t, {
-        handleNumbers: [r]
-      });
-    }
-
-    function W(t) {
-      var e = q(t.calcPoint),
-          r = E.getStep(e),
-          n = E.fromStepping(r);
-      Object.keys(S).forEach(function (t) {
-        "hover" === t.split(".")[0] && S[t].forEach(function (t) {
-          t.call(s, n);
-        });
-      });
-    }
-
-    function $(t, e) {
-      S[t] = S[t] || [], S[t].push(e), "update" === t.split(".")[0] && u.forEach(function (t, e) {
-        J("update", e);
-      });
-    }
-
-    function G(t) {
-      var n = t && t.split(".")[0],
-          i = n && t.substring(n.length);
-      Object.keys(S).forEach(function (t) {
-        var e = t.split(".")[0],
-            r = t.substring(e.length);
-        n && n !== e || i && i !== r || delete S[t];
-      });
-    }
-
-    function J(r, n, i) {
-      Object.keys(S).forEach(function (t) {
-        var e = t.split(".")[0];
-        r === e && S[t].forEach(function (t) {
-          t.call(s, m.map(f.format.to), n, m.slice(), i || !1, g.slice());
-        });
-      });
-    }
-
-    function K(t, e, r, n, i, o) {
-      return 1 < u.length && !f.events.unconstrained && (n && 0 < e && (r = Math.max(r, t[e - 1] + f.margin)), i && e < u.length - 1 && (r = Math.min(r, t[e + 1] - f.margin))), 1 < u.length && f.limit && (n && 0 < e && (r = Math.min(r, t[e - 1] + f.limit)), i && e < u.length - 1 && (r = Math.max(r, t[e + 1] - f.limit))), f.padding && (0 === e && (r = Math.max(r, f.padding[0])), e === u.length - 1 && (r = Math.min(r, 100 - f.padding[1]))), !((r = ft(r = E.getStep(r))) === t[e] && !o) && r;
-    }
-
-    function Q(t, e) {
-      var r = f.ort;
-      return (r ? e : t) + ", " + (r ? t : e);
-    }
-
-    function Z(t, n, r, e) {
-      var i = r.slice(),
-          o = [!t, t],
-          a = [t, !t];
-      e = e.slice(), t && e.reverse(), 1 < e.length ? e.forEach(function (t, e) {
-        var r = K(i, t, i[t] + n, o[e], a[e], !1);
-        !1 === r ? n = 0 : (n = r - i[t], i[t] = r);
-      }) : o = a = [!0];
-      var s = !1;
-      e.forEach(function (t, e) {
-        s = rt(t, r[t] + n, o[e], a[e]) || s;
-      }), s && e.forEach(function (t) {
-        J("update", t), J("slide", t);
-      });
-    }
-
-    function tt(t, e) {
-      return f.dir ? 100 - t - e : t;
-    }
-
-    function et() {
-      v.forEach(function (t) {
-        var e = 50 < g[t] ? -1 : 1,
-            r = 3 + (u.length + e * t);
-        u[t].style.zIndex = r;
-      });
-    }
-
-    function rt(t, e, r, n) {
-      return !1 !== (e = K(g, t, e, r, n, !1)) && (function (t, e) {
-        g[t] = e, m[t] = E.fromStepping(e);
-        var r = "translate(" + Q(10 * (tt(e, 0) - A) + "%", "0") + ")";
-        u[t].style[f.transformRule] = r, nt(t), nt(t + 1);
-      }(t, e), !0);
-    }
-
-    function nt(t) {
-      if (a[t]) {
-        var e = 0,
-            r = 100;
-        0 !== t && (e = g[t - 1]), t !== a.length - 1 && (r = g[t]);
-        var n = r - e,
-            i = "translate(" + Q(tt(e, n) + "%", "0") + ")",
-            o = "scale(" + Q(n / 100, "1") + ")";
-        a[t].style[f.transformRule] = i + " " + o;
-      }
-    }
-
-    function it(t, e) {
-      return null === t || !1 === t || void 0 === t ? g[e] : ("number" == typeof t && (t = String(t)), t = f.format.from(t), !1 === (t = E.toStepping(t)) || isNaN(t) ? g[e] : t);
-    }
-
-    function ot(t, e) {
-      var r = dt(t),
-          n = void 0 === g[0];
-      e = void 0 === e || !!e, f.animate && !n && pt(y, f.cssClasses.tap, f.animationDuration), v.forEach(function (t) {
-        rt(t, it(r[t], t), !0, !1);
-      }), v.forEach(function (t) {
-        rt(t, g[t], !0, !0);
-      }), et(), v.forEach(function (t) {
-        J("update", t), null !== r[t] && e && J("set", t);
-      });
-    }
-
-    function at() {
-      var t = m.map(f.format.to);
-      return 1 === t.length ? t[0] : t;
-    }
-
-    function st(t) {
-      var e = g[t],
-          r = E.getNearbySteps(e),
-          n = m[t],
-          i = r.thisStep.step,
-          o = null;
-      if (f.snap) return [n - r.stepBefore.startValue || null, r.stepAfter.startValue - n || null];
-      !1 !== i && n + i > r.stepAfter.startValue && (i = r.stepAfter.startValue - n), o = n > r.thisStep.startValue ? r.thisStep.step : !1 !== r.stepBefore.step && n - r.stepBefore.highestStep, 100 === e ? i = null : 0 === e && (o = null);
-      var a = E.countStepDecimals();
-      return null !== i && !1 !== i && (i = Number(i.toFixed(a))), null !== o && !1 !== o && (o = Number(o.toFixed(a))), [o, i];
-    }
-
-    return ht(e = y, f.cssClasses.target), 0 === f.dir ? ht(e, f.cssClasses.ltr) : ht(e, f.cssClasses.rtl), 0 === f.ort ? ht(e, f.cssClasses.horizontal) : ht(e, f.cssClasses.vertical), l = V(e, f.cssClasses.base), function (t, e) {
-      var r = V(e, f.cssClasses.connects);
-      u = [], (a = []).push(O(r, t[0]));
-
-      for (var n = 0; n < f.handles; n++) {
-        u.push(M(e, n)), v[n] = n, a.push(O(r, t[n + 1]));
-      }
-    }(f.connect, l), (p = f.events).fixed || u.forEach(function (t, e) {
-      B(d.start, t.children[0], I, {
-        handleNumbers: [e]
-      });
-    }), p.tap && B(d.start, l, n, {}), p.hover && B(d.move, l, W, {
-      hover: !0
-    }), p.drag && a.forEach(function (t, e) {
-      if (!1 !== t && 0 !== e && e !== a.length - 1) {
-        var r = u[e - 1],
-            n = u[e],
-            i = [t];
-        ht(t, f.cssClasses.draggable), p.fixed && (i.push(r.children[0]), i.push(n.children[0])), i.forEach(function (t) {
-          B(d.start, t, I, {
-            handles: [r, n],
-            handleNumbers: [e - 1, e]
-          });
-        });
-      }
-    }), ot(f.start), f.pips && T(f.pips), f.tooltips && H(), $("update", function (t, e, a, r, s) {
-      v.forEach(function (t) {
-        var e = u[t],
-            r = K(g, t, 0, !0, !0, !0),
-            n = K(g, t, 100, !0, !0, !0),
-            i = s[t],
-            o = f.ariaFormat.to(a[t]);
-        r = E.fromStepping(r).toFixed(1), n = E.fromStepping(n).toFixed(1), i = E.fromStepping(i).toFixed(1), e.children[0].setAttribute("aria-valuemin", r), e.children[0].setAttribute("aria-valuemax", n), e.children[0].setAttribute("aria-valuenow", i), e.children[0].setAttribute("aria-valuetext", o);
-      });
-    }), s = {
-      destroy: function destroy() {
-        for (var t in f.cssClasses) {
-          f.cssClasses.hasOwnProperty(t) && mt(y, f.cssClasses[t]);
-        }
-
-        for (; y.firstChild;) {
-          y.removeChild(y.firstChild);
-        }
-
-        delete y.noUiSlider;
-      },
-      steps: function steps() {
-        return v.map(st);
-      },
-      on: $,
-      off: G,
-      get: at,
-      set: ot,
-      setHandle: function setHandle(t, e, r) {
-        if (!(0 <= (t = Number(t)) && t < v.length)) throw new Error("noUiSlider (" + lt + "): invalid handle number, got: " + t);
-        rt(t, it(e, t), !0, !0), J("update", t), r && J("set", t);
-      },
-      reset: function reset(t) {
-        ot(f.start, t);
-      },
-      __moveHandles: function __moveHandles(t, e, r) {
-        Z(t, e, g, r);
-      },
-      options: o,
-      updateOptions: function updateOptions(e, t) {
-        var r = at(),
-            n = ["margin", "limit", "padding", "range", "animate", "snap", "step", "format", "pips", "tooltips"];
-        n.forEach(function (t) {
-          void 0 !== e[t] && (o[t] = e[t]);
-        });
-        var i = vt(o);
-        n.forEach(function (t) {
-          void 0 !== e[t] && (f[t] = i[t]);
-        }), E = i.spectrum, f.margin = i.margin, f.limit = i.limit, f.padding = i.padding, f.pips ? T(f.pips) : D(), f.tooltips ? H() : j(), g = [], ot(e.start || r, t);
-      },
-      target: y,
-      removePips: D,
-      removeTooltips: j,
-      pips: T
-    };
-  }
-
-  return {
-    __spectrum: l,
-    version: lt,
-    create: function create(t, e) {
-      if (!t || !t.nodeName) throw new Error("noUiSlider (" + lt + "): create requires a single element, got: " + t);
-      if (t.noUiSlider) throw new Error("noUiSlider (" + lt + "): Slider was already initialized.");
-      var r = z(t, vt(e), e);
-      return t.noUiSlider = r;
-    }
-  };
-});
-
-/***/ }),
-
-/***/ 381:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -7311,308 +5063,231 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
 /***/ }),
 
-/***/ 686:
+/***/ 708:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/baby-icon.svg";
+module.exports = __webpack_require__.p + "img/bra.jpg";
 
 /***/ }),
 
-/***/ 921:
+/***/ 697:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/beer-icon.svg";
+module.exports = __webpack_require__.p + "img/chandelier.jpg";
 
 /***/ }),
 
-/***/ 847:
+/***/ 677:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image1.jpg";
+module.exports = __webpack_require__.p + "img/floor-lamp.jpg";
 
 /***/ }),
 
-/***/ 754:
+/***/ 877:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image2.jpg";
+module.exports = __webpack_require__.p + "img/interior-product-slide1.jpg";
 
 /***/ }),
 
-/***/ 682:
+/***/ 417:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image3.jpg";
+module.exports = __webpack_require__.p + "img/interior-product-slide2.jpg";
 
 /***/ }),
 
-/***/ 146:
+/***/ 867:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image4.jpg";
+module.exports = __webpack_require__.p + "img/kitchen.jpg";
 
 /***/ }),
 
-/***/ 957:
+/***/ 400:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image5.jpg";
+module.exports = __webpack_require__.p + "img/lamp-group.jpg";
 
 /***/ }),
 
-/***/ 920:
+/***/ 131:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image6.jpg";
+module.exports = __webpack_require__.p + "img/lamp-shade.jpg";
 
 /***/ }),
 
-/***/ 944:
+/***/ 541:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image7.jpg";
+module.exports = __webpack_require__.p + "img/lifting-bar.jpg";
 
 /***/ }),
 
-/***/ 615:
+/***/ 434:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image8.jpg";
+module.exports = __webpack_require__.p + "img/logo.png";
 
 /***/ }),
 
-/***/ 290:
+/***/ 748:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "img/category-image9.jpg";
+module.exports = __webpack_require__.p + "img/news-image1.jpg";
+
+/***/ }),
+
+/***/ 880:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/news-image2.jpg";
+
+/***/ }),
+
+/***/ 1:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/news-image3.jpg";
+
+/***/ }),
+
+/***/ 422:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/plafond.jpg";
+
+/***/ }),
+
+/***/ 270:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/plafond2.jpg";
+
+/***/ }),
+
+/***/ 830:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-lamp1.png";
+
+/***/ }),
+
+/***/ 263:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-lamp2.png";
+
+/***/ }),
+
+/***/ 988:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-lamp3.png";
+
+/***/ }),
+
+/***/ 668:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-lamp4.png";
+
+/***/ }),
+
+/***/ 155:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-page-image.jpg";
+
+/***/ }),
+
+/***/ 63:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-page-image1.jpg";
+
+/***/ }),
+
+/***/ 190:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-page-image2.jpg";
+
+/***/ }),
+
+/***/ 139:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-page-image3.jpg";
+
+/***/ }),
+
+/***/ 138:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/product-page-image4.jpg";
+
+/***/ }),
+
+/***/ 743:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/smaller-logo.svg";
+
+/***/ }),
+
+/***/ 626:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/spot.jpg";
+
+/***/ }),
+
+/***/ 822:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "img/table-lamp.jpg";
 
 /***/ }),
 
 /***/ 952:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/coffie-icon.svg";
-
-/***/ }),
-
-/***/ 685:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/continental.png";
-
-/***/ }),
-
-/***/ 631:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/dining-icon.svg";
-
-/***/ }),
-
-/***/ 999:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/dudson.png";
-
-/***/ }),
-
-/***/ 101:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/eme.png";
-
-/***/ }),
-
-/***/ 41:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/flag-icon.svg";
-
-/***/ }),
-
-/***/ 216:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/hepp.png";
-
-/***/ }),
-
-/***/ 561:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/hotel-icon.svg";
-
-/***/ }),
-
-/***/ 264:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/logo.svg";
-
-/***/ }),
-
-/***/ 761:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/main-slider-image.jpg";
-
-/***/ }),
-
-/***/ 711:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/matreshka-icon.svg";
-
-/***/ }),
-
-/***/ 799:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/mount-icon.svg";
-
-/***/ }),
-
-/***/ 542:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/news-image-1.jpg";
-
-/***/ }),
-
-/***/ 164:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/news-image-2.jpg";
-
-/***/ }),
-
-/***/ 953:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/news-image-3.jpg";
-
-/***/ }),
-
-/***/ 874:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/pasta-icon.svg";
-
-/***/ }),
-
-/***/ 371:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/product-image1.jpg";
-
-/***/ }),
-
-/***/ 99:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/product-image2.jpg";
-
-/***/ }),
-
-/***/ 481:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/product-image3.jpg";
-
-/***/ }),
-
-/***/ 883:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/restorant-icon.svg";
-
-/***/ }),
-
-/***/ 511:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/review-image.jpg";
-
-/***/ }),
-
-/***/ 262:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/seo-image1.jpg";
-
-/***/ }),
-
-/***/ 552:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/seo-image2.jpg";
-
-/***/ }),
-
-/***/ 23:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/steak-icon.svg";
-
-/***/ }),
-
-/***/ 98:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/sushi-icon.svg";
-
-/***/ }),
-
-/***/ 302:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "img/tafelstern.png";
-
-/***/ }),
-
-/***/ 912:
 /***/ ((module) => {
 
-module.exports = "\t\t</main>\n        <footer class=\"footer-wrap\">\n            <div class=\"footer-top\">\n                <div class=\"footer-top-wrap site-size\">\n                    <div class=\"footer-menu\">\n                        <span class=\"footer-menu-title\">Меню</span>\n                        <a href=\"#\">Главная</a>\n                        <a href=\"#\">О компании</a>\n                        <a href=\"#\">Каталог</a>\n                        <a href=\"#\">Портфолио</a>\n                        <a href=\"#\">Услуги</a>\n                        <a href=\"#\">Партнерам</a>\n                    </div>\n                    <div class=\"footer-menu\">\n                        <span class=\"footer-menu-title\">Информация</span>\n                        <a href=\"#\">Колонка эксперта</a>\n                        <a href=\"#\">Лицензии и сертификаты</a>\n                        <a href=\"#\">Бренды</a>\n                        <a href=\"#\">Новости</a>\n                        <a href=\"#\">Вакансии</a>\n                        <a href=\"#\">Контакты</a>\n                    </div>\n                    <div class=\"footer-menu\">\n                        <span class=\"footer-menu-title\">Готовые решения</span>\n                        <a href=\"#\">Ресторан</a>\n                        <a href=\"#\">Кофейня</a>\n                        <a href=\"#\">Итальянский ресторан</a>\n                        <a href=\"#\">Русский ресторан</a>\n                        <a href=\"#\">Детское кафе</a>\n                        <a href=\"#\" class=\"unique-link\">\n                            Показать все\n                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                            </svg>\n                        </a>\n                    </div>\n                    <div class=\"footer-menu\" id=\"footer-dropdowns\">\n                        <span class=\"footer-menu-title\">Контакты</span>\n                        <button class=\"show-stuff active\">Санкт-Петербург</button>\n                        <div class=\"hidden-address\">\n                            <a href=\"tel:+78123131547\" class=\"footer-phone\">8&nbsp;(812)&nbsp;313-15-47</a>\n                            <p>\n                                м. Октябрьская (кольцевая),<br>\n                                ул. Донская, д. 11, стр. 2\n                            </p>\n                        </div>\n\n                        <button class=\"show-stuff\">Москва</button>\n                        <div class=\"hidden-address active\">\n                            <a href=\"tel:+74959379107\" class=\"footer-phone\">8&nbsp;(495)&nbsp;937-91-07</a>\n                            <p>\n                                м. Октябрьская (кольцевая),<br>\n                                ул. Донская, д. 11, стр. 2\n                            </p>\n                        </div>\n\n                        <button class=\"show-stuff\">Новосибирск</button>\n                        <div class=\"hidden-address active\">\n                            <a href=\"tel:+73833730424\" class=\"footer-phone\">8&nbsp;(383)&nbsp;373-04-24</a>\n                            <p>\n                                м. Октябрьская (кольцевая),<br>\n                                ул. Донская, д. 11, стр. 2\n                            </p>\n                        </div>\n                        <div class=\"social-icons\">\n                            <a href=\"#\">\n                                <svg width=\"28\" height=\"27\" viewBox=\"0 0 28 27\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0.978516 13.4043C0.978516 20.7971 6.9899 26.8085 14.3828 26.8085C21.7757 26.8085 27.787 20.8345 27.787 13.4043C27.787 6.01138 21.7757 0 14.3828 0C6.9899 0 0.978516 6.01138 0.978516 13.4043ZM16.0929 20.8511H12.5117V13.3356H10.6594V10.7962H12.5117V8.80576C12.5117 6.95264 13.7054 5.95745 16.3811 5.95745H18.8509V8.56555H16.9162C16.2164 8.56555 16.0929 8.80577 16.0929 9.38916V10.8305H18.8509L18.6039 13.3356H16.0929V20.8511Z\" fill=\"#939393\"/>\n                                </svg>\n                            </a>\n                            <a href=\"#\">\n                                <svg width=\"27\" height=\"27\" viewBox=\"0 0 27 27\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0 13.4043C0 20.7971 5.8444 26.8085 13.0319 26.8085C20.2194 26.8085 26.0638 20.8345 26.0638 13.4043C26.0638 6.01138 20.2194 0 13.0319 0C5.8444 0 0 6.01138 0 13.4043ZM13.2614 7.29225H13.2613H13.2613C11.3334 7.29225 11.1109 7.29225 10.3323 7.32933C9.59083 7.3664 9.22008 7.47763 8.96054 7.58886C8.58979 7.73716 8.36732 7.88546 8.10779 8.14499C7.84826 8.40452 7.69996 8.66406 7.55166 8.99774C7.44043 9.25727 7.32921 9.6651 7.29213 10.3695C7.25505 11.1111 7.25505 11.3335 7.25505 13.2985C7.25505 15.2265 7.25505 15.4489 7.29213 16.2275C7.32921 16.9691 7.44043 17.3398 7.55166 17.5993C7.69996 17.9701 7.84826 18.1926 8.10779 18.4521C8.36732 18.7116 8.62686 18.8599 8.96054 19.0082C9.22008 19.1194 9.6279 19.2307 10.3323 19.2678C11.0739 19.3048 11.2963 19.3048 13.2613 19.3048C15.1893 19.3048 15.4117 19.3048 16.1903 19.2678C16.9319 19.2307 17.3026 19.1194 17.5621 19.0082C17.9329 18.8599 18.1554 18.7116 18.4149 18.4521C18.6744 18.1926 18.8227 17.933 18.971 17.5993C19.0823 17.3398 19.1935 16.932 19.2306 16.2275C19.2676 15.486 19.2676 15.2636 19.2676 13.2985C19.2676 11.3706 19.2676 11.1481 19.2306 10.3695C19.1935 9.62803 19.0823 9.25727 18.971 8.99774C18.8227 8.62698 18.6744 8.40452 18.4149 8.14499C18.1554 7.88546 17.8958 7.73716 17.5621 7.58886C17.3026 7.47763 16.8948 7.3664 16.1903 7.32933C15.4488 7.29225 15.2264 7.29225 13.2614 7.29225ZM13.2613 5.95752H13.2613H13.2614C15.2635 5.95752 15.523 5.95752 16.2645 5.9946C17.0431 6.03167 17.5621 6.1429 18.0441 6.32828C18.5261 6.51366 18.934 6.77319 19.3418 7.18102C19.7496 7.58886 20.0091 7.99669 20.1945 8.47868C20.3799 8.96066 20.4911 9.47973 20.5282 10.2583C20.5653 11.0369 20.5653 11.2964 20.5653 13.2615C20.5653 15.2265 20.5653 15.486 20.5282 16.2646C20.4911 17.0432 20.3799 17.5623 20.1945 18.0442C20.0091 18.5262 19.7496 18.9341 19.3418 19.3419C18.934 19.7497 18.5261 20.0093 18.0441 20.1946C17.5621 20.38 17.0431 20.4913 16.2645 20.5283C15.486 20.5654 15.2264 20.5654 13.262 20.5654H13.2613H13.2607C11.2963 20.5654 11.0367 20.5654 10.2582 20.5283C9.47961 20.4913 8.96054 20.38 8.47855 20.1946C7.99657 20.0093 7.58873 19.7497 7.1809 19.3419C6.77306 18.9341 6.51354 18.5262 6.32816 18.0442C6.14278 17.5623 6.03155 17.0432 5.99448 16.2646C5.9574 15.486 5.9574 15.2265 5.9574 13.2615C5.9574 11.2964 5.9574 11.0369 5.99448 10.2583C6.03155 9.47973 6.14278 8.96066 6.32816 8.47868C6.51354 7.99669 6.77306 7.58886 7.1809 7.18102C7.58873 6.77319 7.99657 6.51366 8.47855 6.32828C8.96054 6.1429 9.47961 6.03167 10.2582 5.9946C11.0368 5.95752 11.2963 5.95752 13.2613 5.95752ZM13.261 9.5166C11.1848 9.5166 9.51636 11.185 9.51636 13.2613C9.51636 15.3375 11.1848 17.0059 13.261 17.0059C15.3373 17.0059 17.0057 15.3375 17.0057 13.2613C17.0057 11.185 15.3373 9.5166 13.261 9.5166ZM13.261 15.6712C11.9263 15.6712 10.814 14.596 10.814 13.2242C10.814 11.8895 11.8892 10.7772 13.261 10.7772C14.5958 10.7772 15.708 11.8524 15.708 13.2242C15.708 14.596 14.6328 15.6712 13.261 15.6712ZM17.1545 10.2582C17.6365 10.2582 18.0443 9.85032 18.0443 9.36834C18.0443 8.88635 17.6365 8.47852 17.1545 8.47852C16.6725 8.47852 16.2646 8.88635 16.2646 9.36834C16.2646 9.85032 16.6725 10.2582 17.1545 10.2582Z\" fill=\"#939393\"/>\n                                </svg>\n                            </a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"footer-bottom site-size\">\n                <span class=\"copyright\">&copy;2019 РестоШеф. Все права защищены</span>\n                <a class=\"privacy\" href=\"#\">Политика конфиденциальности</a>\n                <a class=\"privacy\" href=\"#\">Разработано в Аccept.agency</a>\n            </div>\n        </footer>\n\n        <button class=\"big-button return-button\" id=\"return-top-button\">\n            <svg width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <g filter=\"url(#filter-return)\">\n            <circle class=\"big-button-bg\" cx=\"56\" cy=\"56\" r=\"40\" fill=\"#C1A0CD\"/>\n            </g>\n            <path d=\"M57.0607 38.9393C56.4749 38.3536 55.5251 38.3536 54.9393 38.9393L45.3934 48.4853C44.8076 49.0711 44.8076 50.0208 45.3934 50.6066C45.9792 51.1924 46.9289 51.1924 47.5147 50.6066L56 42.1213L64.4853 50.6066C65.0711 51.1924 66.0208 51.1924 66.6066 50.6066C67.1924 50.0208 67.1924 49.0711 66.6066 48.4853L57.0607 38.9393ZM57.5 73L57.5 40L54.5 40L54.5 73L57.5 73Z\" fill=\"white\"/>\n            <defs>\n            <filter id=\"filter-return\" x=\"0\" y=\"0\" width=\"120\" height=\"120\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n            <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n            <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"/>\n            <feOffset dx=\"4\" dy=\"4\"/>\n            <feGaussianBlur stdDeviation=\"10\"/>\n            <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0.321569 0 0 0 0 0.152941 0 0 0 0 0.384314 0 0 0 0.2 0\"/>\n            <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow\"/>\n            <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow\" result=\"shape\"/>\n            </filter>\n            </defs>\n            </svg>\n        </button>\n    </div>\n    <script src=\"https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js\"></script>\n  <script src=\"./js/main.js\"></script>\n</body>\n</html>\n";
+module.exports = "</main>\n<footer class=\"footer-wrap\">\n  <div class=\"footer-top site-size\">\n    <div class=\"footer-menu\">\n      <span class=\"footer-menu-title\">Карта сайта</span>\n      <a href=\"#\">Главная</a>\n      <a href=\"#\">О компании</a>\n      <a href=\"#\">Где купить</a>\n      <a href=\"#\">Доставка</a>\n      <a href=\"#\">Интерьеры</a>\n      <a href=\"#\">Новинки</a>\n    </div>\n    <div class=\"footer-menu\">\n      <span class=\"footer-menu-title\">Популярные покупки</span>\n      <a href=\"#\">Настенно-потолочный светильник 12067/2 Soul</a>\n      <a href=\"#\">Настольная лампа L1117P Finn, E14* макс. 40Вт</a>\n      <a href=\"#\">Бра 8952-2 PRINCESSA ANNA</a>\n      <a href=\"#\">Люкстра L1052-5 Concept, E14*макс 60Вт</a>\n      <a href=\"#\">Настенно-потолочный светильник 12067/2 Soul</a>\n      <a class=\"arrow-link\" href=\"#\">Показать все</a>\n    </div>\n    <div class=\"footer-menu\">\n      <span class=\"footer-menu-title\">Партнеры</span>\n      <a href=\"#\">ООО \"Южный Скобяной Двор\"</a>\n      <a href=\"#\">Мебельный Клуб</a>\n      <a href=\"#\">Маркет света</a>\n      <a href=\"#\">220 Вольт</a>\n      <a href=\"#\">Максидом</a>\n      <a href=\"#\">Домовой</a>\n      <a href=\"#\">ЛЕРУА МЕРЛЕН</a>\n    </div>\n    <div class=\"footer-menu\">\n      <span class=\"footer-menu-title\">Контакты</span>\n      <span class=\"just-name\">Головной офис</span>\n      <a class=\"violet-link\" href=\"tel:+78123088811\">+7&nbsp;(812)&nbsp;308-88-11</a>\n      <a class=\"violet-link\" href=\"mailto:info@lamplandia.ru\">info@lamplandia.ru</a>\n      <span class=\"violet-link\">197022, Санкт-Петербург,<br> Каменоостровский пр-т,<br> д.62, лит. А пом. 7Н</span>\n      <a href=\"#\">Схема прохода в офис</a>\n      <a href=\"#\">Новинки</a>\n      <div class=\"social-links\">\n        <a class=\"social-icon twitter-icon\" href=\"#\"></a>\n        <a class=\"social-icon facebook-icon\" href=\"#\"></a>\n        <a class=\"social-icon instagram-icon\" href=\"#\"></a>\n        <a class=\"social-icon whatsup-icon\" href=\"#\"></a>\n      </div>\n    </div>\n  </div>\n  <div class=\"footer-bottom\">\n    <div class=\"footer-copyright site-size\">\n      <span>&copy; 2011 Группа компаний LampLandia</span>\n      <span>Разработано в Аccept.agency</span>\n    </div>\n  </div>\n</footer>\n</div>\n<script src=\"./js/main.js\"></script>\n</body>\n</html>\n";
 
 /***/ }),
 
-/***/ 523:
+/***/ 859:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Restochef</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css\">\n  <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body>\n    <div class=\"global-wrap\" id=\"app\">\n        <header class=\"header\">\n            <div class=\"header-top-wrap\">\n                <div class=\"header-top site-size\">\n                    <a href=\"#\" class=\"logo image-wrapper\">\n                        <img src=\"" + __webpack_require__(264) + "\" alt=\"logo\" width=\"246\" height=\"55\">\n                    </a>\n                    <div class=\"header-experience\">\n                        Опыт оснащения отелей и ресторанов с 1997 года. Отгрузка во все регионы!\n                    </div>\n                    <div class=\"callback-wrap\">\n                        <button class=\"yellow-button\" id=\"call-popup\" data-action=\"open\">Позвоните нам</button>\n                    </div>\n                    <div class=\"phones-wrap\" id=\"phones-wrap\">\n                        <button class=\"popup-cross\" data-action=\"close\"></button>\n                        <span class=\"phones-title\">Позвоните нам</span>\n                        <div class=\"header-phone-wrap\">\n                            <a href=\"tel:+74959379107\" class=\"header-phone\">8&nbsp;(495)&nbsp;937-91-07</a><br>\n                            <span>Москва</span>\n                        </div>\n                        <div class=\"header-phone-wrap\">\n                            <a href=\"tel:+78123131547\" class=\"header-phone\">8&nbsp;(812)&nbsp;313-15-47</a><br>\n                            <span>Санкт-Петербург</span>\n                        </div>\n                        <div class=\"header-phone-wrap\">\n                            <a href=\"tel:+73833730424\" class=\"header-phone\">8&nbsp;(383)&nbsp;373-04-24</a><br>\n                            <span>Новосибирск</span>\n                        </div>\n                    </div>\n                    <div class=\"header-cart-link\">\n                        <a href=\"#\" class=\"cart-icon active\">\n                            <svg width=\"23\" height=\"29\" viewBox=\"0 0 23 29\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M20.4867 5.87054L20.4797 5.77811H20.387H16.9051C16.7361 2.87945 14.3895 0.536719 11.5455 0.536719C8.70132 0.536719 6.35468 2.87402 6.18049 5.77811H2.6438H2.55086L2.54407 5.87081L0.900267 28.3112L0.892407 28.4185H1H22.0909H22.1988L22.1906 28.311L20.4867 5.87054ZM19.3384 7.15799L20.7982 27.0387H2.35275L3.81257 7.15799H6.17V10.9437V11.0437H6.27H7.40591H7.50591V10.9437V7.15799H15.585V10.9437V11.0437H15.685H16.8209H16.9209V10.9437V7.15799H19.3384ZM11.5455 1.9166C13.6444 1.9166 15.4049 3.63024 15.5727 5.77811H7.51816C7.68602 3.63024 9.4465 1.9166 11.5455 1.9166Z\" fill=\"#ABABAB\" stroke=\"#ABABAB\" stroke-width=\"0.2\"/>\n                            </svg>\n                        </a>\n                    </div>\n                    <button class=\"menu-burger\" id=\"head-burger\">\n                        <svg width=\"26\" height=\"18\" viewBox=\"0 0 26 18\" fill=\"none\">\n                            <line x1=\"0\" y1=\"1\" x2=\"26\" y2=\"1\" stroke=\"#ababab\" stroke-width=\"2\" />\n                            <line x1=\"0\" y1=\"9\" x2=\"26\" y2=\"9\" stroke=\"#ababab\" stroke-width=\"2\" />\n                            <line x1=\"0\" y1=\"17\" x2=\"26\" y2=\"17\" stroke=\"#ababab\" stroke-width=\"2\" />\n                        </svg>\n                    </button>\n                </div>\n            </div>\n            <nav class=\"header-bottom site-size\">\n                <div class=\"header-menu\" id=\"head-menu\">\n                    <div class=\"menu-item\">\n                        <a href=\"https://esper-playground.ru/about/\">Назад к резюме</a>\n                    </div>\n                    <div class=\"menu-item\">\n                        <a href=\"#\">Пример меню</a>\n                        <div class=\"header-popup-menu submenu\">\n                            <div class=\"menu-pimp\"></div>\n                            <div class=\"menu-block menu-item double-column\">\n                                <a href=\"#\" class=\"popup-menu-head\">По разделам:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Посуда для ресторанов</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Столовые приборы</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Стекло</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Сервировка</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Кухонный инвентарь</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Оборудование для номерного фонда</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Буфетные линии</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Тележки</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Розница</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Гостиничный текстиль</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Гостиничная косметика</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Кейтеринг, хранение</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-block menu-item\">\n                                <a class=\"popup-menu-head\" href=\"#\">Готовые решения:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для баров</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для кафе</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для столовых</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для ресторанов</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для фастфуда</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для гостиниц</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-block menu-item\">\n                                <a class=\"popup-menu-head\" href=\"#\">По брендам:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">PETYE</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">CONTINENTAL</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">DUDSON - FINEST VITRIFIED</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">DUDSON-FINE CHINA</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">TAFLESTERN FINE DINING</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">TAFLESTERN</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">AXUN</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-item-list\">\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Скачать прайс</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Услуга подбора посуды</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Распродажа</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a href=\"#\"></a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a href=\"#\"></a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links yellow-links\" href=\"#\">Акции</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links yellow-links\" href=\"#\">Новинки</a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"menu-item\">\n                        <a href=\"#\">Тоже меню</a>\n                        <div class=\"header-popup-menu submenu\">\n                            <div class=\"menu-pimp\"></div>\n                            <div class=\"menu-block menu-item double-column\">\n                                <a href=\"#\" class=\"popup-menu-head\">По разделам:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Посуда для ресторанов</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Столовые приборы</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Стекло</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Сервировка</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Кухонный инвентарь</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Оборудование для номерного фонда</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Буфетные линии</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Тележки</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Розница</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Гостиничный текстиль</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Гостиничная косметика</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Кейтеринг, хранение</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-block menu-item\">\n                                <a class=\"popup-menu-head\" href=\"#\">Готовые решения:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для баров</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для кафе</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для столовых</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для ресторанов</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для фастфуда</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">Для гостиниц</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-block menu-item\">\n                                <a class=\"popup-menu-head\" href=\"#\">По брендам:</a>\n                                <div class=\"menu-column submenu\">\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">PETYE</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">CONTINENTAL</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">DUDSON - FINEST VITRIFIED</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">DUDSON-FINE CHINA</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">TAFLESTERN FINE DINING</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">TAFLESTERN</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a href=\"#\">AXUN</a>\n                                    </div>\n                                    <div class=\"menu-item\">\n                                        <a class=\"unique-link\" href=\"#\">\n                                            Показать все\n                                            <svg width=\"25\" height=\"8\" viewBox=\"0 0 25 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                                <path d=\"M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z\" fill=\"white\"/>\n                                            </svg>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"menu-item-list\">\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Скачать прайс</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Услуга подбора посуды</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links\" href=\"#\">Распродажа</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a href=\"#\"></a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a href=\"#\"></a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links yellow-links\" href=\"#\">Акции</a>\n                                </div>\n                                <div class=\"menu-item\">\n                                    <a class=\"underlined-links yellow-links\" href=\"#\">Новинки</a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <form class=\"header-search\">\n                    <input class=\"site-input search\" type=\"text\" placeholder=\"Поиск\">\n                </form>\n            </nav>\n        </header>\n        <main class=\"main-wrap\">\n";
+module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Document</title>\n  <!-- Compiled and minified JavaScript -->\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\n  <link rel=\"stylesheet\" href=\"./css/main.css\">\n</head>\n<body>\n    <div id=\"apps\"></div>\n    <div class=\"global-wrap\" id=\"app\">\n        <header>\n            <div class=\"header-top site-size\">\n                <a href=\"#\" class=\"logo-wrap\"><img src=\"" + __webpack_require__(434) + "\" alt=\"logo\" width=\"196\" height=\"39\"></a>\n                <div class=\"logo-text\">Группа компаний <br>LampLandia</div>\n                <a href=\"tel:+78123088811\" class=\"header-phone\">+7&nbsp;(812)&nbsp;308-88-11</a>\n                <a href=\"mailto:info@lamplandia.ru\" class=\"header-email\">info@lamplandia.ru</a>\n                <div class=\"header-user-link\">\n                    <a href=\"#\" class=\"site-icon user-icon\"></a>\n                    <a href=\"#\" class=\"site-icon heart-icon\"></a>\n                    <a href=\"#\" class=\"site-icon cart-icon active\"></a>\n                </div>\n            </div>\n            <div class=\"header-bottom\">\n                <nav class=\"site-size header-menu\" id=\"header-menu\">\n                    <a href=\"#\" class=\"catalog-menu-hover\">Пример меню</a>\n                    <button class=\"burger-menu\" id=\"burger-button\"><span></span>Меню</button>\n                    <a href=\"https://esper-playground.ru/about/\">Назад к резюме</a>\n                    <a href=\"#\">Контакты</a>\n                    <a href=\"#\">Где купить</a>\n                    <a href=\"#\">Доставка</a>\n                    <form class=\"header-search\">\n                        <input class=\"site-input search\" name=\"search-query\" type=\"text\" placeholder=\"Поиск\">\n                        <button class=\"site-button\" id=\"toggle-search-button\">\n                            <svg width=\"19\" height=\"19\" viewBox=\"0 0 19 19\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                <path d=\"M18.6014 16.8889L13.641 11.9112C14.5268 10.6667 15.0583 9.15556 15.0583 7.55556C15.0583 3.37774 11.6923 0 7.52916 0C3.36601 0 0 3.37779 0 7.55556C0 11.7333 3.36597 15.1111 7.52911 15.1111C9.12352 15.1111 10.6294 14.5778 11.8695 13.6889L16.8298 18.6667C17.2727 19.1111 18.0699 19.1111 18.6014 18.6667C19.1329 18.1334 19.1329 17.4222 18.6014 16.8889ZM7.52911 13.3334C4.3403 13.3334 1.77156 10.7556 1.77156 7.5556C1.77156 4.35559 4.3403 1.77783 7.52911 1.77783C10.7179 1.77783 13.2867 4.35559 13.2867 7.5556C13.2867 10.7556 10.7179 13.3334 7.52911 13.3334Z\" fill=\"#ffffff\"/>\n                            </svg>\n                        </button>\n                    </form>\n                </nav>\n                <nav class=\"catalog-menu\" id=\"catalog-menu\">\n                    <div class=\"site-size\">\n                        <div class=\"catalog-menu-item\">\n                            <h2 class=\"upper-title\">Товары по назначению</h2>\n                            <a href=\"#\">Люстры</a>\n                            <a href=\"#\">Бра</a>\n                            <a href=\"#\">Настенно-потолочный светильник</a>\n                            <a href=\"#\">Подвесы</a>\n                            <a href=\"#\">Споты</a>\n                            <a href=\"#\">Настольные лампы</a>\n                            <a href=\"#\">Потолочные светильники</a>\n                            <a href=\"#\">Абажур</a>\n                            <a href=\"#\">Торшер</a>\n                            <a href=\"#\" class=\"arrow-link\">Показать все</a>\n                        </div>\n                        <div class=\"catalog-menu-item\">\n                            <h2 class=\"upper-title\">Товары по стилю</h2>\n                            <a href=\"#\">Современный</a>\n                            <a href=\"#\">LED</a>\n                            <a href=\"#\">Американский</a>\n                            <a href=\"#\">Лофт</a>\n                            <a href=\"#\">Классический</a>\n                            <a href=\"#\">Скандинавия</a>\n                        </div>\n                        <div class=\"catalog-menu-item\">\n                            <h2 class=\"upper-title\">Товары по коллекциям</h2>\n                            <div class=\"big-category\">\n                                <a href=\"#\">Bradal</a>\n                                <a href=\"#\">Eyran</a>\n                                <a href=\"#\">Hongyi</a>\n                                <a href=\"#\">Kenny</a>\n                                <a href=\"#\">IDEA</a>\n                                <a href=\"#\">Finase</a>\n                                <a href=\"#\">Ido</a>\n                                <a href=\"#\">Kingbery</a>\n                                <a href=\"#\">Yanlighting</a>\n                                <a href=\"#\">First</a>\n                                <a href=\"#\">Indoorlux</a>\n                                <a href=\"#\">Lissin</a>\n                                <a href=\"#\">EJ</a>\n                                <a href=\"#\">Himiter</a>\n                                <a href=\"#\">Kadywell</a>\n                                <a href=\"#\">Luoka</a>\n                            </div>\n                        </div>\n                    </div>\n                </nav>\n            </div>\n        </header>\n        <main class=\"main-wrap\">\n";
 
 /***/ }),
 
-/***/ 134:
+/***/ 522:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = "\t" + __webpack_require__(523) + "\n    <div class=\"site-size\">\n        <div class=\"main-page-slider swiper-container\" id=\"main-swiper\">\n            <div class=\"swiper-wrapper\">\n                <a href=\"#\" class=\"swiper-slide\">\n                    <img class=\"slide-image\" src=\"" + __webpack_require__(761) + "\" alt=\"slide-image\" width=\"1100\" height=\"453\" data-title=\"Осуществляем прямые поставки из Европы и США\">\n                </a>\n                <a href=\"#\" class=\"swiper-slide\">\n                    <img class=\"slide-image\" src=\"" + __webpack_require__(761) + "\" alt=\"slide-image\" width=\"1100\" height=\"453\" data-title=\"Осуществляем1 прямые поставки из Европы и США\">\n                </a>\n                <a href=\"#\" class=\"swiper-slide\">\n                    <img class=\"slide-image\" src=\"" + __webpack_require__(761) + "\" alt=\"slide-image\" width=\"1100\" height=\"453\" data-title=\"Осуществляем2 прямые поставки из Европы и США\">\n                </a>\n            </div>\n            <nav class=\"slider-nav\"></nav>\n        </div>\n        <div class=\"main-page-products page-block site-tabs\">\n            <nav class=\"tabs-nav\">\n                <button class=\"tab-button\" data-tab=\"tab1\">Новинки</button>\n                <button class=\"tab-button\" data-tab=\"tab2\">Распродажа</button>\n                <button class=\"tab-button\" data-tab=\"tab3\">Акции</button>\n                <div class=\"tabs-brick\"></div>\n            </nav>\n            <div class=\"more-wrap\">\n                <a href=\"#\" class=\"more-link\">Показать все</a>\n            </div>\n            <div class=\"tab-content\">\n                <div class=\"products-wrap\" data-tab=\"tab1\">\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                                <span class=\"product-labels\">\n                                    <span class=\"new-label\">Новинка</span>\n                                    <span class=\"sellout-label\">Распродажа</span>\n                                    <span class=\"offer-label\">Акция</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    13\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>883&nbsp;883</span>&nbsp;руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(99) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"new-label\">Новинка</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>900</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(481) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"new-label\">Новинка</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Чашка суповая с ручками 350мл\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>320</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                </div>\n                <div class=\"products-wrap\" data-tab=\"tab2\">\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(99) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"sellout-label\">Распродажа</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>900</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(481) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"sellout-label\">Распродажа</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Чашка суповая с ручками 350мл\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>320</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n          <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                                <span class=\"product-labels\">\n                                    <span class=\"new-label\">Новинка</span>\n                                    <span class=\"sellout-label\">Распродажа</span>\n                                    <span class=\"offer-label\">Акция</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    13\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>883&nbsp;883</span>&nbsp;руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                </div>\n                <div class=\"products-wrap\" data-tab=\"tab3\">\n          <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                                <span class=\"product-labels\">\n                                    <span class=\"new-label\">Новинка</span>\n                                    <span class=\"sellout-label\">Распродажа</span>\n                                    <span class=\"offer-label\">Акция</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    13\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>883&nbsp;883</span>&nbsp;руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n          <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(481) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"offer-label\">Акция</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Чашка суповая с ручками 350мл\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>320</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                    <div class=\"product-item\">\n                        <div class=\"product-wrapper\">\n                            <a href=\"#\" class=\"product-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(99) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n                <span class=\"product-labels\">\n                                    <span class=\"offer-label\">Акция</span>\n                                </span>\n                            </a>\n                            <div class=\"product-info\">\n                                <a href=\"#\" class=\"product-name\">\n                                    Блюдо овальное 18,5 см\n                                </a>\n                                <div class=\"product-description\">\n                                    Форма: Овальное <br>\n                                    Размер: 16 х 16 см\n                                </div>\n                                <div class=\"product-pack\">\n                                    1300\n                                </div>\n                                <div class=\"product-price\">\n                                    <span>900</span> руб\n                                </div>\n                                <input class=\"product-quantity\" type=\"number\" value=\"120\">\n                            </div>\n                        </div>\n                        <button class=\"product-cart-add\"></button>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"main-page-solution page-block main-page-grid\">\n            <h2 class=\"page-title\">Готовые решения</h2>\n            <div class=\"more-wrap\">\n                <a href=\"#\" class=\"more-link\">Показать все</a>\n            </div>\n            <div class=\"solutions-list-wrap main-page-grid-content\">\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(952) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Кофейня</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(883) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Ресторан</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(711) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Русский</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(41) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Итальянский</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(23) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Стейк-хаус</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(98) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Суши</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(921) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Пивной</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(561) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Отель</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(874) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Фьюжн</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(686) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Детское кафе</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(631) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Столовая</span>\n                </a>\n                <a href=\"#\" class=\"solution-item\">\n                    <img src=\"" + __webpack_require__(799) + "\" alt=\"coffie\" width=\"36\" height=\"36\" class=\"solution-icon\">\n                    <span class=\"block-subtitle\">Кавказский</span>\n                </a>\n            </div>\n        </div>\n        <div class=\"main-page-categories page-block\">\n            <h2 class=\"page-title\">Категории каталога</h2>\n      <div class=\"categories-wrap\">\n            <div class=\"category-item\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(847) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Инвентарь для пиццы\n                    </a>\n                    <div class=\"category-dropdown\">\n                        <a href=\"#\">Гастроемкости</a>\n                        <a href=\"#\">Инвентарь</a>\n                        <a href=\"#\">Кастрюли, сотейники</a>\n                        <a href=\"#\">Кондитерский инвентарь</a>\n                        <a href=\"#\">Контейнеры пищевые</a>\n                        <a href=\"#\">Ножи</a>\n                        <a href=\"#\" class=\"more-link\">Показать еще</a>\n                    </div>\n                </div>\n                <button class=\"category-expand\"></button>\n\n            </div>\n            <div class=\"category-item\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(754) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Крышки для посуды\n                    </a>\n                    <div class=\"category-dropdown\">\n                        <a href=\"#\">Гастроемкости</a>\n                        <a href=\"#\">Инвентарь</a>\n                        <a href=\"#\">Кастрюли, сотейники</a>\n                        <a href=\"#\">Кондитерский инвентарь</a>\n                        <a href=\"#\">Контейнеры пищевые</a>\n                        <a href=\"#\">Ножи</a>\n                        <a href=\"#\" class=\"more-link\">Показать еще</a>\n                    </div>\n                </div>\n                <button class=\"category-expand\"></button>\n            </div>\n            <div class=\"category-item\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(682) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Противни\n                    </a>\n                    <div class=\"category-dropdown\">\n                        <a href=\"#\">Гастроемкости</a>\n                        <a href=\"#\">Инвентарь</a>\n                        <a href=\"#\">Кастрюли, сотейники</a>\n                        <a href=\"#\">Кондитерский инвентарь</a>\n                        <a href=\"#\">Контейнеры пищевые</a>\n                        <a href=\"#\">Ножи</a>\n                        <a href=\"#\" class=\"more-link\">Показать еще</a>\n                    </div>\n                </div>\n                <button class=\"category-expand\"></button>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(146) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Гастроемкости\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(957) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Инвентарь\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(920) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Кондитерский инвентарь\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(944) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Кастрюли, сотейники\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(615) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Контейнеры пищевые\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"category-item no-subcategories\">\n                <div class=\"category-wrapper\">\n                    <a href=\"#\" class=\"category-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(290) + "\" alt=\"category image\" width=\"337\" height=\"224\">\n                    </a>\n                    <a href=\"#\" class=\"category-name\">\n                        Ножи\n                    </a>\n                    <ul class=\"subcategory-info\">\n                        <li><span>Всего товаров в категории:</span>&nbsp;116</li>\n                        <li><span>Цена от:</span>&nbsp;54&nbsp;руб.</li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n        </div>\n        <div class=\"main-page-brands page-block main-page-grid\">\n            <h2 class=\"page-title\">Бренды</h2>\n            <div class=\"more-wrap\">\n                <a href=\"#\" class=\"more-link\">Показать все</a>\n            </div>\n            <div class=\"brands-wrap main-page-grid-content\">\n                <a href=\"#\" class=\"brand-item image-wrapper\">\n                    <img src=\"" + __webpack_require__(685) + "\" alt=\"continental\" width=\"199\" height=\"66\">\n                </a>\n                <a href=\"#\" class=\"brand-item image-wrapper\">\n                    <img src=\"" + __webpack_require__(999) + "\" alt=\"dudson\" width=\"137\" height=\"81\">\n                </a>\n                <a href=\"#\" class=\"brand-item image-wrapper\">\n                    <img src=\"" + __webpack_require__(302) + "\" alt=\"tafelstern\" width=\"169\" height=\"83\">\n                </a>\n                <a href=\"#\" class=\"brand-item image-wrapper\">\n                    <img src=\"" + __webpack_require__(216) + "\" alt=\"hepp\" width=\"143\" height=\"70\">\n                </a>\n                <a href=\"#\" class=\"brand-item image-wrapper\">\n                    <img src=\"" + __webpack_require__(101) + "\" alt=\"eme\" width=\"156\" height=\"94\">\n                </a>\n            </div>\n        </div>\n        <div class=\"main-page-portfolio page-block main-page-grid\">\n            <h2 class=\"page-title\">Новости</h2>\n            <div class=\"more-wrap\">\n                <a href=\"#\" class=\"more-link\">Показать все</a>\n            </div>\n            <div class=\"portfolio-list-wrap main-page-grid-content\">\n                <a href=\"#\" class=\"portfolio-item\">\n                    <div class=\"portfolio-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(542) + "\" alt=\"news image\" width=\"340\" height=\"145\">\n                    </div>\n                    <div class=\"portfolio-info\">\n                        <span class=\"portfolio-date\">29.04.2019</span>\n                        <span class=\"portfolio-title\">График работы в праздничные дни</span>\n                        <div class=\"portfolio-text\">\n                            На главенствующим месте среди критериев выбора поставляемых нами товаров стоит соответствие современным потребностям гостинично...\n                        </div>\n                        <span class=\"more-button\"></span>\n                    </div>\n                </a>\n                <a href=\"#\" class=\"portfolio-item\">\n                    <div class=\"portfolio-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(164) + "\" alt=\"news image\" width=\"340\" height=\"145\">\n                    </div>\n                    <div class=\"portfolio-info\">\n                        <span class=\"portfolio-date\">23.04.2019</span>\n                        <span class=\"portfolio-title\">Цены стали еще ниже! STEELITE, MONTINI, APS, SANELLI -50%</span>\n                        <div class=\"portfolio-text\">\n                            На главенствующим месте среди критериев выбора поставляемых нами товаров стоит соответствие современным потребностям гостинично...\n                        </div>\n                        <span class=\"more-button\"></span>\n                    </div>\n                </a>\n                <a href=\"#\" class=\"portfolio-item\">\n                    <div class=\"portfolio-image image-wrapper\">\n                        <img src=\"" + __webpack_require__(953) + "\" alt=\"news image\" width=\"340\" height=\"145\">\n                    </div>\n                    <div class=\"portfolio-info\">\n                        <span class=\"portfolio-date\">29.04.2019</span>\n                        <span class=\"portfolio-title\">Dudson объявил о прекращении собственного производства.</span>\n                        <div class=\"portfolio-text\">\n                            На главенствующим месте среди критериев выбора поставляемых нами товаров стоит соответствие современным потребностям гостинично...\n                        </div>\n                        <span class=\"more-button\"></span>\n                    </div>\n                </a>\n            </div>\n        </div>\n        <div class=\"main-page-portfolio page-block main-page-grid\">\n            <h2 class=\"page-title\">Отзывы</h2>\n            <div class=\"more-wrap\">\n                <a href=\"#\" class=\"more-link\">Показать все</a>\n            </div>\n            <article class=\"reviews-list-wrap swiper-container\" id=\"review-slider\">\n                <div class=\"swiper-wrapper\">\n                    <div class=\"swiper-slide\">\n                        <div class=\"review-item\">\n                            <div class=\"review-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(511) + "\" alt=\"review image\" width=\"190\" height=\"134\">\n                            </div>\n                            <div class=\"review-info\">\n                                <h2 class=\"portfolio-title\">Название компании</h2>\n                                <div class=\"stars-wrap\"></div>\n                                <span class=\"portfolio-date review-date\">29.04.2019</span>\n                                <div class=\"portfolio-text\">\n                                    На главенствующим месте среди критериев выбора поставляемых нами товаров стоит соответствие современным потребностям гостинично-ресторанного сектора рынка и соотношение «цена/качество». Все, без исключения, импортируемые нами товары производятся именно для заведений общественного питания и рассчитаны конкретно на этого клиента. Не секрет, что на профессиональной кухне посуда, приборы и пр. сталкиваются с различными агрессивными воздействиями: это и многократное мытье в посудомоечных машинах с использованием специальных моющих средств, и небрежное обращение, и температурные перепады. Профессиональная посуда изготавливается с учетом этих факторов и проектируется более прочной, стойкой.\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <div class=\"review-item\">\n                            <div class=\"review-image image-wrapper\">\n                                <img src=\"" + __webpack_require__(511) + "\" alt=\"review image\" width=\"190\" height=\"134\">\n                            </div>\n                            <div class=\"review-info\">\n                                <h2 class=\"portfolio-title\">Название компании2</h2>\n                                <div class=\"stars-wrap\"></div>\n                                <span class=\"portfolio-date review-date\">29.04.2019</span>\n                                <div class=\"portfolio-text\">\n                                    На главенствующим месте среди критериев выбора поставляемых нами товаров стоит соответствие современным потребностям гостинично-ресторанного сектора рынка и соотношение «цена/качество». Все, без исключения, импортируемые нами товары производятся именно для заведений общественного питания и рассчитаны конкретно на этого клиента. Не секрет, что на профессиональной кухне посуда, приборы и пр. сталкиваются с различными агрессивными воздействиями: это и многократное мытье в посудомоечных машинах с использованием специальных моющих средств, и небрежное обращение, и температурные перепады. Профессиональная посуда изготавливается с учетом этих факторов и проектируется более прочной, стойкой.\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <button class=\"prev-review\">\n                    <svg width=\"15\" height=\"18\" viewBox=\"0 0 15 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <g filter=\"url(#filter0_d)\">\n                    <path d=\"M9 10L6 7L9 4\" stroke=\"black\"/>\n                    <path d=\"M9 10L6 7L9 4\" stroke=\"#522762\"/>\n                    </g>\n                    <defs>\n                    <filter id=\"filter0_d\" x=\"0.292908\" y=\"0.646484\" width=\"14.0607\" height=\"16.7071\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                    <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                    <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"/>\n                    <feOffset dy=\"2\"/>\n                    <feGaussianBlur stdDeviation=\"2.5\"/>\n                    <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0.321569 0 0 0 0 0.152941 0 0 0 0 0.384314 0 0 0 1 0\"/>\n                    <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow\"/>\n                    <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow\" result=\"shape\"/>\n                    </filter>\n                    </defs>\n                    </svg>\n                </button>\n                <button class=\"next-review\">\n                    <svg width=\"15\" height=\"18\" viewBox=\"0 0 15 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <g filter=\"url(#filter1_d)\">\n                    <path d=\"M6 4L9 7L6 10\" stroke=\"black\"/>\n                    <path d=\"M6 4L9 7L6 10\" stroke=\"#522762\"/>\n                    </g>\n                    <defs>\n                    <filter id=\"filter1_d\" x=\"0.646454\" y=\"0.646484\" width=\"14.0607\" height=\"16.7071\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n                    <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/>\n                    <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"/>\n                    <feOffset dy=\"2\"/>\n                    <feGaussianBlur stdDeviation=\"2.5\"/>\n                    <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0.321569 0 0 0 0 0.152941 0 0 0 0 0.384314 0 0 0 1 0\"/>\n                    <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow\"/>\n                    <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow\" result=\"shape\"/>\n                    </filter>\n                    </defs>\n                    </svg>\n                </button>\n            </article>\n        </div>\n\n    <div class=\"solution-variants\">\n      <h2 class=\"page-title\">Калькулятор готового решения</h2>\n      <div class=\"solution-variant-wrap\">\n        <div class=\"solution-stats\">\n          <span>Фарфор: <a href=\"#\">Avantgarde, Relation Today (Tafelstern, Германия)</a></span>\n          <span>Приборы: <a href=\"#\">Venice, (EME, Италия)</a></span>\n          <span>Стекло: <a href=\"#\">Penelope (Langenthal, Австрия)</a></span>\n        </div>\n        <form class=\"solution-page-form\">\n          <div class=\"solution-form-top\">\n            <p class=\"solution-number-label\">\n              Укажите кол-во посадочных мест:<br>\n              <span class=\"solution-tip\">\n                Мест по умолчанию: 100\n              </span>\n            </p>\n            <input class=\"product-quantity\" name=\"number-of-people\" type=\"number\" value=\"70\">\n            <button class=\"site-button apply-changes\">Применить</button>\n          </div>\n\n          <div class=\"products-wrap lines\">\n            <div class=\"product-grid-head\">\n              <span class=\"product-head-start\">\n                Фото\n              </span>\n              <span class=\"product-head-start\">\n                Артикул\n              </span>\n              <span class=\"product-head-start\">\n                Название\n              </span>\n              <span>\n                Упаковка\n              </span>\n              <span>\n                Кол-во\n              </span>\n              <span>\n                Цена&nbsp;(руб)\n              </span>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf\" data-coef=\"3\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>883&nbsp;883</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf3\" data-coef=\"4\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>3&nbsp;883</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf4\" data-coef=\"0.7\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>883</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf5\" data-coef=\"1.9\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>83</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf2\" data-coef=\"2.3\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>200</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfggdf1\" data-coef=\"1\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>183</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n            <div class=\"product-item\" data-id=\"dsfdf\" data-coef=\"2\">\n              <a href=\"#\" class=\"product-image image-wrapper\">\n                <img src=\"" + __webpack_require__(371) + "\" alt=\"product image\" width=\"337\" height=\"224\">\n              </a>\n              <div class=\"product-name\">\n                MB-ESS-130-MD-SK\n              </div>\n              <span class=\"product-name\">\n                Блюдо овальное 18,5 см\n              </span>\n              <div class=\"product-pack\">\n                13\n              </div>\n              <div class=\"product-price\">\n                <span>883&nbsp;883</span>&nbsp;руб\n              </div>\n              <input class=\"product-quantity\" type=\"number\" value=\"120\">\n              <button class=\"product-cart-remove\"></button>\n            </div>\n          </div>\n\n          <div class=\"mobile-warning\">\n            Чтобы таблица товаров готового решения отобразилась, зайдите на сайт с компьютера или поверните устройство в горизонтальное положение!\n          </div>\n\n          <div class=\"solution-form-bottom\">\n            <div class=\"product-price total-price\">\n              Итого:&nbsp;<span>29&nbsp;300</span>&nbsp;руб.\n            </div>\n            <button class=\"site-button complete-order\">Оформить заказ</button>\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class=\"solution-delete-popup popup-wrap js-none\" id=\"remove-product-popup\" data-action=\"cancel\">\n        <div class=\"popup-body\">\n            <button class=\"popup-close\" data-action=\"cancel\">Закрыть</button>\n            <p>Подтвердите удаление из списка<br> товара “Чашка 200 мл, голубая”?</p>\n            <button class=\"site-button\" data-action=\"delete\">Удалить</button>\n            <button class=\"site-button reverse\" data-action=\"cancel\">Нет</button>\n        </div>\n    </div>\n        <section class=\"main-page-seo page-block\">\n            <div class=\"seo-text\">\n                <h1 class=\"page-title\">О компании</h1>\n                Компания РестоШеф занимается комплексным оснащением ресторанов, баров и отелей с 1997 года.<br>\n                В течение этих лет нам удалось накопить основательный опыт в оснащении заведений сферы HoReCa, что позволяет нам при возникновении сложных задач принимать наиболее разумные и взаимовыгодные бизнес-решения. При чем, главной для себя задачей мы считаем формирование для наших клиентов максимально удобных условий сотрудничества.\n            </div>\n            <div class=\"seo-image image-wrapper\">\n                <img src=\"" + __webpack_require__(262) + "\" alt=\"seo image\" width=\"504\" height=\"336\">\n            </div>\n        </section>\n        <section class=\"main-page-seo\">\n            <div class=\"seo-image image-wrapper\">\n                <img src=\"" + __webpack_require__(552) + "\" alt=\"seo image\" width=\"520\" height=\"405\">\n            </div>\n            <div class=\"seo-text\">\n                <h1 class=\"page-title\">Стань партнером компании “РестоШеф”</h1>\n                Разный ценовой уровень предлагаемой продукции определяет круг наших клиентов: от маленьких кафе, офисных столовых и кейтеринговых компаний, демократичных ресторанов, заведений Fast Food до пятизвездочных гостиниц международных гостиничных сетей и ресторанов высокой ценовой категории.\n                <a href=\"#\" class=\"more-link\">Подробнее о партнерстве</a>\n            </div>\n        </section>\n    </div>\n    " + __webpack_require__(912) + "\n";
+module.exports = "" + __webpack_require__(859) + "\n    <div class=\"main-page\">\n        <div class=\"main-page-lamps site-size\">\n            <a href=\"#\" class=\"category big-category\">\n                <img src=\"" + __webpack_require__(697) + "\" alt=\"floor-lamp\" width=\"1140\" height=\"276\">\n                <span>Люстры</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(708) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Бра</span>\n            </a>\n            <a href=\"#\" class=\"category medium-category\">\n                <img src=\"" + __webpack_require__(422) + "\" alt=\"floor-lamp\" width=\"500\" height=\"200\">\n                <span>Настенно-потолочный-светильник</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(541) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Подвесы</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(626) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Споты</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(822) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Настольная лампа</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(131) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Абажур</span>\n            </a>\n            <a href=\"#\" class=\"category medium-category\">\n                <img src=\"" + __webpack_require__(270) + "\" alt=\"floor-lamp\" width=\"500\" height=\"200\">\n                <span>Потолочный светильник</span>\n            </a>\n            <a href=\"#\" class=\"category\">\n                <img src=\"" + __webpack_require__(677) + "\" alt=\"floor-lamp\" width=\"200\" height=\"200\">\n                <span>Торшер</span>\n            </a>\n        </div>\n        <article class=\"classic-block\">\n            <div class=\"classic-wrapper site-size\">\n                <div class=\"classic-adv-slider swiper-container\">\n                    <div class=\"swiper-wrapper\">\n                        <div class=\"classic-wrap swiper-slide\">\n                            <h2 class=\"block-title\">Классика в современном исполнении</h2>\n                            <div class=\"classic-text-wrap\">\n                                <div class=\"classic-text\">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>\n                                <a href=\"#\" class=\"site-button\">Подробнее</a>\n                            </div>\n                            <div class=\"classic-image-wrap\">\n                                <img src=\"" + __webpack_require__(867) + "\" alt=\"kitchen\" width=\"581\" height=\"313\">\n                            </div>\n                        </div>\n                        <div class=\"classic-wrap swiper-slide\">\n                            <h2 class=\"block-title\">Классика в современном исполнении</h2>\n                            <div class=\"classic-text-wrap\">\n                                <div class=\"classic-text\">Стилизация интерьера в доме непременно предусматривает тщательный подбор мельчайших предметов. Более 3 000 светильников из коллекций всемирно знаменитых брендов Gabbiani, IDL, EuroLampArt и других представленные в каталоге.</div>\n                                <a href=\"#\" class=\"site-button\">Подробнее</a>\n                            </div>\n                            <div class=\"classic-image-wrap\">\n                                <img src=\"" + __webpack_require__(867) + "\" alt=\"kitchen\" width=\"581\" height=\"313\">\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"classic-nav\">\n                        <button class=\"arrow-button prev-adv left\" slot=\"button-prev\"></button>\n                        <button class=\"arrow-button next-adv\" slot=\"button-next\"></button>\n                    </div>\n                </div>\n            </div>\n        </article>\n        <div class=\"main-products site-size\">\n            <h2 class=\"page-title\">Новинки</h2>\n            <a href=\"#\" class=\"arrow-link\">Показать все</a>\n            <div class=\"slider-wrapping\">\n                <div class=\"main-new-products-slider swiper-container\">\n                    <div class=\"swiper-wrapper\">\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(830) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"new-product-label\">Новинка</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon pressed\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(263) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"new-product-label\">Новинка</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(988) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"new-product-label\">Новинка</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(988) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"new-product-label\">Новинка</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                    </div>\n                </div>\n                <button class=\"arrow-button next-new\" slot=\"button-next\"></button>\n                <button class=\"arrow-button prev-new left\" slot=\"button-prev\"></button>\n            </div>\n        </div>\n        <div class=\"main-products site-size bottom-products\">\n            <h2 class=\"page-title\">Спецпредложения</h2>\n            <a href=\"#\" class=\"arrow-link\">Показать все</a>\n            <div class=\"slider-wrapping\">\n                <div class=\"products-special-slider swiper-container\">\n                    <div class=\"swiper-wrapper\">\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(830) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"cheap-product-label\">Выгода</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                        <span class=\"discount\">7 700 руб.</span>\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(988) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"cheap-product-label\">Выгода</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                        <span class=\"discount\">7 700 руб.</span>\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(668) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"cheap-product-label\">Выгода</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                        <span class=\"discount\">7 700 руб.</span>\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"product-item\">\n                                <div class=\"like-button\">\n                                    <span class=\"site-icon heart-icon\"></span>\n                                </div>\n                                <div class=\"product-image\">\n                                    <img src=\"" + __webpack_require__(668) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                                </div>\n                                <div class=\"product-item-info\">\n                                    <div class=\"product-labels\">\n                                        <span class=\"cheap-product-label\">Выгода</span>\n                                    </div>\n                                    <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                                </div>\n                                <div class=\"product-bottom\">\n                                    <div class=\"product-prices\">\n                                        <span class=\"discount\">7 700 руб.</span>\n                                      <span class=\"price\">3 658 руб.</span>\n                                    </div>\n                                    <span class=\"small-button\">Корзина</span>\n                                </div>\n                            </a>\n                        </div>\n                    </div>\n                </div>\n                <button class=\"arrow-button next-special\" slot=\"button-next\"></button>\n                <button class=\"arrow-button prev-special left\" slot=\"button-prev\"></button>\n            </div>\n        </div>\n        <section class=\"classic-block\">\n            <div class=\"classic-wrap site-size fixed\">\n                <h1 class=\"block-title\">Группа компаний LampLandia</h1>\n                <div class=\"classic-text-wrap\">\n                    <div class=\"classic-text\">Наша компания была основана в 2000 году и на сегодняшний день она является  одной из крупнейших компанией  в России, специализирующихся на поставке светильников. Мы предлагаем оптовые поставки: Люстр, Светильников, Бра, Торшеров. Компания реализует как эксклюзивную продукцию мировых производителей, так и фабрик давно и хорошо зарекомендовавших себя на рынке.</div>\n                </div>\n                <div class=\"classic-image-wrap group-image-wrap\">\n                    <img src=\"" + __webpack_require__(400) + "\" alt=\"lamp group\" width=\"497\" height=\"373\">\n                </div>\n            </div>\n        </section>\n        <div class=\"main-news-block site-size\">\n            <h2 class=\"page-title\">Новости</h2>\n            <a href=\"#\" class=\"arrow-link\">Показать все</a>\n            <div class=\"slider-wrapping\">\n                <div class=\"main-news-slider swiper-container\">\n                    <div class=\"swiper-wrapper\">\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"news-item\">\n                                <span class=\"news-title\">Как найти подходящее освещение для дизайна в стиле лофт</span>\n                                <div class=\"news-image\">\n                                    <img src=\"" + __webpack_require__(748) + "\" alt=\"news image\" width=\"309\" height=\"211\">\n                                </div>\n                                <div class=\"news-info\">\n                                    <span class=\"news-date\">29.08.2019</span>\n                                    <span class=\"news-name\">Автор: Ирина Иванова</span>\n                                </div>\n                                <div class=\"news-text\">\n                                    Нашумевший стиль интерьера под названием «лофт» привнёс в индустрию дух раскрепощённой и креативности...\n                                </div>\n                                <span class=\"small-arrow-link\">Читать</span>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"news-item\">\n                                <span class=\"news-title\">Российский дизайнер Дима Логинов показал новые лампы на Salone del Mobile</span>\n                                <div class=\"news-image\">\n                                    <img src=\"" + __webpack_require__(880) + "\" alt=\"news image\" width=\"309\" height=\"211\">\n                                </div>\n                                <div class=\"news-info\">\n                                    <span class=\"news-date\">29.08.2019</span>\n                                    <span class=\"news-name\">Автор: Ирина Иванова</span>\n                                </div>\n                                <div class=\"news-text\">\n                                    Промышленный дизайнер из России Дима Логинов представил в Милане на Salone del Mobile коллекции светильников Urban и...\n                                </div>\n                                <span class=\"small-arrow-link\">Читать</span>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"news-item\">\n                                <span class=\"news-title\">Точечные светильники: разновидности и роль в дизайне</span>\n                                <div class=\"news-image\">\n                                    <img src=\"" + __webpack_require__(1) + "\" alt=\"news image\" width=\"309\" height=\"211\">\n                                </div>\n                                <div class=\"news-info\">\n                                    <span class=\"news-date\">29.08.2019</span>\n                                    <span class=\"news-name\">Автор: Ирина Иванова</span>\n                                </div>\n                                <div class=\"news-text\">\n                                    Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...\n                                </div>\n                                <span class=\"small-arrow-link\">Читать</span>\n                            </a>\n                        </div>\n                        <div class=\"swiper-slide\">\n                            <a href=\"#\" class=\"news-item\">\n                                <span class=\"news-title\">Точечные светильники: разновидности и роль в дизайне</span>\n                                <div class=\"news-image\">\n                                    <img src=\"" + __webpack_require__(1) + "\" alt=\"news image\" width=\"309\" height=\"211\">\n                                </div>\n                                <div class=\"news-info\">\n                                    <span class=\"news-date\">29.08.2019</span>\n                                    <span class=\"news-name\">Автор: Ирина Иванова</span>\n                                </div>\n                                <div class=\"news-text\">\n                                    Большинство владельцев домов и квартир поменяли стандартные люстры на более современные точечные светильники. Эти...\n                                </div>\n                                <span class=\"small-arrow-link\">Читать</span>\n                            </a>\n                        </div>\n                    </div>\n                </div>\n                <button class=\"arrow-button next-news\" slot=\"button-next\"></button>\n                <button class=\"arrow-button prev-news left\" slot=\"button-prev\"></button>\n            </div>\n        </div>\n    </div>\n\n\n<div class=\"interior-item-page page-block site-size\">\n    <div class=\"top-scroll-wrap\" id=\"top-scroll-wrap\">\n        <div class=\"top-scroll-block site-size\">\n            <div class=\"top-scroll-left\">\n                <img class=\"small-logo\" src=\"" + __webpack_require__(743) + "\" alt=\"small logo\" width=\"43\" height=\"43\">\n                <div class=\"product-thumb\">\n                    <img src=\"" + __webpack_require__(155) + "\" alt=\"product thumb\" width=\"443\" height=\"443\">\n                </div>\n                <span class=\"block-subtitle\">Люстра EMMA</span>\n            </div>\n            <div class=\"product-bottom\">\n                <div class=\"product-prices\">\n                    <span class=\"discount\">42 000 руб.</span>\n                    <span class=\"price\"><span>33 503</span> руб.</span>\n                </div>\n                <button class=\"small-button\">В корзину</button>\n            </div>\n        </div>\n    </div>\n    <div class=\"top-navigation\">\n        <a href=\"#\" class=\"back-arrow-link\">Назад</a>\n        <a href=\"#\" class=\"arrow-link\">Вперед</a>\n    </div>\n    <div class=\"product-page-image\">\n        <div class=\"like-button\">\n            <span class=\"site-icon heart-icon\"></span>\n        </div>\n        <div class=\"product-image-slider swiper-container\" id=\"product-image-slider\">\n            <div class=\"swiper-wrapper\">\n                <div class=\"swiper-slide\">\n                    <img src=\"" + __webpack_require__(155) + "\" alt=\"product image\" width=\"443\" height=\"443\">\n                </div>\n            <div class=\"swiper-slide\">\n                    <img src=\"" + __webpack_require__(63) + "\" alt=\"product image\" width=\"443\" height=\"295\">\n                </div>\n                <div class=\"swiper-slide\">\n                    <img src=\"" + __webpack_require__(190) + "\" alt=\"product image\" width=\"295\" height=\"443\">\n                </div>\n                <div class=\"swiper-slide\">\n                    <img src=\"" + __webpack_require__(139) + "\" alt=\"product image\" width=\"295\" height=\"443\">\n                </div>\n                <div class=\"swiper-slide\">\n                    <img src=\"" + __webpack_require__(138) + "\" alt=\"product image\" width=\"443\" height=\"295\">\n                </div>\n            </div>\n            <button class=\"arrow-button next-image\" slot=\"button-next\"></button>\n        <button class=\"arrow-button prev-image left\" slot=\"button-prev\"></button>\n            <div class=\"product-slider-bullets\" slot=\"pagination\"></div>\n        </div>\n\n        <div class=\"product-thumbs-wrap\">\n            <div class=\"product-thumbs-slider swiper-container\">\n                <div class=\"swiper-wrapper\">\n                    <div class=\"swiper-slide\">\n                        <img src=\"" + __webpack_require__(155) + "\" alt=\"product image\" width=\"443\" height=\"443\">\n                    </div>\n                <div class=\"swiper-slide\">\n                        <img src=\"" + __webpack_require__(63) + "\" alt=\"product image\" width=\"443\" height=\"295\">\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <img src=\"" + __webpack_require__(190) + "\" alt=\"product image\" width=\"295\" height=\"443\">\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <img src=\"" + __webpack_require__(139) + "\" alt=\"product image\" width=\"295\" height=\"443\">\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <img src=\"" + __webpack_require__(155) + "\" alt=\"product image\" width=\"443\" height=\"443\">\n                    </div>\n                </div>\n            </div>\n            <button class=\"arrow-button next-image-thumb\" slot=\"button-next\"></button>\n            <button class=\"arrow-button prev-image-thumb left\" slot=\"button-prev\"></button>\n        </div>\n    </div>\n    <div class=\"product-page-info\">\n        <h1 class=\"page-subtitle\">Люстра EMMA</h1>\n        <div class=\"product-labels\">\n            <span class=\"new-product-label\">Новинка</span>\n            <span class=\"cheap-product-label\">Выгода</span>\n        </div>\n        <div class=\"product-bottom\" id=\"top-block-limit\">\n            <div class=\"product-prices\">\n                <span class=\"price\"><span>3 503</span> руб.</span>\n                <span class=\"discount\">4 200 руб.</span>\n            </div>\n            <button class=\"small-button\">В корзину</button>\n            <div class=\"conditions-links\">\n                <a href=\"#\">Условия оплаты</a>\n                <a href=\"#\">Условия доставки</a>\n            </div>\n        </div>\n        <div class=\"product-description\">\n            <span class=\"upper-title\">Описание</span>\n            <div class=\"site-text\">\n                Классическая хрустальная люстра. Основание выполнено из хромированного металла. Подойдет для спальни или гостиной.\n            </div>\n            <ul class=\"product-info-list\">\n                <li>Наличие: <span>Есть</span></li>\n                <li>Поступление: <span>май 2020</span></li>\n                <li>Артикул: <span>7379-6</span></li>\n                <li>Серия: <a href=\"#\">Deamur</a></li>\n                <li>Коллекция: <a href=\"#\">EMMA</a></li>\n                <li>Стиль: <a href=\"#\">EMMA</a></li>\n            </ul>\n        </div>\n        <div class=\"product-stats\" id=\"product-stats\">\n            <span class=\"upper-title\">Характеристики</span>\n            <ul class=\"product-info-list\">\n                <li>Мощность: <a href=\"#\">40 Вт</a></li>\n                <li>Гарантийный срок: <span>12 месяцев</span></li>\n                <li>Патрон: <span>Е14</span></li>\n                <li>Материал плафона: <a href=\"#\">Стекло</a>, <a href=\"#\">Хрусталь</a></li>\n                <li>Материал арматуры: <a href=\"#\">Металл</a></li>\n                <li>Вид светильника: <a href=\"#\">Потолочный</a></li>\n                <li>Кол-во лампочек: <span>3</span></li>\n            </ul>\n            <a href=\"#\" class=\"small-link more\" data-text=\"Скрыть\">Показать еще</a>\n        </div>\n        <div class=\"product-shops\">\n            <span class=\"upper-title\">Где купить</span>\n            <a href=\"#\">220 Вольт</a>\n            <a href=\"#\">Максидом</a>\n            <a href=\"#\">Леруа Мерлин</a>\n            <a href=\"#\">Маркет Света</a>\n        </div>\n    </div>\n    <div class=\"product-block product-in-interior\">\n        <h2 class=\"page-title\">В интерьере</h2>\n        <a href=\"#\" class=\"arrow-link\">Показать все</a>\n        <div class=\"product-interior-slider swiper-container\">\n            <div class=\"swiper-wrapper\">\n                <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(877) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Столовая</span>\n                    </a>\n                </div>\n            <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(417) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Люстра</span>\n                    </a>\n                </div>\n                <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(877) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Столовая</span>\n                    </a>\n                </div>\n             <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(417) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Люстра</span>\n                    </a>\n                </div>\n                <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(877) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Столовая</span>\n                    </a>\n                </div>\n           <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(417) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Люстра</span>\n                    </a>\n                </div>\n                <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(877) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Столовая</span>\n                    </a>\n                </div>\n            <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(417) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Люстра</span>\n                    </a>\n                </div>\n                <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(877) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Столовая</span>\n                    </a>\n                </div>\n            <div class=\"swiper-slide\">\n                    <a href=\"#\">\n                        <img src=\"" + __webpack_require__(417) + "\" alt=\"product image\" width=\"200\" height=\"200\">\n                        <span class=\"interior-category\">Люстра</span>\n                    </a>\n                </div>\n            </div>\n        </div>\n        <button class=\"arrow-button next-interior\" slot=\"button-next\"></button>\n        <button class=\"arrow-button prev-interior left\" slot=\"button-prev\"></button>\n    </div>\n    <div class=\"main-products site-size similar-block\">\n        <h2 class=\"page-title\">Похожие товары</h2>\n        <a href=\"#\" class=\"arrow-link\">Показать все</a>\n        <div class=\"slider-wrapping\">\n            <div class=\"main-new-products-slider swiper-container\">\n                <div class=\"swiper-wrapper\">\n                    <div class=\"swiper-slide\">\n                        <a href=\"#\" class=\"product-item\">\n                            <div class=\"like-button\">\n                                <span class=\"site-icon heart-icon\"></span>\n                            </div>\n                            <div class=\"product-image\">\n                                <img src=\"" + __webpack_require__(830) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                            </div>\n                            <div class=\"product-item-info\">\n                                <div class=\"product-labels\">\n                                    <span class=\"new-product-label\">Новинка</span>\n                                </div>\n                                <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                            </div>\n                            <div class=\"product-bottom\">\n                                <div class=\"product-prices\">\n                                    <span class=\"price\">3 658 руб.</span>\n                                </div>\n                                <span class=\"small-button\">Корзина</span>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <a href=\"#\" class=\"product-item\">\n                            <div class=\"like-button\">\n                                <span class=\"site-icon heart-icon pressed\"></span>\n                            </div>\n                            <div class=\"product-image\">\n                                <img src=\"" + __webpack_require__(263) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                            </div>\n                            <div class=\"product-item-info\">\n                                <div class=\"product-labels\">\n                                    <span class=\"new-product-label\">Новинка</span>\n                                </div>\n                                <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                            </div>\n                            <div class=\"product-bottom\">\n                                <div class=\"product-prices\">\n                                    <span class=\"price\">3 658 руб.</span>\n                                </div>\n                                <span class=\"small-button\">Корзина</span>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <a href=\"#\" class=\"product-item\">\n                            <div class=\"like-button\">\n                                <span class=\"site-icon heart-icon\"></span>\n                            </div>\n                            <div class=\"product-image\">\n                                <img src=\"" + __webpack_require__(988) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                            </div>\n                            <div class=\"product-item-info\">\n                                <div class=\"product-labels\">\n                                    <span class=\"new-product-label\">Новинка</span>\n                                </div>\n                                <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                            </div>\n                            <div class=\"product-bottom\">\n                                <div class=\"product-prices\">\n                                    <span class=\"price\">3 658 руб.</span>\n                                </div>\n                                <span class=\"small-button\">Корзина</span>\n                            </div>\n                        </a>\n                    </div>\n                    <div class=\"swiper-slide\">\n                        <a href=\"#\" class=\"product-item\">\n                            <div class=\"like-button\">\n                                <span class=\"site-icon heart-icon\"></span>\n                            </div>\n                            <div class=\"product-image\">\n                                <img src=\"" + __webpack_require__(988) + "\" alt=\"product-image\" width=\"228\" height=\"162\">\n                            </div>\n                            <div class=\"product-item-info\">\n                                <div class=\"product-labels\">\n                                    <span class=\"new-product-label\">Новинка</span>\n                                </div>\n                                <div class=\"product-title\">Люстра на штанге L1118-3 Anabel, Е27*макс. 60Вт</div>\n                            </div>\n                            <div class=\"product-bottom\">\n                                <div class=\"product-prices\">\n                                    <span class=\"price\">3 658 руб.</span>\n                                </div>\n                                <span class=\"small-button\">Корзина</span>\n                            </div>\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <button class=\"arrow-button next-new\" slot=\"button-next\"></button>\n            <button class=\"arrow-button prev-new left\" slot=\"button-prev\"></button>\n        </div>\n    </div>\n\n\n    <div class=\"popup-wrap\" id=\"product-popup\">\n        <div class=\"popup-body\">\n            <button class=\"popup-close\"></button>\n            <div class=\"image-wrap\">\n\n            </div>\n        </div>\n    </div>\n\n</div>\n" + __webpack_require__(952) + "";
 
 /***/ }),
 
-/***/ 405:
+/***/ 800:
 /***/ (() => {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
 
-/***/ 989:
+/***/ 534:
 /***/ (() => {
 
 // extracted by mini-css-extract-plugin
 
 /***/ }),
 
-/***/ 386:
-/***/ (() => {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ 238:
+/***/ 75:
 /***/ (() => {
 
 // extracted by mini-css-extract-plugin
@@ -7685,23 +5360,20 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/* harmony import */ var _assets_libs_css_normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(405);
+/* harmony import */ var _assets_libs_css_normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(800);
 /* harmony import */ var _assets_libs_css_normalize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_libs_css_normalize_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _assets_libs_css_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(386);
+/* harmony import */ var _assets_libs_css_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(534);
 /* harmony import */ var _assets_libs_css_swiper_min_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_libs_css_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_libs_css_nouislider_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(989);
-/* harmony import */ var _assets_libs_css_nouislider_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_libs_css_nouislider_min_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _assets_css_style_styl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(238);
-/* harmony import */ var _assets_css_style_styl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_styl__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_js_script_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(206);
-/* harmony import */ var _assets_js_script_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_js_script_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _assets_header_html__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(523);
-/* harmony import */ var _assets_header_html__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_header_html__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _assets_footer_html__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(912);
-/* harmony import */ var _assets_footer_html__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_footer_html__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(134);
-/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_index_html__WEBPACK_IMPORTED_MODULE_7__);
-
+/* harmony import */ var _assets_css_style_styl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(75);
+/* harmony import */ var _assets_css_style_styl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_styl__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _assets_js_script_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(690);
+/* harmony import */ var _assets_js_script_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_js_script_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_header_html__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(859);
+/* harmony import */ var _assets_header_html__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_header_html__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_footer_html__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(952);
+/* harmony import */ var _assets_footer_html__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_footer_html__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(522);
+/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_html__WEBPACK_IMPORTED_MODULE_6__);
 
 
 

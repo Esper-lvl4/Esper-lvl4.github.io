@@ -1,3 +1,5 @@
+import './assets/libs/css/normalize.css';
+import './assets/libs/css/swiper.min.css';
 import './assets/css/style.styl';
 import './assets/js/script.js';
 

@@ -1,3 +1,5 @@
+const Swiper = require('../libs/js/swiper.min.js');
+
 window.addEventListener('load', function() {
   // Quantity counter webcomponent.
 

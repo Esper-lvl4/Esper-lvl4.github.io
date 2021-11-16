@@ -19,9 +19,6 @@ const cssExp = {
 
 // Plugins
 const plugs = [
-  new CopyPlugin([
-    {from: './assets/libs/', to: './'},
-  ]),
   new ExtractCss({
     filename: devMode ? './css/[name].css' : '[name].[hash].css',
     chunkFilename: devMode ? './css/[id].css' : '[id].[hash].css',
@@ -47,8 +44,8 @@ const lamplandiaPlugins = plugs.concat([new HtmlWebpackPlugin({
   minify: false,
 })]);
 
-const rules = [
-  {
+const rules = () =>
+  ([{
     test: /\.js$/,
     exclude: /node-modules/,
     use: [
@@ -61,7 +58,6 @@ const rules = [
           ignore: ['/node-modules/'],
         },
       },
-      // 'eslint-loader',
     ],
   },
   {
@@ -69,7 +65,6 @@ const rules = [
     exclude: /node-modules/,
     use: [
       cssExp,
-      // 'style-loader',
       'css-loader',
     ],
   },
@@ -78,7 +73,6 @@ const rules = [
     exclude: /node-modules/,
     use: [
       cssExp,
-      // 'style-loader',
       { loader: 'css-loader', options: { esModule: false } },
       { loader: 'stylus-loader', options: { esModule: false } },
     ],
@@ -118,9 +112,26 @@ const rules = [
       },
     }],
   },
-];
+]);
 
 module.exports = [
+  {
+    mode: 'development',
+    entry: {
+      main: './src/lamplandia/index.js',
+    },
+    output: {
+      path: path.resolve(__dirname, 'lamplandia'),
+      filename: 'js/[name].js',
+      publicPath: './',
+      clean: true,
+    },
+    optimization: {
+      minimize: false,
+    },
+    module: { rules: rules(), },
+    plugins: lamplandiaPlugins,
+  },
   {
     mode: 'development',
     entry: {
@@ -135,36 +146,9 @@ module.exports = [
     optimization: {
       minimize: false,
     },
-    resolve: {
-      alias: {
-        Assets: path.resolve(__dirname, 'dev/assets'),
-        Images: path.resolve(__dirname, 'dev/assets/img'),
-      },
-    },
-    module: { rules },
+    module: { rules: rules() },
     plugins: restochefPlugins,
   },
-  {
-    mode: 'development',
-    entry: {
-      lamplandia: './src/lamplandia/index.js',
-    },
-    output: {
-      path: path.resolve(__dirname, 'lamplandia'),
-      filename: 'js/[name].js',
-      publicPath: './',
-      clean: true,
-    },
-    optimization: {
-      minimize: false,
-    },
-    resolve: {
-      alias: {
-        Assets: path.resolve(__dirname, 'dev/assets'),
-        Images: path.resolve(__dirname, 'dev/assets/img'),
-      },
-    },
-    module: { rules },
-    plugins: lamplandiaPlugins,
-  }
 ];
+
+module.exports.parallelism = 1;
