@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Restochef</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<div class="global-wrap" id="app">
+		<header class="header">
+			<div class="header-top-wrap">
+				<div class="header-top site-size">
+					<a href="#" class="logo image-wrapper">
+						<img src="./img/logo.svg" alt="logo" width="246" height="55">
+					</a>
+					<div class="header-experience">
+						Опыт оснащения отелей и ресторанов с 1997 года. Отгрузка во все регионы!
+					</div>
+					<div class="callback-wrap">
+						<button class="yellow-button" id="call-popup" data-action="open">Позвоните нам</button>
+					</div>
+					<div class="phones-wrap" id="phones-wrap">
+						<button class="popup-cross" data-action="close"></button>
+						<span class="phones-title">Позвоните нам</span>
+						<div class="header-phone-wrap">
+							<a href="tel:+74959379107" class="header-phone">8&nbsp;(495)&nbsp;937-91-07</a><br>
+							<span>Москва</span>
+						</div>
+						<div class="header-phone-wrap">
+							<a href="tel:+78123131547" class="header-phone">8&nbsp;(812)&nbsp;313-15-47</a><br>
+							<span>Санкт-Петербург</span>
+						</div>
+						<div class="header-phone-wrap">
+							<a href="tel:+73833730424" class="header-phone">8&nbsp;(383)&nbsp;373-04-24</a><br>
+							<span>Новосибирск</span>
+						</div>
+					</div>
+					<div class="header-cart-link">
+						<a href="#" class="cart-icon active">
+							<svg width="23" height="29" viewBox="0 0 23 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.4867 5.87054L20.4797 5.77811H20.387H16.9051C16.7361 2.87945 14.3895 0.536719 11.5455 0.536719C8.70132 0.536719 6.35468 2.87402 6.18049 5.77811H2.6438H2.55086L2.54407 5.87081L0.900267 28.3112L0.892407 28.4185H1H22.0909H22.1988L22.1906 28.311L20.4867 5.87054ZM19.3384 7.15799L20.7982 27.0387H2.35275L3.81257 7.15799H6.17V10.9437V11.0437H6.27H7.40591H7.50591V10.9437V7.15799H15.585V10.9437V11.0437H15.685H16.8209H16.9209V10.9437V7.15799H19.3384ZM11.5455 1.9166C13.6444 1.9166 15.4049 3.63024 15.5727 5.77811H7.51816C7.68602 3.63024 9.4465 1.9166 11.5455 1.9166Z" fill="#ABABAB" stroke="#ABABAB" stroke-width="0.2"/>
+							</svg>
+						</a>
+					</div>
+					<button class="menu-burger" id="head-burger">
+						<svg width="26" height="18" viewBox="0 0 26 18" fill="none">
+							<line x1="0" y1="1" x2="26" y2="1" stroke="#ababab" stroke-width="2" />
+							<line x1="0" y1="9" x2="26" y2="9" stroke="#ababab" stroke-width="2" />
+							<line x1="0" y1="17" x2="26" y2="17" stroke="#ababab" stroke-width="2" />
+						</svg>
+					</button>
+				</div>
+			</div>
+			<nav class="header-bottom site-size">
+				<div class="header-menu" id="head-menu">
+					<div class="menu-item">
+						<a href="https://esper-playground.ru/about/">Назад к резюме</a>
+					</div>
+					<div class="menu-item">
+						<a href="#">Пример меню</a>
+						<div class="header-popup-menu submenu">
+							<div class="menu-pimp"></div>
+							<div class="menu-block menu-item double-column">
+								<a href="#" class="popup-menu-head">По разделам:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">Посуда для ресторанов</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Столовые приборы</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Стекло</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Сервировка</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Кухонный инвентарь</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Оборудование для номерного фонда</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Буфетные линии</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Тележки</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Розница</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Гостиничный текстиль</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Гостиничная косметика</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Кейтеринг, хранение</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-block menu-item">
+								<a class="popup-menu-head" href="#">Готовые решения:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">Для баров</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для кафе</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для столовых</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для ресторанов</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для фастфуда</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для гостиниц</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-block menu-item">
+								<a class="popup-menu-head" href="#">По брендам:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">PETYE</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">CONTINENTAL</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">DUDSON - FINEST VITRIFIED</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">DUDSON-FINE CHINA</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">TAFLESTERN FINE DINING</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">TAFLESTERN</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">AXUN</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-item-list">
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Скачать прайс</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Услуга подбора посуды</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Распродажа</a>
+								</div>
+								<div class="menu-item">
+									<a href="#"></a>
+								</div>
+								<div class="menu-item">
+									<a href="#"></a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links yellow-links" href="#">Акции</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links yellow-links" href="#">Новинки</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="menu-item">
+						<a href="#">Тоже меню</a>
+						<div class="header-popup-menu submenu">
+							<div class="menu-pimp"></div>
+							<div class="menu-block menu-item double-column">
+								<a href="#" class="popup-menu-head">По разделам:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">Посуда для ресторанов</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Столовые приборы</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Стекло</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Сервировка</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Кухонный инвентарь</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Оборудование для номерного фонда</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Буфетные линии</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Тележки</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Розница</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Гостиничный текстиль</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Гостиничная косметика</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Кейтеринг, хранение</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-block menu-item">
+								<a class="popup-menu-head" href="#">Готовые решения:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">Для баров</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для кафе</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для столовых</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для ресторанов</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для фастфуда</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">Для гостиниц</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-block menu-item">
+								<a class="popup-menu-head" href="#">По брендам:</a>
+								<div class="menu-column submenu">
+									<div class="menu-item">
+										<a href="#">PETYE</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">CONTINENTAL</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">DUDSON - FINEST VITRIFIED</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">DUDSON-FINE CHINA</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">TAFLESTERN FINE DINING</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">TAFLESTERN</a>
+									</div>
+									<div class="menu-item">
+										<a href="#">AXUN</a>
+									</div>
+									<div class="menu-item">
+										<a class="unique-link" href="#">
+											Показать все
+											<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M24.3536 4.35355C24.5488 4.15829 24.5488 3.84171 24.3536 3.64645L21.1716 0.464466C20.9763 0.269204 20.6597 0.269204 20.4645 0.464466C20.2692 0.659728 20.2692 0.976311 20.4645 1.17157L23.2929 4L20.4645 6.82843C20.2692 7.02369 20.2692 7.34027 20.4645 7.53553C20.6597 7.7308 20.9763 7.7308 21.1716 7.53553L24.3536 4.35355ZM0 4.5H24V3.5H0V4.5Z" fill="white"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="menu-item-list">
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Скачать прайс</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Услуга подбора посуды</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links" href="#">Распродажа</a>
+								</div>
+								<div class="menu-item">
+									<a href="#"></a>
+								</div>
+								<div class="menu-item">
+									<a href="#"></a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links yellow-links" href="#">Акции</a>
+								</div>
+								<div class="menu-item">
+									<a class="underlined-links yellow-links" href="#">Новинки</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form class="header-search">
+					<input class="site-input search" type="text" placeholder="Поиск">
+				</form>
+			</nav>
+		</header>
+		<main class="main-wrap">
